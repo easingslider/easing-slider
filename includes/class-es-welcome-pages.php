@@ -50,8 +50,38 @@ class ES_Welcome_Pages {
 
 		// Page-specific hooks
 		foreach ( $hooks as $hook ) {
-			add_action( "admin_print_scripts-{$hook}", array( $this, 'enqueue_assets' ) );
+			add_action( "admin_print_styles-{$hook}", array( $this, 'enqueue_styles' ) );
 		}
+
+	}
+
+	/**
+	 * Registers all of our extensions page assets
+	 *
+	 * @return void
+	 */
+	public function register_assets() {
+
+		// Get our directory
+		$css_dir = plugins_url( plugin_basename( dirname( __DIR__ ) ) ) . '/css';
+
+		// Get file suffix
+		$suffix  = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
+		// Register our stylesheet
+		wp_register_style( 'easingslider-welcome-pages', "{$css_dir}/welcome-pages{$suffix}.css", false, Easing_Slider::$version );
+
+	}
+
+	/**
+	 * Enqueues all of our extensions page styles
+	 *
+	 * @return void
+	 */
+	public function enqueue_styles() {
+
+		// Enqueue our stylesheet
+		wp_enqueue_style( 'easingslider-welcome-pages' );
 
 	}
 
@@ -141,36 +171,6 @@ class ES_Welcome_Pages {
 			exit;
 
 		}
-
-	}
-
-	/**
-	 * Registers all of our extensions page assets
-	 *
-	 * @return void
-	 */
-	public function register_assets() {
-
-		// Get our directory
-		$css_dir = plugins_url( plugin_basename( dirname( __DIR__ ) ) ) . '/css';
-
-		// Get file suffix
-		$suffix  = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-
-		// Register our stylesheet
-		wp_register_style( 'easingslider-welcome-pages', "{$css_dir}/welcome-pages{$suffix}.css", false, Easing_Slider::$version );
-
-	}
-
-	/**
-	 * Enqueues all of our extensions page assets
-	 *
-	 * @return void
-	 */
-	public function enqueue_assets($hook) {
-
-		// Enqueue our stylesheet
-		wp_enqueue_style( 'easingslider-welcome-pages' );
 
 	}
 

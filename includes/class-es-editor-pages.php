@@ -65,10 +65,11 @@ class ES_Editor_Pages {
 		);
 
 		// Page-specific hooks
-		add_action( "load-{$hook}", array( $this, 'do_edit_actions' ) );
-	 	add_action( "load-{$hook}", array( $this, 'add_screen_options' ) );
-		add_action( "load-{$hook}", array( $this, 'hide_media_tabs' ) );
-		add_action( "admin_print_scripts-{$hook}", array( $this, 'enqueue_assets' ) );
+		add_action( "load-{$hook}",                array( $this, 'do_edit_actions' ) );
+	 	add_action( "load-{$hook}",                array( $this, 'add_screen_options' ) );
+		add_action( "load-{$hook}",                array( $this, 'hide_media_tabs' ) );
+		add_action( "admin_print_styles-{$hook}",  array( $this, 'enqueue_styles' ) );
+		add_action( "admin_print_scripts-{$hook}", array( $this, 'enqueue_scripts' ) );
 
 	}
 
@@ -90,10 +91,11 @@ class ES_Editor_Pages {
 		);
 
 		// Page-specific hooks
-		add_action( "load-{$hook}", array( $this, 'do_publish_actions' ) );
-		add_action( "load-{$hook}", array( $this, 'add_screen_options' ) );
-		add_action( "load-{$hook}", array( $this, 'hide_media_tabs' ) );
-		add_action( "admin_print_scripts-{$hook}", array( $this, 'enqueue_assets' ) );
+		add_action( "load-{$hook}",                array( $this, 'do_publish_actions' ) );
+		add_action( "load-{$hook}",                array( $this, 'add_screen_options' ) );
+		add_action( "load-{$hook}",                array( $this, 'hide_media_tabs' ) );
+		add_action( "admin_print_styles-{$hook}",  array( $this, 'enqueue_styles' ) );
+		add_action( "admin_print_scripts-{$hook}", array( $this, 'enqueue_scripts' ) );
 
 	}
 
@@ -123,11 +125,23 @@ class ES_Editor_Pages {
 	}
 
 	/**
-	 * Enqueues all of our editor assets
+	 * Enqueues all of our editor styles
 	 *
 	 * @return void
 	 */
-	public function enqueue_assets() {
+	public function enqueue_styles() {
+
+		// Enqueue our stylesheets
+		wp_enqueue_style( 'easingslider-editor-pages' );
+
+	}
+
+	/**
+	 * Enqueues all of our editor scripts
+	 *
+	 * @return void
+	 */
+	public function enqueue_scripts() {
 
 		// Load media grid localizations
 		wp_localize_script( 'media-grid', '_wpMediaGridSettings', array(
@@ -147,9 +161,6 @@ class ES_Editor_Pages {
 				'discard_changes' => __( 'Are you sure you wish to discard changes?', 'easingslider' )
 			)
 		) );
-
-		// Enqueue our stylesheets
-		wp_enqueue_style( 'easingslider-editor-pages' );
 
 		// Enqueue our javascripts
 		wp_enqueue_media();

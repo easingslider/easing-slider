@@ -62,8 +62,8 @@ class ES_Settings_Page {
 		);
 
 		// Page-specific hooks
-		add_action( "load-{$hook}", array( $this, 'do_actions' ) );
-		add_action( "admin_print_scripts-{$hook}", array( $this, 'enqueue_assets' ) );
+		add_action( "load-{$hook}",                array( $this, 'do_actions' ) );
+		add_action( "admin_print_styles-{$hook}",  array( $this, 'enqueue_styles' ) );
 
 	}
 
@@ -86,11 +86,11 @@ class ES_Settings_Page {
 	}
 
 	/**
-	 * Enqueues all of our settings assets
+	 * Enqueues all of our settings styles
 	 *
 	 * @return void
 	 */
-	public function enqueue_assets() {
+	public function enqueue_styles() {
 
 		// Enqueue our stylesheet
 		wp_enqueue_style( 'easingslider-settings-page' );

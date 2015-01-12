@@ -63,8 +63,9 @@ class ES_Customizer {
 		);
 
 		// Page-specific hooks
-		add_action( "load-{$hook}", array( $this, 'do_actions' ) );
-		add_action( "admin_print_scripts-{$hook}", array( $this, 'enqueue_assets' ) );
+		add_action( "load-{$hook}",                array( $this, 'do_actions' ) );
+		add_action( "admin_print_styles-{$hook}",  array( $this, 'enqueue_styles' ) );
+		add_action( "admin_print_scripts-{$hook}", array( $this, 'enqueue_scripts' ) );
 
 	}
 
@@ -94,17 +95,26 @@ class ES_Customizer {
 	}
 
 	/**
-	 * Enqueues all of our admin assets
+	 * Enqueues all of our customizer styles
 	 *
 	 * @return void
 	 */
-	public function enqueue_assets() {
+	public function enqueue_styles() {
 
 		// Enqueue our stylesheets
 		wp_enqueue_style( 'customize-controls' );
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_style( 'easingslider' );
 		wp_enqueue_style( 'easingslider-customizer' );
+
+	}
+
+	/**
+	 * Enqueues all of our customizer scripts
+	 *
+	 * @return void
+	 */
+	public function enqueue_scripts() {
 
 		// Enqueue our javascripts
 		wp_enqueue_script( 'customize-controls');

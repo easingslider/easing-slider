@@ -62,7 +62,7 @@ class ES_Extensions_Page {
 		);
 
 		// Page-specific hooks
-		add_action( "admin_print_scripts-{$hook}", array( $this, 'enqueue_assets' ) );
+		add_action( "admin_print_styles-{$hook}", array( $this, 'enqueue_styles' ) );
 
 	}
 
@@ -85,11 +85,11 @@ class ES_Extensions_Page {
 	}
 
 	/**
-	 * Enqueues all of our extensions page assets
+	 * Enqueues all of our extensions page styles
 	 *
 	 * @return void
 	 */
-	public function enqueue_assets() {
+	public function enqueue_styles() {
 
 		// Enqueue our stylesheet
 		wp_enqueue_style( 'easingslider-extensions-page' );

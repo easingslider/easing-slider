@@ -365,9 +365,13 @@ class Easing_Slider {
 			add_action( 'init',                               array( $customizer_legacy, 'pro_upgrade_from_200' ) );
 			add_action( 'easingslider_uninstall',             array( $customizer_legacy, 'remove_options' ) );
 
-			add_action( 'admin_init',                         array( $customizer_notice, 'handle_dismiss' ) );
-			add_action( 'admin_init',                         array( $customizer_notice, 'display' ), 999 );
-			add_action( 'easingslider_uninstall',             array( $customizer_notice, 'unset_flag' ) );
+			/**
+			 * We're not quite ready to display this notice yet.
+			 * This code will be uncommented when the customizer is available as an extension.
+			 */
+			// add_action( 'admin_init',                         array( $customizer_notice, 'handle_dismiss' ) );
+			// add_action( 'admin_init',                         array( $customizer_notice, 'display' ), 999 );
+			// add_action( 'easingslider_uninstall',             array( $customizer_notice, 'unset_flag' ) );
 
 			add_action( 'admin_init',                         array( $customizer,        'register_assets' ) );
 			add_action( 'admin_menu',                         array( $customizer,        'add_submenu_page' ), 9999 );
