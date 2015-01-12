@@ -1,0 +1,12 @@
+#customize-container {
+	display: block;
+}
+
+#customize-container #customize-controls {
+	z-index: 9999;
+}
+
+#customize-container #customize-preview {
+	min-width: 300px;
+	margin: 45px;
+}

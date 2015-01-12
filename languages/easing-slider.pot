@@ -1,0 +1,1070 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Easing Slider\n"
+"POT-Creation-Date: 2015-01-12 10:12-0000\n"
+"PO-Revision-Date: 2015-01-12 10:12-0000\n"
+"Last-Translator: Matthew Ruddy <support@easingslider.com>\n"
+"Language-Team: Easing Slider <support@easingslider.com>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-Basepath: ../\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;_n;_x\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: backbone/edit-slide.php:10
+msgid "Edit Original"
+msgstr ""
+
+#: backbone/edit-slide.php:11
+msgid "Replace"
+msgstr ""
+
+#: backbone/edit-slide.php:31
+msgid "Link Settings"
+msgstr ""
+
+#: backbone/edit-slide.php:34
+msgid "Link To"
+msgstr ""
+
+#: backbone/edit-slide.php:37
+msgid "None"
+msgstr ""
+
+#: backbone/edit-slide.php:40
+msgid "Custom URL"
+msgstr ""
+
+#: backbone/edit-slide.php:44
+msgid "Media File"
+msgstr ""
+
+#: backbone/edit-slide.php:47
+msgid "Attachment Page"
+msgstr ""
+
+#: backbone/edit-slide.php:51
+msgid "Image URL"
+msgstr ""
+
+#: backbone/edit-slide.php:67
+msgid "Image Settings"
+msgstr ""
+
+#: backbone/edit-slide.php:70
+msgid "Title Attribute"
+msgstr ""
+
+#: backbone/edit-slide.php:75
+msgid "Alternative Text"
+msgstr ""
+
+#: easing-slider.php:236 includes/class-es-editor-pages.php:60
+#: includes/class-es-menu.php:58 includes/class-es-menu.php:59
+msgid "Sliders"
+msgstr ""
+
+#: includes/class-es-customizer-notice.php:73
+#, php-format
+msgid ""
+"The Easing Slider \"Customizer\" functionality will soon be removed from "
+"this plugin and made available as an extension. If you use the \"Customize\" "
+"panel, download and activate the free extension <a href=\"%s\" target="
+"\"_blank\">here</a> to prevents any disruptions. <a href=\"%s\">Dismiss</a>."
+msgstr ""
+
+#: includes/class-es-customizer.php:58 includes/class-es-customizer.php:59
+msgid "Customize"
+msgstr ""
+
+#: includes/class-es-customizer.php:191
+msgid "You need to create some sliders to use the customizer."
+msgstr ""
+
+#: includes/class-es-editor-pages.php:61
+msgid "All Sliders"
+msgstr ""
+
+#: includes/class-es-editor-pages.php:85 partials/edit-slider.php:15
+msgid "Add New Slider"
+msgstr ""
+
+#: includes/class-es-editor-pages.php:86 partials/edit-slider.php:13
+#: partials/list-sliders.php:5
+msgid "Add New"
+msgstr ""
+
+#: includes/class-es-editor-pages.php:139
+msgid "Are you sure you wish to do this? This cannot be reversed."
+msgstr ""
+
+#: includes/class-es-editor-pages.php:141
+msgid "Are you sure you wish to delete this slide? This cannot be reversed."
+msgstr ""
+
+#: includes/class-es-editor-pages.php:142
+msgid ""
+"Are you sure you wish to delete all of this slider's images? This cannot be "
+"reversed."
+msgstr ""
+
+#: includes/class-es-editor-pages.php:144
+msgid "Add Images to Slider"
+msgstr ""
+
+#: includes/class-es-editor-pages.php:145
+msgid "Insert into slider"
+msgstr ""
+
+#: includes/class-es-editor-pages.php:146
+msgid "Use this image"
+msgstr ""
+
+#: includes/class-es-editor-pages.php:147
+msgid "Are you sure you wish to discard changes?"
+msgstr ""
+
+#: includes/class-es-editor-pages.php:181
+msgid "Sliders per page"
+msgstr ""
+
+#: includes/class-es-editor-pages.php:299
+msgid "Slider has been saved successfully."
+msgstr ""
+
+#: includes/class-es-extensions-page.php:57
+#: includes/class-es-extensions-page.php:58
+msgid "Extensions"
+msgstr ""
+
+#: includes/class-es-extensions-page.php:108
+msgid "Visual Customizer"
+msgstr ""
+
+#: includes/class-es-extensions-page.php:110
+#: includes/class-es-extensions-page.php:116
+#: includes/class-es-extensions-page.php:122
+#: includes/class-es-extensions-page.php:128
+#: includes/class-es-extensions-page.php:134
+#: includes/class-es-extensions-page.php:140
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi inventore "
+"corporis a omnis placeat cum, quam modi repellat incidunt, corrupti enim "
+"voluptate iusto unde sapiente labore suscipit tenetur voluptatem. Debitis."
+msgstr ""
+
+#: includes/class-es-extensions-page.php:114
+msgid "HTML Captions"
+msgstr ""
+
+#: includes/class-es-extensions-page.php:120
+msgid "Touch & Swipe"
+msgstr ""
+
+#: includes/class-es-extensions-page.php:126
+msgid "Lightbox"
+msgstr ""
+
+#: includes/class-es-extensions-page.php:132
+msgid "Images from URL"
+msgstr ""
+
+#: includes/class-es-extensions-page.php:138
+msgid "Featured Content"
+msgstr ""
+
+#: includes/class-es-image-resizer.php:32
+msgid "No image URL has been entered."
+msgstr ""
+
+#: includes/class-es-legacy.php:163
+msgid ""
+"Looks like you've forgotten to add a slideshow ID to this shortcode. Oh dear!"
+msgstr ""
+
+#: includes/class-es-settings-page.php:57
+msgid "Edit Settings"
+msgstr ""
+
+#: includes/class-es-settings-page.php:58
+msgid "Settings"
+msgstr ""
+
+#: includes/class-es-settings-page.php:108
+msgid "General"
+msgstr ""
+
+#: includes/class-es-settings-page.php:109
+msgid "Licenses"
+msgstr ""
+
+#: includes/class-es-settings-page.php:171
+msgid "Settings have been saved successfully."
+msgstr ""
+
+#: includes/class-es-shortcode.php:53
+msgid "Please select a slider"
+msgstr ""
+
+#: includes/class-es-shortcode.php:67
+msgid "Add a slider"
+msgstr ""
+
+#: includes/class-es-shortcode.php:68
+msgid "Select a slider to insert from the box below."
+msgstr ""
+
+#: includes/class-es-shortcode.php:73
+msgid "Select a slider"
+msgstr ""
+
+#: includes/class-es-shortcode.php:83
+msgid "Insert Slider"
+msgstr ""
+
+#: includes/class-es-shortcode.php:84 partials/customizer.php:8
+msgid "Close"
+msgstr ""
+
+#: includes/class-es-shortcode.php:114
+msgid "Add a Slider"
+msgstr ""
+
+#: includes/class-es-shortcode.php:115
+msgid " Add Slider"
+msgstr ""
+
+#: includes/class-es-shortcode.php:147
+#, php-format
+msgid ""
+"<p><strong>The slider specified (ID #%s) could not be found.</strong></p>"
+msgstr ""
+
+#: includes/class-es-slider.php:460
+msgid "Slide"
+msgstr ""
+
+#: includes/class-es-slider.php:461
+msgid "Fade"
+msgstr ""
+
+#: includes/class-es-slider.php:607
+msgid "(no title)"
+msgstr ""
+
+#: includes/class-es-sliders-list-table.php:49
+msgid "ID"
+msgstr ""
+
+#: includes/class-es-sliders-list-table.php:50
+msgid "Title"
+msgstr ""
+
+#: includes/class-es-sliders-list-table.php:51
+msgid "Author"
+msgstr ""
+
+#: includes/class-es-sliders-list-table.php:52
+msgid "Date"
+msgstr ""
+
+#: includes/class-es-sliders-list-table.php:53
+msgid "Shortcode"
+msgstr ""
+
+#: includes/class-es-sliders-list-table.php:176
+msgid "Duplicate"
+msgstr ""
+
+#: includes/class-es-sliders-list-table.php:177
+msgid "Delete"
+msgstr ""
+
+#: includes/class-es-sliders-list-table.php:243
+#, php-format
+msgid "%s - Copy"
+msgstr ""
+
+#: includes/class-es-sliders-list-table.php:338
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+#: includes/class-es-sliders-list-table.php:344
+msgid "Y/m/d"
+msgstr ""
+
+#: includes/class-es-sliders-list-table.php:348
+msgid "Published"
+msgstr ""
+
+#: includes/class-es-sliders-list-table.php:388
+msgid "No sliders found."
+msgstr ""
+
+#: includes/class-es-update-manager.php:160
+msgid ""
+"The license key registration service is temporarily unavailable. Please try "
+"again later."
+msgstr ""
+
+#: includes/class-es-update-manager.php:218
+msgid ""
+"Your license could not be deactivated. Please contact support to have it "
+"deactivated correctly."
+msgstr ""
+
+#: includes/class-es-update-manager.php:260
+#, php-format
+msgid "\"%s\" License has been registered successfully."
+msgstr ""
+
+#: includes/class-es-update-manager.php:296
+#, php-format
+msgid "\"%s\" License has been deactivated successfully."
+msgstr ""
+
+#: includes/class-es-update-manager.php:329
+#, php-format
+msgid "\"%s\" License Key"
+msgstr ""
+
+#: includes/class-es-update-manager.php:338
+msgid "Deactivate"
+msgstr ""
+
+#: includes/class-es-welcome-pages.php:26
+#: includes/class-es-welcome-pages.php:27
+msgid "Welcome to Easing Slider"
+msgstr ""
+
+#: includes/class-es-welcome-pages.php:35
+#: includes/class-es-welcome-pages.php:36
+msgid "Getting started with Easing Slider"
+msgstr ""
+
+#: includes/class-es-welcome-pages.php:44
+#: includes/class-es-welcome-pages.php:45
+msgid "The people that build Easing Slider"
+msgstr ""
+
+#: includes/class-es-welcome-pages.php:80
+msgid "What's New"
+msgstr ""
+
+#: includes/class-es-welcome-pages.php:81
+msgid "Getting Started"
+msgstr ""
+
+#: includes/class-es-welcome-pages.php:82
+msgid "Credits"
+msgstr ""
+
+#: includes/class-es-widget.php:27
+msgid "Slider"
+msgstr ""
+
+#: includes/class-es-widget.php:28
+msgid "Display a slider using a widget"
+msgstr ""
+
+#: includes/class-es-widget.php:104
+msgid "Title:"
+msgstr ""
+
+#: includes/class-es-widget.php:108
+msgid "Select Slider:"
+msgstr ""
+
+#: includes/class-es-widget.php:110
+msgid "&#8212; Select &#8212;"
+msgstr ""
+
+#: includes/class-es-widget.php:112
+#, php-format
+msgid " (ID #%s)"
+msgstr ""
+
+#: includes/helpers.php:180
+#, php-format
+msgid ""
+"Please rate <strong>Easing Slider</strong> <a href=\"%1$s\" target=\"_blank"
+"\">&#9733;&#9733;&#9733;&#9733;&#9733;</a> on <a href=\"%1$s\" target="
+"\"_blank\">WordPress.org</a> to help us keep this plugin free.  Thank you "
+"from the Easing Slider team!"
+msgstr ""
+
+#: includes/helpers.php:180
+msgid "http://wordpress.org/support/view/plugin-reviews/easing-slider?filter=5"
+msgstr ""
+
+#: partials/customizer.php:5
+msgid "Save"
+msgstr ""
+
+#: partials/customizer.php:11
+msgid "Back"
+msgstr ""
+
+#: partials/customizer.php:18
+#, php-format
+msgid "You are customizing <strong class=\"theme-name\">%s</strong>"
+msgstr ""
+
+#: partials/customizer.php:20
+msgid "Change to another slider"
+msgstr ""
+
+#: partials/customizer.php:32 partials/edit-slider_sidebar.php:148
+msgid "Next & Previous Arrows"
+msgstr ""
+
+#: partials/customizer.php:36
+msgid "\"Next\" Arrow Image"
+msgstr ""
+
+#: partials/customizer.php:42
+msgid "\"Previous\" Arrow Image"
+msgstr ""
+
+#: partials/customizer.php:48 partials/customizer.php:102
+msgid "Width"
+msgstr ""
+
+#: partials/customizer.php:54
+msgid "Height"
+msgstr ""
+
+#: partials/customizer.php:62 partials/edit-slider_sidebar.php:216
+msgid "Pagination Icons"
+msgstr ""
+
+#: partials/customizer.php:66
+msgid "\"Inactive\" Image"
+msgstr ""
+
+#: partials/customizer.php:72
+msgid "\"Active\" Image"
+msgstr ""
+
+#: partials/customizer.php:78
+msgid "Icon Width"
+msgstr ""
+
+#: partials/customizer.php:84
+msgid "Icon Height"
+msgstr ""
+
+#: partials/customizer.php:92
+msgid "Border"
+msgstr ""
+
+#: partials/customizer.php:96
+msgid "Color"
+msgstr ""
+
+#: partials/customizer.php:108
+msgid "Radius"
+msgstr ""
+
+#: partials/customizer.php:116
+msgid "Drop Shadow"
+msgstr ""
+
+#: partials/customizer.php:120
+msgid "Display a Drop Shadow"
+msgstr ""
+
+#: partials/customizer.php:121 partials/edit-slider_sidebar.php:179
+#: partials/edit-slider_sidebar.php:247
+msgid "True"
+msgstr ""
+
+#: partials/customizer.php:122 partials/edit-slider_sidebar.php:182
+#: partials/edit-slider_sidebar.php:250
+msgid "False"
+msgstr ""
+
+#: partials/customizer.php:127
+msgid "Shadow Image"
+msgstr ""
+
+#: partials/customizer.php:138
+msgid "Collapse Sidebar"
+msgstr ""
+
+#: partials/customizer.php:140
+msgid "Collapse"
+msgstr ""
+
+#: partials/discover-extensions.php:3
+msgid "Extensions "
+msgstr ""
+
+#: partials/discover-extensions.php:6
+msgid "Browse All"
+msgstr ""
+
+#: partials/discover-extensions.php:10
+msgid "These extensions provide additional functionality to Easing Slider."
+msgstr ""
+
+#: partials/discover-extensions.php:19
+msgid "Get this extension"
+msgstr ""
+
+#: partials/edit-settings.php:37
+msgid "Save Settings"
+msgstr ""
+
+#: partials/edit-settings_general.php:4
+msgid "Image Resizing"
+msgstr ""
+
+#: partials/edit-settings_general.php:8 partials/edit-slider_sidebar.php:163
+#: partials/edit-slider_sidebar.php:231 partials/edit-slider_sidebar.php:307
+msgid "Enable"
+msgstr ""
+
+#: partials/edit-settings_general.php:13 partials/edit-slider_sidebar.php:166
+#: partials/edit-slider_sidebar.php:234 partials/edit-slider_sidebar.php:310
+msgid "Disable"
+msgstr ""
+
+#: partials/edit-settings_general.php:16
+msgid ""
+"Enable or disable the image resizing functionality. Disable this if you do "
+"not want the slide images to be resized."
+msgstr ""
+
+#: partials/edit-settings_general.php:25
+msgid "Asset Loading"
+msgstr ""
+
+#: partials/edit-settings_general.php:29
+msgid "Compatibility (header)"
+msgstr ""
+
+#: partials/edit-settings_general.php:34
+msgid "Optimized (footer)"
+msgstr ""
+
+#: partials/edit-settings_general.php:37
+msgid ""
+"This option controls where the plugin's scripts and styling are loaded. "
+"\"Compatibility\" will load them in the page header, which is less "
+"performant but also less likely to suffer conflicts with other plugins. "
+"\"Optimized\" conditionally loads CSS and JS in the page footer, which is "
+"better for performance, but more likely to encounter errors. We recommend "
+"trying \"Optimized\" and reverting back if you encounter any issues."
+msgstr ""
+
+#: partials/edit-settings_general.php:43
+msgid "Data Settings"
+msgstr ""
+
+#: partials/edit-settings_general.php:48
+msgid "Remove data on uninstall?"
+msgstr ""
+
+#: partials/edit-settings_general.php:53
+msgid ""
+"Check this box if you would like Easing Slider to completely remove all of "
+"its data when the plugin is deleted."
+msgstr ""
+
+#: partials/edit-settings_general.php:56
+msgid ""
+"Be careful before enabling this option, as the data cannot be recovered once "
+"it has been deleted."
+msgstr ""
+
+#: partials/edit-settings_general.php:62
+msgid "Installation Settings"
+msgstr ""
+
+#: partials/edit-settings_general.php:67
+msgid "PHP Version"
+msgstr ""
+
+#: partials/edit-settings_general.php:72
+msgid "MySQL Version"
+msgstr ""
+
+#: partials/edit-settings_general.php:77
+msgid "WordPress Version"
+msgstr ""
+
+#: partials/edit-settings_general.php:82
+msgid "Plugin Version"
+msgstr ""
+
+#: partials/edit-settings_licenses.php:1
+#, php-format
+msgid ""
+"Below you can register your extension licenses. This is required to enable "
+"extension updates. You can browse all available extensions <a href=\"%s"
+"\">here</a>."
+msgstr ""
+
+#: partials/edit-slider.php:12
+msgid "Edit Slider"
+msgstr ""
+
+#: partials/edit-slider.php:23
+msgid "Name:"
+msgstr ""
+
+#: partials/edit-slider.php:24
+msgid "Enter a slider name"
+msgstr ""
+
+#: partials/edit-slider.php:25
+msgid "Select All"
+msgstr ""
+
+#: partials/edit-slider.php:31
+msgid "Randomize the slide order"
+msgstr ""
+
+#: partials/edit-slider.php:33
+msgid "Add Slides"
+msgstr ""
+
+#: partials/edit-slider.php:34
+msgid "Bulk Select"
+msgstr ""
+
+#: partials/edit-slider.php:35
+msgid "Cancel Selection"
+msgstr ""
+
+#: partials/edit-slider.php:36
+msgid "Delete Selected"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:11
+msgid "Publish"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:24
+#, php-format
+msgid "Published on: <b>%s</b>"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:26
+msgid "Not published yet."
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:41
+msgid "Update"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:51
+msgid "Dimensions"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:64
+msgid "Width:"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:70
+msgid "Height:"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:74
+msgid "Slideshow \"width\" and \"height\" values (in pixels)."
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:81
+msgid "Make this slideshow responsive."
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:84
+msgid ""
+"Check this option to make this slideshow responsive. If enabled, the \"width"
+"\" and \"height\" values above will act as maximums."
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:100
+msgid "Transitions"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:113
+msgid "Effect:"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:121
+msgid "Choose the transition effect you would like to use."
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:128
+msgid "Duration:"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:132
+msgid "Sets the duration (in milliseconds) for the slideshow transition."
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:160
+msgid "Arrows:"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:170
+msgid "Toggles the next and previous slide arrows."
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:176 partials/edit-slider_sidebar.php:244
+msgid "On Hover:"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:186
+msgid ""
+"Set to \"True\" to only show the arrows when the user hovers over the "
+"slideshow."
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:193 partials/edit-slider_sidebar.php:261
+msgid "Position:"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:195 partials/edit-slider_sidebar.php:263
+msgid "Inside"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:196 partials/edit-slider_sidebar.php:264
+msgid "Outside"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:200
+msgid "Select a position for the arrows."
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:228
+msgid "Pagination:"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:238
+msgid ""
+"Enable/Disable the Pagination Icons. Each icon represents a slide in their "
+"respective order."
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:254
+msgid ""
+"Set to \"True\" to only show the pagination when the user hovers over the "
+"slideshow."
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:267
+msgid "Top Left"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:268
+msgid "Top Right"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:269
+msgid "Top Center"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:270
+msgid "Bottom Left"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:271
+msgid "Bottom Right"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:272
+msgid "Bottom Center"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:276
+msgid "Select a position for the pagination icons."
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:292
+msgid "Automatic Playback"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:304
+msgid "Playback:"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:314
+msgid "Enable/Disable slideshow automatic playback."
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:321
+msgid "Pause Duration:"
+msgstr ""
+
+#: partials/edit-slider_sidebar.php:325
+msgid ""
+"Sets the duration (in milliseconds) for the pause between slide transitions."
+msgstr ""
+
+#: partials/list-sliders.php:3
+msgid "Sliders "
+msgstr ""
+
+#: partials/list-sliders.php:9
+#, php-format
+msgid "Search results for &#8220;%s&#8221;"
+msgstr ""
+
+#: partials/list-sliders.php:27
+msgid "Search Sliders"
+msgstr ""
+
+#: partials/welcome.php:2
+#, php-format
+msgid "Welcome to Easing Slider %s"
+msgstr ""
+
+#: partials/welcome.php:3
+#, php-format
+msgid ""
+"Thank you for updating to the latest version! Easing Slider %s is ready to "
+"help you create beautiful sliders easily, quickly and for free!"
+msgstr ""
+
+#: partials/welcome.php:4
+#, php-format
+msgid "Version %s"
+msgstr ""
+
+#: partials/welcome_about.php:2
+msgid "Check out the awesome all new Easing Slider"
+msgstr ""
+
+#: partials/welcome_about.php:3
+#, php-format
+msgid ""
+"We've completely rebuilt Easing Slider from the ground up to be a more "
+"stable, modern, easy to use solution for creating sliders on your WordPress "
+"blog. There's loads of new features, some of which described below. For more "
+"information on the changes, <a href=\"%s\" target=\"_blank\">click here</a>."
+msgstr ""
+
+#: partials/welcome_about.php:9
+msgid "List Screenshot"
+msgstr ""
+
+#: partials/welcome_about.php:10
+msgid "Unlimited Sliders"
+msgstr ""
+
+#: partials/welcome_about.php:11
+msgid ""
+"Create as many sliders as you like, Easing Slider is no longer limited to "
+"just one slider. We're now using our own custom post type, a significant "
+"improvement for developers."
+msgstr ""
+
+#: partials/welcome_about.php:15
+msgid "Interface Screenshot"
+msgstr ""
+
+#: partials/welcome_about.php:16
+msgid "Simple Interface"
+msgstr ""
+
+#: partials/welcome_about.php:17
+msgid ""
+"The admin interface has been completely revamped to be easier, yet more "
+"powerful. The new look admin is instantly familiar, similar in style to the "
+"new WordPress Media Library."
+msgstr ""
+
+#: partials/welcome_about.php:24
+msgid "Introducing Extensions"
+msgstr ""
+
+#: partials/welcome_about.php:25
+msgid ""
+"A vast selection of extensions will soon be available, extending the "
+"functionality of Easing Slider beyond what's ever been possible before. View "
+"them <a href=\"admin.php?page=easingslider_discover_extensions\">here</a>."
+msgstr ""
+
+#: partials/welcome_about.php:29
+msgid "CSS3 Animations"
+msgstr ""
+
+#: partials/welcome_about.php:30
+msgid ""
+"The plugin now relies entirely on modern CSS3 animations. This ensures "
+"smooth transitions, with graceful fallbacks for older browsers."
+msgstr ""
+
+#: partials/welcome_about.php:34
+msgid "Developer Friendly"
+msgstr ""
+
+#: partials/welcome_about.php:35
+msgid ""
+"Our entirely new infrastructure provides developers with more power than "
+"ever. More actions, filters, and extensions bring unlimited potential."
+msgstr ""
+
+#: partials/welcome_about.php:41
+msgid "More to come"
+msgstr ""
+
+#: partials/welcome_about.php:42
+msgid ""
+"This update is just the beginning - the future will bring even more "
+"improvements to Easing Slider. We have plans for dozens of extensions "
+"that'll extend functionality far beyond what was capable before, ensuring "
+"Easing Slider remains the best slider plugin for WordPress."
+msgstr ""
+
+#: partials/welcome_about.php:46
+msgid "Return to Easing Slider"
+msgstr ""
+
+#: partials/welcome_credits.php:2
+msgid "Want to contribute to Easing Slider? Here's how you can."
+msgstr ""
+
+#: partials/welcome_credits.php:6
+#, php-format
+msgid ""
+"Until now, Easing Slider has been developed solely by <a href=\"%s\" target="
+"\"_blank\">me</a>, Matthew Ruddy, but it's time for this to change."
+msgstr ""
+
+#: partials/welcome_credits.php:8
+#, php-format
+msgid ""
+"Now, Easing Slider's official channel of development will be managed through "
+"<a href=\"%s\" target=\"_blank\">Github</a>, where I hope to encourage "
+"involvement from other developers who have a vision for Easing Slider as "
+"strong as my own."
+msgstr ""
+
+#: partials/welcome_credits.php:10
+#, php-format
+msgid ""
+"Whether you've encountered a simple bug and want to provide a fix, or you "
+"wish to tackle some enhancements or new features, please don't hesitate to "
+"<a href=\"%s\" target=\"_blank\">get involved</a>. Even if you can't code, "
+"your feedback is greated appreciated and really important to us, so <a href="
+"\"%s\" target=\"_blank\">get in touch</a>."
+msgstr ""
+
+#: partials/welcome_credits.php:12
+#, php-format
+msgid ""
+"Hopefully soon this page will be vividly decorated with contributors %s."
+msgstr ""
+
+#: partials/welcome_credits.php:15
+msgid "Proudly Built By:"
+msgstr ""
+
+#: partials/welcome_credits.php:19 partials/welcome_credits.php:20
+msgid "Matthew Ruddy"
+msgstr ""
+
+#: partials/welcome_credits.php:21
+msgid "Just an average guy"
+msgstr ""
+
+#: partials/welcome_credits.php:26
+msgid "Contribute on Github"
+msgstr ""
+
+#: partials/welcome_credits.php:27
+msgid "Contact Us"
+msgstr ""
+
+#: partials/welcome_getting-started.php:2
+msgid ""
+"Use the tips below to get started using Easing Slider. It's super quick and "
+"easy!"
+msgstr ""
+
+#: partials/welcome_getting-started.php:8
+msgid "Creating Your First Slider"
+msgstr ""
+
+#: partials/welcome_getting-started.php:10
+msgid "Sliders &rarr; Add New"
+msgstr ""
+
+#: partials/welcome_getting-started.php:11
+msgid ""
+"The \"Sliders\" menu is your access point for all aspects of Easing Slider. "
+"Simply click \"Add New\" to create your first slider and start adding slides."
+msgstr ""
+
+#: partials/welcome_getting-started.php:13
+msgid "Adding Slides"
+msgstr ""
+
+#: partials/welcome_getting-started.php:14
+#, php-format
+msgid ""
+"Click the \"Add Slides\" button to add image slides from the WordPress Media "
+"Library. Other slide types can be purchased from our vast array of "
+"extensions <a href=\"%s\">found here</a>."
+msgstr ""
+
+#: partials/welcome_getting-started.php:18
+msgid "Welcome Screenshot"
+msgstr ""
+
+#: partials/welcome_getting-started.php:25
+msgid "Displaying A Slider"
+msgstr ""
+
+#: partials/welcome_getting-started.php:29
+msgid "Shortcode Screenshot"
+msgstr ""
+
+#: partials/welcome_getting-started.php:30
+msgid "In a post"
+msgstr ""
+
+#: partials/welcome_getting-started.php:36
+msgid "PHP Function Screenshot"
+msgstr ""
+
+#: partials/welcome_getting-started.php:42
+msgid "Widget Screenshot"
+msgstr ""
+
+#: partials/welcome_getting-started.php:51
+msgid "Need help?"
+msgstr ""
+
+#: partials/welcome_getting-started.php:55
+msgid "Helpful Documentation"
+msgstr ""
+
+#: partials/welcome_getting-started.php:56
+#, php-format
+msgid ""
+"We have documentation available covering everything from <a href=\"%s"
+"\">Getting Started</a> to our <a href=\"%s\">Developer API</a>. New "
+"documents and tutorials are added daily."
+msgstr ""
+
+#: partials/welcome_getting-started.php:60
+msgid "Awesome Support"
+msgstr ""
+
+#: partials/welcome_getting-started.php:61
+#, php-format
+msgid ""
+"We work hard to ensure every user gets the best support possible. If you've "
+"encountered a problem or have a question, don't hesitate to <a href=\"%s"
+"\">contact us</a>."
+msgstr ""
