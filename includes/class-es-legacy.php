@@ -439,6 +439,11 @@ class ES_Legacy {
 	 */
 	public function lite_upgrade_from_100() {
 
+		// Bail if this has already been carried out
+		if ( get_option( 'easingslider_upgraded_from_lite' ) ) {
+			return;
+		}
+
 		/**
 		 * This version of the plugin had no "version" option, so we have to improvise.
 		 * 
@@ -491,6 +496,9 @@ class ES_Legacy {
 
 				// Save the slider
 				$slider->save();
+
+				// Flag that this update has been done
+				update_option( 'easingslider_upgraded_from_lite', true );
 				
 				// We've done our update. Time to bail!
 				return;

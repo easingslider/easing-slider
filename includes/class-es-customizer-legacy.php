@@ -110,7 +110,7 @@ class ES_Customizer_Legacy {
 			}
 		}
 
-		// Flag that this migration has been done
+		// Flag that this upgrade has been done
 		update_option( 'easingslider-customizer_upgraded_from_pro', true );
 
 	}
@@ -144,11 +144,16 @@ class ES_Customizer_Legacy {
 	 */
 	public function lite_upgrade_from_100() {
 
+		// Bail if this has already been carried out
+		if ( get_option( 'easingslider-customizer_upgraded_from_lite' ) ) {
+			return;
+		}
+
 		/**
 		 * This version of the plugin had no "version" option, so we have to improvise.
 		 * 
 		 * To do this, we will cycle through the options used to store the images from #1 to #10.
-		 * If we find an image, we will assume the plugin settings exist and will continue with the migration.
+		 * If we find an image, we will assume the plugin settings exist and will continue with the upgrade.
 		 */
 		$legacy_images = array( 'sImg1', 'sImg2', 'sImg3', 'sImg4', 'sImg5', 'sImg6', 'sImg7', 'sImg8', 'sImg9', 'sImg10' );
 
@@ -166,6 +171,9 @@ class ES_Customizer_Legacy {
 
 				// Save the slider
 				$slider->save();
+
+				// Flag that this upgrade has been done
+				update_option( 'easingslider-customizer_upgraded_from_lite', true );
 				
 				// We've done our update. Time to bail!
 				return;
@@ -233,7 +241,7 @@ class ES_Customizer_Legacy {
 		// Save the slider
 		$slider->save();
 
-		// Flag that this migration has been done
+		// Flag that this upgrade has been done
 		update_option( 'easingslider-customizer_upgraded_from_lite', true );
 
 	}

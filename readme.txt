@@ -4,7 +4,7 @@ Contributors: MatthewRuddy
 Tags: slideshow, slider, slides, slide, gallery, images, image, responsive, mobile, jquery, javascript, featured, content
 Requires at least: 4.0
 Tested up to: 4.2
-Stable tag: 2.2
+Stable tag: 2.2.0.2
 
 Easing Slider is an easy to use slider plugin. Simple and lightweight, is makes creating beautiful WordPress sliders a breeze.
 
@@ -24,7 +24,7 @@ Easing Slider is an extremely easy to use slider plugin for WordPress. It is bui
 
 <a href="http://easingslider.com/extensions">Easing Slider has many great extensions that can vastly enhance the plugin's functionality. Click here for more.</a>
 
-Throughly tested on iPhone, iPad and multiple Android devices, Easing Slider is the perfect solution for mobile sliders. We've used CSS3 animation to ensure ultra smooth transitions on supported devices, with graceful fallbacks for older browsers. The scripts and styling are also extremely light (just 16kb), which is perfect for those concerned about page loading times.
+Throughly tested on iPhone, iPad and multiple Android devices, Easing Slider is the perfect solution for mobile sliders. We've used CSS3 animation to ensure ultra smooth transitions on supported devices, with graceful fallbacks for older browsers.
 
 We've also integrated the new WordPress Media Library workflow to provide a better media management experience. Similar to the Media Library, the learning curve and minimal and the admin interface feels instantly recognisable. Bulk uploading images to your slider is now easy, requiring just a few clicks.
 
@@ -72,6 +72,12 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 7. A preview of a slider. This is how is should appear on your WordPress site (may differ based on your settings).
 
 == Changelog ==
+
+= 2.2.0.1 =
+* Fixed issues with legacy upgrades. Methods should now be prioritized correctly and flagged on completion appropriately.
+
+= 2.2.0.1 =
+* Fixed static bindings bug for users using less than PHP 5.3.
 
 = 2.2 =
 * Users can now have unlimited sliders (no longer limited to one).
