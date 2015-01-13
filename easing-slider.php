@@ -64,8 +64,7 @@ class Easing_Slider {
 
 		// Activation and uninstall hooks
 		register_activation_hook( __FILE__, array( __CLASS__, 'do_activation' ) );
-		register_deactivation_hook(  __FILE__, array( __CLASS__, 'do_uninstall' ) );
-		// register_uninstall_hook(  __FILE__, array( __CLASS__, 'do_uninstall' ) );
+		register_uninstall_hook(  __FILE__, array( __CLASS__, 'do_uninstall' ) );
 
 		// Load dependancies
 		$this->load_dependancies();
