@@ -13,9 +13,8 @@ Easing Slider is an easy to use slider plugin. Simple and lightweight, is makes 
 Easing Slider is an extremely easy to use slider plugin for WordPress. It is built to be lightweight and simple, enabling you to create beautiful sliders quickly and efficiently. It comes with many great features, some of which include:
 
 * Fully responsive & mobile ready
-* Lightweight, weighing just 16kb minified including styling
 * Bulk image uploading, integrated with new WordPress Media Library
-* CSS3 transitions for ultra smooth playback
+* CSS3 transitions for ultra smooth transitions
 * Navigation arrows & pagination
 * Preloading functionality on page load
 * A visual editor for customizing basic styling

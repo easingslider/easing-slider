@@ -32,6 +32,27 @@ class ES_Migrations {
 	}
 
 	/**
+	 * Updates the plugin to v2.2.
+	 *
+	 * @param  int $version The current plugin version
+	 * @return void
+	 */
+	public function migrate_to_22( $version ) {
+
+		/**
+		 * Do the update if we have no version (just upgraded from Easing Slider "Lite" or "Pro"), or if we have a version number
+		 * below v2.2 (possible from very early versions of the plugin).
+		 */
+		if ( ! $version OR version_compare( $version, '2.2', '<' ) ) {
+
+			// Trigger activation
+			Easing_Slider::do_activation();
+
+		}
+
+	}
+
+	/**
 	 * Updates the plugin version
 	 *
 	 * @return void

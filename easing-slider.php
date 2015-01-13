@@ -297,7 +297,8 @@ class Easing_Slider {
 		add_action(    'admin_menu',                           array( $menu,              'add_toplevel_menu' ) );
 
 		add_action(    'init',                                 array( $migrations,        'do_migrations' ) );
-		add_action(    'easingslider_update_plugin',           array( $migrations,        'update_version' ) );
+		add_action(    'easingslider_update_plugin',           array( $migrations,        'migrate_to_22' ) );
+		add_action(    'easingslider_update_plugin',           array( $migrations,        'update_version' ), 999 );
 
 		add_action(    'admin_init',                           array( $settings_page,     'register_assets' ) );
 		add_action(    'admin_menu',                           array( $settings_page,     'add_submenu_page' ), 999 );
