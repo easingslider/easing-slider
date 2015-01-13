@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Defines our admin settings.
  *
+ * @uses   Easing_Slider
  * @author Matthew Ruddy
  */
 class ES_Settings_Page {

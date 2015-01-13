@@ -17,6 +17,7 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
 /**
  * Our extension for WP_List_Table for listing sliders
  *
+ * @uses   ES_Slider
  * @author Matthew Ruddy
  */
 class ES_Sliders_List_Table extends WP_List_Table {
@@ -149,7 +150,7 @@ class ES_Sliders_List_Table extends WP_List_Table {
 		$query_args['order']   = ( ! empty( $_REQUEST['order'] ) )   ? $_REQUEST['order']   : 'asc';
 
 		// Query our sliders
-		$query = Easing_Slider::query( $query_args );
+		$query = ES_Slider::query( $query_args );
 
 		// Set our pagination arguments
 		$this->set_pagination_args( array(
@@ -234,7 +235,7 @@ class ES_Sliders_List_Table extends WP_List_Table {
 	public function process_duplicate_action( $id ) {
 
 		// Get the slider
-		$slider = Easing_Slider::find( $id );
+		$slider = ES_Slider::find( $id );
 
 		// Unset the slider ID
 		unset( $slider->ID );
@@ -256,7 +257,7 @@ class ES_Sliders_List_Table extends WP_List_Table {
 	public function process_delete_action( $id ) {
 
 		// Delete the slider
-		Easing_Slider::delete( $id );
+		ES_Slider::delete( $id );
 
 	}
 

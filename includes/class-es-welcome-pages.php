@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Defines our "Welcome" page functionality
  *
+ * @uses   Easing_Slider
  * @author Matthew Ruddy
  */
 class ES_Welcome_Pages {

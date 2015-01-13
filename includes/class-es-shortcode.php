@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Defines our shortcode functionality
  *
+ * @uses   ES_Slider
  * @author Matthew Ruddy
  */
 class ES_Shortcode {
@@ -29,7 +30,7 @@ class ES_Shortcode {
 		}
 
 		// Get all sliders
-		$sliders = Easing_Slider::all();
+		$sliders = ES_Slider::all();
 
 		// Display the thickbox
 		?>
@@ -140,7 +141,7 @@ class ES_Shortcode {
 		if ( ! empty( $atts->id ) ) {
 
 			// Find the slider
-			$slider = Easing_Slider::find( $atts->id );
+			$slider = ES_Slider::find( $atts->id );
 
 			// Display error message if no slider has been found
 			if ( ! $slider ) {

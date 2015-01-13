@@ -10,7 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Defines our admin slider editor pages.
  *
+ * @uses   ES_Slider
  * @uses   ES_Sliders_List_Table
+ * @uses   Easing_Slider
  * @author Matthew Ruddy
  */
 class ES_Editor_Pages {
@@ -295,7 +297,7 @@ class ES_Editor_Pages {
 			}
 
 			// Get our slider
-			$slider = Easing_Slider::find( $_GET['edit'] );
+			$slider = ES_Slider::find( $_GET['edit'] );
 
 			// Update attributes
 			$slider->set( $this->get_form_fields() );
@@ -332,7 +334,7 @@ class ES_Editor_Pages {
 			}
 
 			// Create a new slider
-			$slider = Easing_Slider::create();
+			$slider = ES_Slider::create();
 
 			// Set attributes
 			$slider->set( $this->get_form_fields() );
@@ -367,7 +369,7 @@ class ES_Editor_Pages {
 		if ( isset( $_GET['edit'] ) ) {
 
 			// Get the slider by its ID
-			$slider = Easing_Slider::find( $_GET['edit'] );
+			$slider = ES_Slider::find( $_GET['edit'] );
 
 			// Display the editor
 			require plugin_dir_path( dirname( __FILE__ ) ) . 'partials/edit-slider.php';
@@ -396,7 +398,7 @@ class ES_Editor_Pages {
 		$page = $_GET['page'];
 
 		// Initiate a new slider
-		$slider = Easing_Slider::create();
+		$slider = ES_Slider::create();
 
 		// Display the view
 		require plugin_dir_path( dirname( __FILE__ ) ) . 'partials/edit-slider.php';

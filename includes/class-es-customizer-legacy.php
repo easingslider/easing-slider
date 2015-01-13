@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * Lots of horrible, messy legacy code here that I absolutely hate, but is necessary.
  *
+ * @uses   ES_Slider
  * @author Matthew Ruddy
  */
 class ES_Customizer_Legacy {
@@ -20,12 +21,12 @@ class ES_Customizer_Legacy {
 	 * Gets a Easing Slider "Pro" legacy slider.
 	 *
 	 * @param  int $legacy_id The legacy slider ID
-	 * @return Easing_Slider|false
+	 * @return ES_Slider|false
 	 */
 	public function get_pro_slider( $legacy_id ) {
 
 		// Bail if Easing Slider isn't active
-		if ( ! class_exists( 'Easing_Slider' ) ) {
+		if ( ! class_exists( 'ES_Slider' ) ) {
 			return false;
 		}
 
@@ -40,7 +41,7 @@ class ES_Customizer_Legacy {
 		// Loop through each pivot and return the match, if we have find one.
 		foreach ( $pivots as $pivot ) {
 			if ( $legacy_id == $pivot->legacy_id ) {
-				return Easing_Slider::find( $pivot->id );
+				return ES_Slider::find( $pivot->id );
 			}
 		}
 
@@ -118,12 +119,12 @@ class ES_Customizer_Legacy {
 	/**
 	 * Gets the Easing Slider "Lite" legacy slider.
 	 *
-	 * @return Easing_Slider|false
+	 * @return ES_Slider|false
 	 */
 	public function get_lite_slider() {
 
 		// Bail if Easing Slider isn't active
-		if ( ! class_exists( 'Easing_Slider' ) ) {
+		if ( ! class_exists( 'ES_Slider' ) ) {
 			return false;
 		}
 
@@ -131,7 +132,7 @@ class ES_Customizer_Legacy {
 		$lite_id = get_option( 'easingslider_lite_slider_id' );
 
 		// Get the Easing Slider "Lite" slider
-		$lite_slider = Easing_Slider::find( $lite_id );
+		$lite_slider = ES_Slider::find( $lite_id );
 
 		return $lite_slider;
 

@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Adds a 'Sliders' widget to the WordPress widgets interface
  *
+ * @uses   ES_Slider
  * @author Matthew Ruddy
  */
 class ES_Widget extends WP_Widget {
@@ -96,7 +97,7 @@ class ES_Widget extends WP_Widget {
 	public function form( $instance ) {
 
 		// Get all of the sliders
-		$sliders = Easing_Slider::all();
+		$sliders = ES_Slider::all();
 
 		// Print the settings
 		?>

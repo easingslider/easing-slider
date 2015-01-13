@@ -10,6 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Defines our "Customizer"
  *
+ * @uses   ES_Slider
+ * @uses   Easing_Slider
  * @author Matthew Ruddy
  */
 class ES_Customizer {
@@ -165,7 +167,7 @@ class ES_Customizer {
 		if ( isset( $_POST['save'] ) && isset( $_POST['slider_id'] ) ) {
 
 			// Get our slider
-			$slider = Easing_Slider::find( $_POST['slider_id'] );
+			$slider = ES_Slider::find( $_POST['slider_id'] );
 
 			// Set the customizations
 			$slider->customizations = (object) $this->get_form_fields();
@@ -191,10 +193,10 @@ class ES_Customizer {
 		$page = $_GET['page'];
 
 		// We need Easing Slider to be loaded by now, so continue if it has.
-		if ( class_exists( 'Easing_Slider' ) ) {
+		if ( class_exists( 'ES_Slider' ) ) {
 
 			// Get all sliders
-			$sliders = Easing_Slider::all();
+			$sliders = ES_Slider::all();
 		
 			// If we have no sliders, tell the user.
 			if ( empty( $sliders ) ) {
@@ -204,7 +206,7 @@ class ES_Customizer {
 
 			// Get the specified slider, or pick the first one.
 			if ( isset( $_GET['edit'] ) ) {
-				$slider = Easing_Slider::find( $_GET['edit'] );
+				$slider = ES_Slider::find( $_GET['edit'] );
 			}
 			else {
 				$slider = array_shift( array_values( $sliders ) );

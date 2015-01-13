@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Class for "Extensions" discovery page.
  *
+ * @uses   Easing_Slider
  * @author Matthew Ruddy
  */
 class ES_Extensions_Page {

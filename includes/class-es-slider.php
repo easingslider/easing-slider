@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Defines our plugin public facing functionality
  *
+ * @uses   Easing_Slider
  * @author Matthew Ruddy
  */
 class ES_Slider {

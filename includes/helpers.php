@@ -10,6 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Alias for displaying a slider shortcode
  *
+ * @uses   ES_Shortcode
+ * 
  * @param  int|array $args The slider arguments, or numerical ID.
  * @return void
  */
@@ -38,6 +40,8 @@ if ( ! function_exists( 'easingslider' ) ) {
 /**
  * Registers an extension, settings up it's licensing and updater.
  *
+ * @uses   ES_Update_Manager
+ * 
  * @param  string $name    The plugin name
  * @param  string $slug    The plugin slug
  * @param  int    $version The plugin version

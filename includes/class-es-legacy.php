@@ -34,6 +34,7 @@ if ( ! function_exists( 'riva_slider_pro' ) ) {
  *
  * Lots of horrible, messy legacy code here that I absolutely hate, but is necessary.
  *
+ * @uses   ES_Slider
  * @author Matthew Ruddy
  */
 class ES_Legacy {
@@ -42,7 +43,7 @@ class ES_Legacy {
 	 * Gets a Easing Slider "Pro" legacy slider.
 	 *
 	 * @param  int $legacy_id The legacy slider ID
-	 * @return Easing_Slider|false
+	 * @return ES_Slider|false
 	 */
 	public function get_pro_slider( $legacy_id ) {
 
@@ -57,7 +58,7 @@ class ES_Legacy {
 		// Loop through each pivot and return the match, if we have find one.
 		foreach ( $pivots as $pivot ) {
 			if ( $legacy_id == $pivot->legacy_id ) {
-				return Easing_Slider::find( $pivot->id );
+				return ES_Slider::find( $pivot->id );
 			}
 		}
 
@@ -70,7 +71,7 @@ class ES_Legacy {
 	 *
 	 * @param  int    $legacy_id    The legacy slider ID
 	 * @param  string $legacy_title The legacy slider title
-	 * @return Easing_Slider
+	 * @return ES_Slider
 	 */
 	public function create_pro_slider( $legacy_id, $legacy_title = null ) {
 
@@ -81,7 +82,7 @@ class ES_Legacy {
 		$pivots = get_option( 'easingslider_pro_slider_pivots' );
 
 		// Create our Easing Slider "Pro" legacy slider
-		$pro_slider = Easing_Slider::create();
+		$pro_slider = ES_Slider::create();
 		$pro_slider->post_title = easingslider_validate_data( $legacy_title );
 		$pro_slider->save();
 
@@ -359,7 +360,7 @@ class ES_Legacy {
 	/**
 	 * Gets the Easing Slider "Lite" legacy slider.
 	 *
-	 * @return Easing_Slider|false
+	 * @return ES_Slider|false
 	 */
 	public function get_lite_slider() {
 
@@ -367,7 +368,7 @@ class ES_Legacy {
 		$lite_id = get_option( 'easingslider_lite_slider_id' );
 
 		// Get the Easing Slider "Lite" slider
-		$lite_slider = Easing_Slider::find( $lite_id );
+		$lite_slider = ES_Slider::find( $lite_id );
 
 		return $lite_slider;
 
@@ -376,12 +377,12 @@ class ES_Legacy {
 	/**
 	 * Creates the Easing Slider "Lite" legacy slider.
 	 *
-	 * @return Easing_Slider
+	 * @return ES_Slider
 	 */
 	public function create_lite_slider() {
 
 		// Create the slider
-		$lite_slider = Easing_Slider::create();
+		$lite_slider = ES_Slider::create();
 		$lite_slider->post_title = 'Easing Slider "Lite"';
 		$lite_slider->save();
 

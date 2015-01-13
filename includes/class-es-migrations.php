@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 
  * All of our update procedures can be found here.
  *
+ * @uses   Easing_Slider
  * @author Matthew Ruddy
  */
 class ES_Migrations {
