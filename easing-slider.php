@@ -271,13 +271,13 @@ class Easing_Slider {
 		add_action(    'admin_menu',                           array( $editor_pages,      'add_edit_page' ), 999 );
 		add_action(    'admin_menu',                           array( $editor_pages,      'add_publish_page' ), 999 );
 		add_action(    'easingslider_activate',                array( $editor_pages,      'add_capabilities' ) );
-		add_action(    'easingslider_uninstall',               array( $editor_pages,      'remove_capabilities' ) );
+		add_action(    'easingslider_remove_data',             array( $editor_pages,      'remove_capabilities' ) );
 		add_filter(    'set-screen-option',                    array( $editor_pages,      'set_screen_option' ), 10, 3 );
 
 		add_action(    'admin_init',                           array( $extensions_page,   'register_assets' ) );
 		add_action(    'admin_menu',                           array( $extensions_page,   'add_submenu_page' ), 99999 );
 		add_action(    'easingslider_activate',                array( $extensions_page,   'add_capabilities' ) );
-		add_action(    'easingslider_uninstall',               array( $extensions_page,   'remove_capabilities' ) );
+		add_action(    'easingslider_remove_data',             array( $extensions_page,   'remove_capabilities' ) );
 
 		add_action(    'delete_attachment',                    array( $image_resizer,     'delete_resized_attachments' ) );
 		add_filter(    'easingslider_modify_image_url',        array( $image_resizer,     'resized_image_url' ), 10, 3 );
@@ -303,7 +303,7 @@ class Easing_Slider {
 		add_action(    'admin_init',                           array( $settings_page,     'register_assets' ) );
 		add_action(    'admin_menu',                           array( $settings_page,     'add_submenu_page' ), 999 );
 		add_action(    'easingslider_activate',                array( $settings_page,     'add_capabilities' ) );
-		add_action(    'easingslider_uninstall',               array( $settings_page,     'remove_capabilities' ) );
+		add_action(    'easingslider_remove_data',             array( $settings_page,     'remove_capabilities' ) );
 
 		add_action(    'admin_footer',                         array( $shortcode,         'print_media_thickbox' ) );
 		add_action(    'media_buttons',                        array( $shortcode,         'print_media_button' ), 999 );
@@ -364,7 +364,7 @@ class Easing_Slider {
 			add_action( 'init',                               array( $customizer_legacy, 'lite_upgrade_from_100' ) );
 			add_action( 'init',                               array( $customizer_legacy, 'lite_upgrade_from_200' ) );
 			add_action( 'init',                               array( $customizer_legacy, 'pro_upgrade_from_200' ) );
-			add_action( 'easingslider_uninstall',             array( $customizer_legacy, 'remove_options' ) );
+			add_action( 'easingslider_remove_data',           array( $customizer_legacy, 'remove_options' ) );
 
 			/**
 			 * We're not quite ready to display this notice yet.
@@ -377,7 +377,7 @@ class Easing_Slider {
 			add_action( 'admin_init',                         array( $customizer,        'register_assets' ) );
 			add_action( 'admin_menu',                         array( $customizer,        'add_submenu_page' ), 9999 );
 			add_action( 'easingslider_activate',              array( $customizer,        'add_capabilities' ) );
-			add_action( 'easingslider_uninstall',             array( $customizer,        'remove_capabilities' ) );
+			add_action( 'easingslider_remove_data',           array( $customizer,        'remove_capabilities' ) );
 
 		}
 
