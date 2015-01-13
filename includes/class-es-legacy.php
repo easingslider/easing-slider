@@ -474,8 +474,11 @@ class ES_Legacy {
 				// Add the slides. We used to have a maximum of ten, hence the "for" loop.
 				for ( $i = 1; $i <= 10; $i++ ) {
 
-					// Get the image, and bail if it doesn't exist.
-					if ( ! ( $image == get_option( "sImg{$i}" ) ) ) {
+					// Get the image
+					$image = get_option( "sImg{$i}" );
+
+					// Bail if the image doesn't exist
+					if ( empty( $image ) ) {
 						continue;
 					}
 
