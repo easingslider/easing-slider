@@ -85,7 +85,7 @@ class ES_Slider {
 		$sliders = array();
 
 		// Query our sliders
-		$query = static::query();
+		$query = self::query();
 
 		// Loop through each post
 		if ( $query->have_posts() ) {

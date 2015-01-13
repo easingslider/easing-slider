@@ -3,7 +3,7 @@
 /*
 	Plugin Name: Easing Slider
 	Plugin URI: http://easingslider.com/
-	Version: 2.2
+	Version: 2.2.0.1
 	Author: Matthew Ruddy
 	Author URI: http://matthewruddy.com/
 	Description: Easing Slider is an easy to use slider plugin for WordPress. Simple, lightweight & designed to get the job done, it allows you to get creating sliders without any difficulty.
@@ -53,7 +53,7 @@ class Easing_Slider {
 	 *
 	 * @var string
 	 */
-	public static $version = '2.2';
+	public static $version = '2.2.0.1';
 
 	/**
 	 * Constructor
@@ -64,7 +64,8 @@ class Easing_Slider {
 
 		// Activation and uninstall hooks
 		register_activation_hook( __FILE__, array( __CLASS__, 'do_activation' ) );
-		register_uninstall_hook(  __FILE__, array( __CLASS__, 'do_uninstall' ) );
+		register_deactivation_hook(  __FILE__, array( __CLASS__, 'do_uninstall' ) );
+		// register_uninstall_hook(  __FILE__, array( __CLASS__, 'do_uninstall' ) );
 
 		// Load dependancies
 		$this->load_dependancies();
@@ -135,8 +136,8 @@ class Easing_Slider {
 		if ( $settings->remove_data ) {
 
 			// Delete all of the sliders
-			foreach ( static::all() as $slider ) {
-				static::delete( $slider->ID );
+			foreach ( self::all() as $slider ) {
+				self::delete( $slider->ID );
 			}
 
 			// Delete options

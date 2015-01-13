@@ -594,7 +594,7 @@ class ES_Legacy {
 		$legacy_settings = get_option( "{$plugin_slug}_settings" );
 
 		// Transfer the settings
-		$settings->load_assets         = $legacy_settings['load_scripts'];
+		$settings->load_assets    = $legacy_settings['load_scripts'];
 		$settings->image_resizing = $legacy_settings['resizing'];
 
 		// Save the settings
