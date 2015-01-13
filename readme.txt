@@ -73,7 +73,7 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 
 == Changelog ==
 
-= 2.2.0.1 =
+= 2.2.0.2 =
 * Fixed issues with legacy upgrades. Methods should now be prioritized correctly and flagged on completion appropriately.
 
 = 2.2.0.1 =
