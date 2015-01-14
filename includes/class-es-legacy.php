@@ -13,6 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param  int $id The legacy slider ID
  * @return void
  */
+if ( ! function_exists( 'easing_slider' ) ) {
+	function easing_slider() {
+		echo do_shortcode( "[easingsliderlite]" );
+	}
+}
 if ( ! function_exists( 'easingsliderlite' ) ) {
 	function easingsliderlite() {
 		echo do_shortcode( "[easingsliderlite]" );
@@ -430,6 +435,37 @@ class ES_Legacy {
 	public function do_lite_shortcode() {
 
 		return $this->render_lite_slider();
+
+	}
+
+	/**
+	 * This method handles shortcodes from v1 of Easing Slider, which used the same shortcode as we do now.
+	 *
+	 * To work around it, this method will check for no attributes on the shortcode, as we previously didn't support them.
+	 * If this is true, it will search for an Easing Slider "Lite" slider and display it if found.
+	 *
+	 * Quite messy, but that version of the plugin was some of my first ever PHP, so bare with me :)
+	 *
+	 * @param  array $atts The shortcode attributes
+	 * @return void
+	 */
+	public function handle_lite_shortcode( $atts ) {
+
+		// Bail if attributes aren't empty
+		if ( ! empty( $atts['id'] ) ) {
+			return;
+		}
+
+		// Get our "Lite" slider
+		$lite_slider = $this->get_lite_slider();
+
+		// Bail if we don't have one
+		if ( ! $lite_slider ) {
+			return;
+		}
+
+		// Render our "Lite" slider
+		echo $lite_slider->render();
 
 	}
 
