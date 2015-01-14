@@ -301,8 +301,8 @@ class ES_Slider {
 	public function register_assets() {
 
 		// Get our directories
-		$css_dir = plugins_url( plugin_basename( dirname( __DIR__ ) ) ) . '/css';
-		$js_dir  = plugins_url( plugin_basename( dirname( __DIR__ ) ) ) . '/js';
+		$css_dir = plugin_dir_url( Easing_Slider::$file ) . '/css';
+		$js_dir  = plugin_dir_url( Easing_Slider::$file ) . '/js';
 
 		// Get file suffix
 		$suffix  = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';

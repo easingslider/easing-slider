@@ -76,7 +76,7 @@ class ES_Settings_Page {
 	public function register_assets() {
 
 		// Get our directory
-		$css_dir = plugins_url( plugin_basename( dirname( __DIR__ ) ) ) . '/css';
+		$css_dir = plugin_dir_url( Easing_Slider::$file ) . '/css';
 
 		// Get file suffix
 		$suffix  = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
