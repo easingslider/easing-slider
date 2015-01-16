@@ -664,7 +664,7 @@ class ES_Slider {
 		$image_url = apply_filters( 'easingslider_modify_image_url', $image_url, $slider->dimensions->width, $slider->dimensions->height );
 
 		// Add the HTML
-		$html .= "<img src=\"{$image_url}\" title=\"{$slide->title}\" class=\"easingslider-image\" />";
+		$html .= "<img src=\"{$image_url}\" title=\"{$slide->title}\" alt=\"{$slide->alt}\" class=\"easingslider-image\" />";
 
 		return $html;
 
