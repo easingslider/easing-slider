@@ -10,17 +10,17 @@
 				<div class="centered">
 					<# if ( data.attachment && data.attachment.sizes ) { #>
 						<# var image = data.attachment.sizes.thumbnail || data.attachment.sizes.medium || data.attachment.sizes.large || data.attachment.sizes.full #>
-						<img src="{{ image.url }}" draggable="false" alt="" />
+						<img src="{{ image.url }}" draggable="true" alt="" />
 					<# } else { #>
-						<img src="{{ data.model.url }}" draggable="false" alt="" />
+						<img src="{{ data.model.url }}" draggable="true" alt="" />
 					<# } #>
 				</div>
 			<# } else if ( data.attachment ) { #>
 				<div class="centered">
 					<# if ( data.attachment.image && data.attachment.image.src && data.attachment.image.src !== data.attachment.icon ) { #>
-						<img src="{{ data.attachment.image.src }}" class="thumbnail" draggable="false" />
+						<img src="{{ data.attachment.image.src }}" class="thumbnail" draggable="true" />
 					<# } else { #>
-						<img src="{{ data.attachment.icon }}" class="icon" draggable="false" />
+						<img src="{{ data.attachment.icon }}" class="icon" draggable="true" />
 					<# } #>
 				</div>
 				<div class="filename">
