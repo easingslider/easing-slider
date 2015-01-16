@@ -11,8 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * This code is for debugging purposes.
  * Uncomment the lines to force WordPress to check for plugin updates on every page load.
  */
-set_transient( 'update_plugins', null );
-set_site_transient( 'update_plugins', null );
+// set_transient( 'update_plugins', null );
+// set_site_transient( 'update_plugins', null );
 
 /**
  * This class handles all the update-related stuff for extensions, including adding a license section to the "Licenses" settings tab.
@@ -54,8 +54,7 @@ class ES_Update_Manager {
 	 *
 	 * @var string
 	 */
-	public $api_url = 'http://easingslider.dev/api/';
-	// public $api_url = 'http://easingslider.com/api/';
+	public $api_url = 'http://easingslider.com/api/';
 
 	/**
 	 * Transient expiry time (default 6 hours)
