@@ -11,8 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * This code is for debugging purposes.
  * Uncomment the lines to force WordPress to check for plugin updates on every page load.
  */
-// set_transient( 'update_plugins', null );
-// set_site_transient( 'update_plugins', null );
+set_transient( 'update_plugins', null );
+set_site_transient( 'update_plugins', null );
 
 /**
  * This class handles all the update-related stuff for extensions, including adding a license section to the "Licenses" settings tab.
@@ -54,7 +54,8 @@ class ES_Update_Manager {
 	 *
 	 * @var string
 	 */
-	public $api_url = 'http://easingslider.com/api/';
+	public $api_url = 'http://easingslider.dev/api/';
+	// public $api_url = 'http://easingslider.com/api/';
 
 	/**
 	 * Transient expiry time (default 6 hours)
@@ -77,6 +78,10 @@ class ES_Update_Manager {
 		$this->name    = $name;
 		$this->slug    = $slug;
 		$this->version = $version;
+
+		// Filter variables
+		$this->api_url          = apply_filters( 'easingslider_update_manager_api_url', $this->api_url );
+		$this->transient_expiry = apply_filters( 'easingslider_update_manager_transient_expiry', $this->transient_expiry );
 
 		// Set the license key
 		$this->set_key();
@@ -225,7 +230,43 @@ class ES_Update_Manager {
 	 * @return array|false
 	 */
 	public function get_updates() {
-		//
+
+		// Make the request
+		$request = wp_remote_post( $this->api_url, array(
+			'timeout' => 10,
+			'body'    => array(
+				'action'  => 'get_updates',
+				'key'     => $this->key,
+				'slug'    => $this->slug,
+				'url'     => home_url(),
+				'version' => $this->version
+			)
+		) );
+
+		// Get the response headers
+		$headers = (object) wp_remote_retrieve_headers( $request );
+
+		// Get the response body
+		$response = json_decode( wp_remote_retrieve_body( $request ) );
+				
+		// Bail if no response was received (service may temporarily be offline)
+		if ( ! isset( $response->response ) ) {
+			return false;
+		}
+
+		// If the status indicates the request wasn't a success, bail and flag invalid license key.
+		if ( 200 != $headers->status ) {
+
+			// Delete the license validation flag
+			delete_option( "{$this->slug}_license_is_valid" );
+
+			return false;
+
+		}
+
+		// Return the updates
+		return $response->response;
+
 	}
 
 	/**
@@ -353,6 +394,22 @@ class ES_Update_Manager {
 	 */
 	public function get_update_info( $res, $action, $args ) {
 
+		// Return the plugin information object
+		if ( isset( $args->slug ) && $args->slug == $this->slug ) {
+
+			// Get available update info stored in database
+			$updates = $this->get_updates();
+
+			// Ensure sections are an array (avoids errors)
+			$updates->information->sections = (array) $updates->information->sections;
+
+			// Return information (if it exists)
+			if ( $updates->information ) {
+				return $updates->information;
+			}
+
+		}
+
 		return $res;
 		
 	}
@@ -364,7 +421,31 @@ class ES_Update_Manager {
 	 * @return object
 	 */
 	public function modify_updates_transient( $checked_data ) {
-		
+
+		// Bail if already checked
+		if ( ! isset ( $checked_data->checked ) OR empty( $checked_data->checked ) ) {
+			return $checked_data;
+		};
+
+		// Get current updates
+		$updates = $this->get_updates();
+
+		// Bail if false returned
+		if ( ! $updates ) {
+			return $checked_data;
+		}
+
+		// Bail if we are using the current version
+		if ( version_compare( $this->version, $updates->new_version, '>=' ) ) {
+			return $checked_data;
+		}
+
+		// Remove plugin's API information (not need for this).
+		unset( $updates->information );
+
+		// Add to WordPress updates transient array
+		$checked_data->response[ $this->slug ] = $updates;
+
 		return $checked_data;
 
 	}
