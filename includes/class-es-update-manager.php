@@ -97,15 +97,26 @@ class ES_Update_Manager {
 	 */
 	protected function set_key() {
 
-		// Get the settings
-		$settings = get_option( 'easingslider_settings' );
+		// Check post request for key, otherwise get it from the setting.
+		if ( ! empty( $_POST['settings'] ) && isset( $_POST['settings']["{$this->slug}_license_key"] ) ) {
 
-		// Get the license key index
-		$key_index = "{$this->slug}_license_key";
+			// Set the license key from our request
+			$this->key = $_POST['settings']["{$this->slug}_license_key"];
 
-		// Set the license key if it exists
-		if ( isset( $settings->{$key_index} ) ) {
-			$this->key = $settings->{$key_index};
+		}
+		else {
+
+			// Get the settings
+			$settings = get_option( 'easingslider_settings' );
+
+			// Get the license key index
+			$key_index = "{$this->slug}_license_key";
+
+			// Set the license key if it exists
+			if ( isset( $settings->{$key_index} ) ) {
+				$this->key = $settings->{$key_index};
+			}
+
 		}
 
 	}
