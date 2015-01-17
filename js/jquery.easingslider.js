@@ -43,8 +43,8 @@
             base._setupPagination();
             base._setupPlayback();
 
-            // Shwow the slides
-            base.$slides.css({ 'display': 'block' });
+            // Clear inline display none
+            base.$slides.css({ 'display': '' });
 
             // Set the current slide
             base.$slides.eq(base.current).addClass('active');

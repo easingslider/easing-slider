@@ -62,7 +62,7 @@
 .easingslider-slide.next-out,
 .easingslider-slide.prev-in,
 .easingslider-slide.prev-out {
-	display: block;
+	display: block !important;
 }
 
 .easingslider-slide.active {
