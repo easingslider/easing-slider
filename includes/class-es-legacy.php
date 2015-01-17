@@ -144,6 +144,11 @@ class ES_Legacy {
 		// Get our "Pro" slider
 		$pro_slider = $this->get_pro_slider( $legacy_id );
 
+		// Bail if we don't have a slider
+		if ( ! $pro_slider ) {
+			return;
+		}
+
 		return $pro_slider->render();
 
 	}
@@ -422,6 +427,11 @@ class ES_Legacy {
 
 		// Get our "Lite" slider
 		$lite_slider = $this->get_lite_slider();
+
+		// Bail if we don't have a slider
+		if ( ! $lite_slider ) {
+			return;
+		}
 
 		return $lite_slider->render();
 
