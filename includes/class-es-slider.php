@@ -707,7 +707,7 @@ class ES_Slider {
 	 */
 	public function close_link( $html, $slide, $slider ) {
 
-		if ( !'none' != $slide->link ) {
+		if ( 'none' != $slide->link ) {
 			$html .= "</a>";
 		}
 
