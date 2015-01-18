@@ -9,9 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * This code is for debugging purposes.
- * Uncomment the lines to force WordPress to check for plugin updates on every page load.
+ * Uncomment this line to force WordPress to check for plugin updates on every page load.
  */
-// set_transient( 'update_plugins', null );
 // set_site_transient( 'update_plugins', null );
 
 /**
@@ -27,6 +26,13 @@ class ES_Update_Manager {
 	 * @var string
 	 */
 	protected $name;
+
+	/**
+	 * Plugin file
+	 *
+	 * @var string
+	 */
+	protected $file;
 
 	/**
 	 * Plugin slug
@@ -67,15 +73,16 @@ class ES_Update_Manager {
 	 * Constructor
 	 *
 	 * @param  array  $name    The plugin name
-	 * @param  string $slug    The plugin slug
+	 * @param  string $file    The plugin file
 	 * @param  int    $version The plugin version
 	 * @return void
 	 */
-	public function __construct( $name, $slug, $version ) {
+	public function __construct( $name, $file, $version ) {
 
 		// Establish variables
 		$this->name    = $name;
-		$this->slug    = $slug;
+		$this->file    = $file;
+		$this->slug    = basename( $file, '.php' );
 		$this->version = $version;
 
 		// Filter variables
@@ -87,7 +94,7 @@ class ES_Update_Manager {
 
 		// Define hooks for this license
 		$this->define_hooks();
-
+		
 	}
 
 	/**
@@ -131,7 +138,6 @@ class ES_Update_Manager {
 		add_action( 'easingslider_do_settings_actions',       array( $this, 'attempt_deactivation' ) );
 		add_action( 'easingslider_do_settings_actions',       array( $this, 'attempt_registration' ) );
 		add_action( 'easingslider_print_license_fields',      array( $this, 'display_license_field' ) );
-		add_filter( 'pre_set_transient_update_plugins',       array( $this, 'modify_updates_transient' ) );
 		add_filter( 'pre_set_site_transient_update_plugins',  array( $this, 'modify_updates_transient' ) );
 		add_filter( 'plugins_api',                            array( $this, 'get_update_info' ), 10, 3 );
 
@@ -432,11 +438,6 @@ class ES_Update_Manager {
 	 */
 	public function modify_updates_transient( $checked_data ) {
 
-		// Bail if already checked
-		if ( ! isset ( $checked_data->checked ) OR empty( $checked_data->checked ) ) {
-			return $checked_data;
-		};
-
 		// Get current updates
 		$updates = $this->get_updates();
 
@@ -445,16 +446,25 @@ class ES_Update_Manager {
 			return $checked_data;
 		}
 
-		// Bail if we are using the current version
-		if ( version_compare( $this->version, $updates->new_version, '>=' ) ) {
-			return $checked_data;
+		// Add our update information
+		if ( empty( $checked_data->response ) OR empty ( $checked_data->response[ $this->slug ] ) ) {
+
+			// Remove plugin's API information (not need for this).
+			unset( $updates->information );
+
+			// Bail if we are using the current version
+			if ( version_compare( $this->version, $updates->new_version, '<' ) ) {
+				
+				// Add the update information
+				$checked_data->response[ $this->file ] = $updates;
+
+			}
+
+			// Set last checked timestamp and version
+			$checked_data->last_checked           = time();
+			$checked_data->checked[ $this->file ] = $this->version;
+
 		}
-
-		// Remove plugin's API information (not need for this).
-		unset( $updates->information );
-
-		// Add to WordPress updates transient array
-		$checked_data->response[ $this->slug ] = $updates;
 
 		return $checked_data;
 
