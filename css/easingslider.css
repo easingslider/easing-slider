@@ -25,7 +25,7 @@
 
 .easingslider {
 	position: relative !important;
-	z-index: 1;
+	z-index: 0;
 }
 
 .easingslider.has-loaded .easingslider-arrows,
@@ -44,7 +44,7 @@
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
-    z-index: 999999 !important;
+    z-index: 2 !important;
 }
 
 .easingslider-slide {
@@ -65,18 +65,15 @@
 	display: block !important;
 }
 
-.easingslider-slide.active {
-	z-index: 999 !important;
-}
-
+.easingslider-slide.active,
 .easingslider-slide.next-out,
 .easingslider-slide.prev-out {
-	z-index: 9999 !important;
+	z-index: 0 !important;
 }
 
 .easingslider-slide.next-in,
 .easingslider-slide.prev-in {
-	z-index: 99999 !important;
+	z-index: 1 !important;
 }
 
 .easingslider-image {
@@ -105,7 +102,7 @@
     width: 30px;
     height: 30px;
     background-repeat: no-repeat;
-    z-index: 99999;
+    z-index: 2;
     cursor: pointer;
     opacity: 0;
     -webkit-transition: opacity 0.25s ease;
@@ -150,7 +147,7 @@
  */
 .easingslider-pagination {
     position: absolute;
-    z-index: 99999;
+    z-index: 2;
     opacity: 0;
     -webkit-transition: opacity 0.25s ease;
     -moz-transition: opacity 0.25s ease;
@@ -244,7 +241,7 @@
     display: inline-block;
     *display: inline; /** IE7 hack */
     zoom: 1; /** IE7 hack */
-    z-index: 99999;
+    z-index: 2;
     cursor: pointer;
 }
 
