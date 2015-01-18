@@ -74,6 +74,8 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 == Changelog ==
 
 = 2.2.0.6 =
+* Fixed z-index bug with dropdown menus in multiple themes.
+* Update manager is now fully working and querying extension updates correctly.
 * Fixed issue that caused slides to show up beneath transparent PNG's.
 * Fixed error displayed when trying to using the Easing Slider 'Lite' shortcode after deleting the "Lite" slider.
 * Fixed license key deactivation bug.
