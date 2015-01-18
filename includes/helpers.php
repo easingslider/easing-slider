@@ -43,16 +43,16 @@ if ( ! function_exists( 'easingslider' ) ) {
  * @uses   ES_Update_Manager
  * 
  * @param  string $name    The plugin name
- * @param  string $slug    The plugin slug
+ * @param  string $file    The plugin file
  * @param  int    $version The plugin version
  * @return ES_Update_Manager
  */
 if ( ! function_exists( 'easingslider_register_extension' ) ) {
-    function easingslider_register_extension( $name, $slug, $version ) {
+    function easingslider_register_extension( $name, $file, $version ) {
 
         // Setup updates and licensing
         if ( class_exists( 'ES_Update_Manager' ) ) {
-            return new ES_Update_Manager( $name, $slug, $version );
+            return new ES_Update_Manager( $name, $file, $version );
         }
         
     }
