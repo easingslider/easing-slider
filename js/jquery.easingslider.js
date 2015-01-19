@@ -43,8 +43,8 @@
             base._setupPagination();
             base._setupPlayback();
 
-            // Clear inline display none
-            base.$slides.css({ 'display': '' });
+            // Display slides
+            base.$slides.css({ 'display': 'inline' });
 
             // Set the current slide
             base.$slides.eq(base.current).addClass('active');
