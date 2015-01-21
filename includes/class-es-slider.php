@@ -680,7 +680,7 @@ class ES_Slider {
 	 */
 	public function open_link( $html, $slide, $slider ) {
 
-		if ( 'none' != $slide->link ) {
+		if ( ! empty( $slide->link ) && 'none' != $slide->link ) {
 
 			// The link attributes string
 			$attributes_string = "href=\"{$slide->linkUrl}\" class=\"easingslider-link\"";
@@ -707,7 +707,7 @@ class ES_Slider {
 	 */
 	public function close_link( $html, $slide, $slider ) {
 
-		if ( 'none' != $slide->link ) {
+		if ( ! empty( $slide->link ) && 'none' != $slide->link ) {
 			$html .= "</a>";
 		}
 

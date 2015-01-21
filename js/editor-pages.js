@@ -8,7 +8,8 @@ window.EasingSlider = window.EasingSlider || {
 		controllers: {},
 		frames:      {},
 		views:       {},
-		router:      {}
+		router:      {},
+		Router:      {}
 	}
 };
 
@@ -20,13 +21,15 @@ window.EasingSlider = window.EasingSlider || {
 	var Editor = window.EasingSlider.Editor;
 
 	/**
-	 * Returns the appropriate "Slide" model
+	 * Our slide types
 	 */
-	Editor.models.Slide = function(attributes) {
+	Editor.models.Slide = {
 
-		// Return the appropriate model
-		if ( 'image' == attributes.type ) {
-			return new Editor.models.ImageSlide(attributes);
+		/**
+		 * Returns the appropriate "Slide" model
+		 */
+		get: function(attributes) {
+			return new Editor.models.Slide[attributes.type](attributes);
 		}
 
 	};
@@ -34,7 +37,7 @@ window.EasingSlider = window.EasingSlider || {
 	/**
 	 * Image "Slide" model
 	 */
-	Editor.models.ImageSlide = Backbone.Model.extend({
+	Editor.models.Slide.image = Backbone.Model.extend({
 
 		/**
 		 * Attachment
@@ -51,7 +54,8 @@ window.EasingSlider = window.EasingSlider || {
 			aspectRatio:   null,
 			link:          'none',
 			linkUrl:       '',
-			title:         ''
+			title:         '',
+			url:           null
 		}, wp.media.model.PostImage.prototype.defaults)
 
 	});
@@ -65,9 +69,9 @@ window.EasingSlider = window.EasingSlider || {
 		 * The models for this collection are polymorphic,
 		 * so the model to add is determined by function.
 		 *
-		 * Don't be fooled, Editor.Slide is just a function (not a model).
+		 * Don't be fooled, Editor.models.Slide.get is just a function (not a model).
 		 */
-		model: Editor.models.Slide,
+		model: Editor.models.Slide.get,
 
 		/**
 		 * Constructor
@@ -75,9 +79,9 @@ window.EasingSlider = window.EasingSlider || {
 		initialize: function() {
 
 			// Bind our collection events
-			this.on('add', this._resetIDs, this);
+			this.on('add',    this._resetIDs, this);
 			this.on('remove', this._resetIDs, this);
-			this.on('reset', this._resetIDs, this);
+			this.on('reset',  this._resetIDs, this);
 
 		},
 
@@ -177,13 +181,15 @@ window.EasingSlider = window.EasingSlider || {
 	});
 
 	/**
-	 * Returns the appropriate "Edit Slide" controller, based on the type of slide provided
+	 * Our "Edit Slide" controllers for various slide types
 	 */
-	Editor.controllers.EditSlide = function(options) {
+	Editor.controllers.EditSlide = {
 
-		// Return the appropriate view
-		if ( 'image' == options.type ) {
-			return new Editor.controllers.EditImageSlide(options);
+		/**
+		 * Returns the appropriate "Edit Slide" controller, based on the type of slide provided
+		 */
+		get: function(options) {
+			return new Editor.controllers.EditSlide[options.type](options);
 		}
 
 	};
@@ -191,14 +197,14 @@ window.EasingSlider = window.EasingSlider || {
 	/**
 	 * "Edit Slide" controller for images
 	 */
-	Editor.controllers.EditImageSlide = wp.media.controller.ImageDetails.extend({
+	Editor.controllers.EditSlide.image = wp.media.controller.ImageDetails.extend({
 
 		/**
 		 * Defaults
 		 */
 		defaults: _.defaults({
 			id:    'edit-slide',
-			title: 'Edit Slide',
+			title: _easingsliderEditorL10n.media_upload.title
 		}, wp.media.controller.ImageDetails.prototype.defaults )
 
 	});
@@ -215,11 +221,7 @@ window.EasingSlider = window.EasingSlider || {
 
 			// Alter defaults
 			_.defaults(this.options, {
-				title: 'Add a Slide',
-				multiple: true,
-				button: {
-					text: 'Add new slide'
-				}
+				multiple: true
 			});
 
 			// Call parent constructor
@@ -242,7 +244,7 @@ window.EasingSlider = window.EasingSlider || {
 				new wp.media.controller.Library({
 					id: 'insert',
 					type: 'image',
-					title: 'Image from Media',
+					title: _easingsliderEditorL10n.media_upload.image_from_media,
 					priority: 20,
 					toolbar: 'insert-slide',
 					filterable: false,
@@ -281,8 +283,8 @@ window.EasingSlider = window.EasingSlider || {
 			view.set('insert-slide', {
 				style: 'primary',
 				priority: 80,
-				text: 'Insert into Slider',
-				requires: { selection: true },
+				text: _easingsliderEditorL10n.media_upload.insert_into_slider,
+				requires: { selection: false },
 				click: function() {
 
 					// Close then trigger "insert", providing the selection
@@ -308,7 +310,7 @@ window.EasingSlider = window.EasingSlider || {
 			_.each(selection.models, function(model) {
 
 				// Create a new slide & set its type
-				var slide = new Editor.models.Slide({
+				var slide = new Editor.models.Slide.get({
 					type: type
 				});
 
@@ -331,15 +333,16 @@ window.EasingSlider = window.EasingSlider || {
 		}
 
 	});
-
 	/**
-	 * Function that returns the appropriate "Edit Slide" frame
+	 * Our "Edit Slide" frames for various slide types
 	 */
-	Editor.frames.EditSlide = function(options) {
+	Editor.frames.EditSlide = {
 
-		// Return the appropriate frame
-		if ( 'image' == options.model.get('type') ) {
-			return new Editor.frames.EditImageSlide(options);
+		/**
+		 * Returns the appropriate "Edit Slide" frame, based on the type of slide provided
+		 */
+		get: function(options) {
+			return new Editor.frames.EditSlide[options.model.get('type')](options);
 		}
 
 	};
@@ -347,7 +350,7 @@ window.EasingSlider = window.EasingSlider || {
 	/**
 	 * Frame for editing an "Image" slide
 	 */
-	Editor.frames.EditImageSlide = wp.media.view.MediaFrame.ImageDetails.extend({
+	Editor.frames.EditSlide.image = wp.media.view.MediaFrame.ImageDetails.extend({
 
 		/**
 		 * Constructor
@@ -378,7 +381,7 @@ window.EasingSlider = window.EasingSlider || {
 
 			// Add our "Edit Slide" state
 			this.states.add([
-				new Editor.controllers.EditSlide({
+				new Editor.controllers.EditSlide.get({
 					type:     'image',
 					image:    this.image,
 					editable: false
@@ -398,7 +401,7 @@ window.EasingSlider = window.EasingSlider || {
 		imageDetailsContent: function(options) {
 
 			// Initiate the view		
-			options.view = new Editor.views.EditSlide({
+			options.view = new Editor.views.EditSlide.get({
 				type:       'image',
 				controller: this,
 				model:      this.state().image,
@@ -612,7 +615,7 @@ window.EasingSlider = window.EasingSlider || {
 
 			event.preventDefault();
 
-			if ( confirm( _easingsliderAdminL10n.warn ) ) {
+			if ( confirm( _easingsliderEditorL10n.warn ) ) {
 
 				// Get the model ID
 				var id = $(event.currentTarget).parents('.attachment').attr('data-id');
@@ -631,7 +634,7 @@ window.EasingSlider = window.EasingSlider || {
 
 			event.preventDefault();
 
-			if ( confirm( _easingsliderAdminL10n.warn ) ) {
+			if ( confirm( _easingsliderEditorL10n.warn ) ) {
 
 				// Delete the slides
 				this._deleteSlides(event);
@@ -798,7 +801,7 @@ window.EasingSlider = window.EasingSlider || {
 		editSlide: function(id) {
 
 			// Create the frame
-			this.subviews.EditSlide = new Editor.frames.EditSlide({
+			this.subviews.EditSlide = new Editor.frames.EditSlide.get({
 				model: this.collection.get(id)
 			});
 
@@ -959,6 +962,7 @@ window.EasingSlider = window.EasingSlider || {
 			// Bind events
 			this.model.on('change', this._setData, this);
 			this.model.on('change:id', this._updateID, this);
+			this.model.on('change:url', this.render, this);
 			this.model.on('change:attachment_id', this.render, this);
 
 			// Bind additional attachment events if appropriate
@@ -1013,13 +1017,15 @@ window.EasingSlider = window.EasingSlider || {
 	});
 
 	/**
-	 * Returns the appropriate "Edit Slide" view, based on the type of slide provided
+	 * Our "Edit Slide" views for various slide types
 	 */
-	Editor.views.EditSlide = function(options) {
+	Editor.views.EditSlide = {
 
-		// Return the appropriate view
-		if ( 'image' == options.type ) {
-			return new Editor.views.EditImageSlide(options);
+		/**
+		 * Returns the appropriate "Edit Slide" view, based on the type of slide provided
+		 */
+		get: function(options) {
+			return new Editor.views.EditSlide[options.type](options);
 		}
 
 	};
@@ -1027,17 +1033,39 @@ window.EasingSlider = window.EasingSlider || {
 	/**
 	 * "Edit Slide" view for images
 	 */
-	Editor.views.EditImageSlide = wp.media.view.ImageDetails.extend({
+	Editor.views.EditSlide.image = wp.media.view.ImageDetails.extend({
 
 		/**
 		 * Classname
 		 */
-		className: 'edit-attachment-frame attachment-details mode-select hide-menu hide-router',
+		className: 'edit-attachment-frame attachment-details mode-select',
 
 		/**
 		 * Template for this view
 		 */
-		template: wp.media.template('easingslider-edit-slide')
+		template: wp.media.template('easingslider-edit-slide'),
+
+		/**
+		 * Constructor
+		 */
+		initialize: function() {
+
+			// Call parent constructor
+			wp.media.view.ImageDetails.prototype.initialize.apply(this, arguments);
+
+			// Bind events
+			this.model.on('change:url', this._updateImage, this);
+
+		},
+
+		/**
+		 * Updates the image preview (URL images only)
+		 */
+		_updateImage: function() {
+
+			this.$('.details-image').attr('src', this.model.get('url'));
+
+		}
 
 	});
 
@@ -1120,7 +1148,7 @@ window.EasingSlider = window.EasingSlider || {
 	$(document).ready(function() {
 
 		// Initiate the router
-		var router = new Editor.router();
+		Editor.Router = new Editor.router();
 
 		// Start the history
 		Backbone.history.start({
@@ -1131,7 +1159,7 @@ window.EasingSlider = window.EasingSlider || {
 		// Handly delete class
 		$('.delete').each(function() {
 			$(this).on('click', function() {
-				if ( ! confirm( _easingsliderAdminL10n.warn ) ) {
+				if ( ! confirm( _easingsliderEditorL10n.warn ) ) {
 					return false;
 				}
 			});

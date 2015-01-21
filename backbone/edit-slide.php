@@ -13,6 +13,10 @@
 					<# } #>
 				<# } else { #>
 					<img class="details-image" src="{{ data.model.url }}" draggable="false" />
+
+					<div class="action">
+						<input type="text" class="details-url" data-setting="url" value="{{ data.model.url }}" />
+					</div>
 				<# } #>
 			<# } #>
 			

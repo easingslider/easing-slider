@@ -194,8 +194,11 @@
             // Increase preloaded count
             base._preloadCount++;
 
+            // Get the total number of images
+            var total_images = base.$slides.find('.easingslider-image').length;
+
             // If all slides have been preloaded, hide the preloader and start the playback.
-            if ( base._preloadCount == base.count ) {
+            if ( base._preloadCount == total_images ) {
                 base.$preload.animate({ 'opacity': 0 }, {
                     duration: 400,
                     complete: function() {
