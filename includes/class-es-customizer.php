@@ -206,10 +206,19 @@ class ES_Customizer {
 
 			// Get the specified slider, or pick the first one.
 			if ( isset( $_GET['edit'] ) ) {
-				$slider = ES_Slider::find( $_GET['edit'] );
+
+				// Get and validate the ID, protecting against XSS attacks
+				$id = esc_attr( $_GET['edit'] );
+
+				// Get the slider
+				$slider = ES_Slider::find( $id );
+
 			}
 			else {
+
+				// Get the first slider
 				$slider = array_shift( array_values( $sliders ) );
+				
 			}
 
 			// Display the view

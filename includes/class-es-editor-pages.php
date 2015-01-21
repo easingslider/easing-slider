@@ -295,8 +295,11 @@ class ES_Editor_Pages {
 				return;
 			}
 
+			// Get and validate the ID, protecting against XSS attacks
+			$id = esc_attr( $_GET['edit'] );
+
 			// Get our slider
-			$slider = ES_Slider::find( $_GET['edit'] );
+			$slider = ES_Slider::find( $id );
 
 			// Update attributes
 			$slider->set( $this->get_form_fields() );
@@ -367,8 +370,11 @@ class ES_Editor_Pages {
 		// Show the appropriate view
 		if ( isset( $_GET['edit'] ) ) {
 
+			// Get and validate the ID, protecting against XSS attacks
+			$id = esc_attr( $_GET['edit'] );
+
 			// Get the slider by its ID
-			$slider = ES_Slider::find( $_GET['edit'] );
+			$slider = ES_Slider::find( $id );
 
 			// Display the editor
 			require plugin_dir_path( dirname( __FILE__ ) ) . 'partials/edit-slider.php';

@@ -38,16 +38,19 @@
 		 */
 		base.initialize = function() {
 
-			// Setup everything!
-			base._setupArrows();
-			base._setupPagination();
-			base._setupPlayback();
+			// Determine click event
+			base._clickEvent = ( 'ontouchstart' in document.documentElement ) ? 'touchstart' : 'click';
 
 			// Hide all slides
 			base.$slides.css({ 'display': 'none' });
 
 			// Set the current slide
 			base.$slides.eq(base.current).css({ 'display': 'block' }).addClass('active');
+
+			// Setup other components
+			base._setupArrows();
+			base._setupPagination();
+			base._setupPlayback();
 
 			// Preload the slider
 			base._preload();
@@ -70,8 +73,8 @@
 			}
 
 			// "Next" & "Previous" arrow functionality
-			base.$next.on('click', base.nextSlide);
-			base.$prev.on('click', base.prevSlide);
+			base.$next.on(base._clickEvent, base.nextSlide);
+			base.$prev.on(base._clickEvent, base.prevSlide);
 
 			// Add hover toggle if enabled
 			if ( o.navigation.arrows_hover ) {
@@ -100,7 +103,7 @@
 			base.$el.on('transition.before', base._updatePagination);
 
 			// Enable click event for each icon
-			base.$icons.on('click', function() {
+			base.$icons.on(base._clickEvent, function() {
 
 				// Get the next slide index and direction we are travelling
 				var eq        = $(this).index(),
