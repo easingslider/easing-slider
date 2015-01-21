@@ -43,11 +43,11 @@
 			base._setupPagination();
 			base._setupPlayback();
 
-			// Display slides
-			base.$slides.css({ 'display': 'inline' });
+			// Hide all slides
+			base.$slides.css({ 'display': 'none' });
 
 			// Set the current slide
-			base.$slides.eq(base.current).addClass('active');
+			base.$slides.eq(base.current).css({ 'display': 'block' }).addClass('active');
 
 			// Preload the slider
 			base._preload();
@@ -335,14 +335,32 @@
 			base.previous = base.current;
 			base.current  = eq;
 
-			// Add animation classes based on direction
+			/**
+			 * Add animation classes based on direction.
+			 *
+			 * Timeout functions are used here to avoid a bug in Safari.
+			 * The animations won't work if we toggle the display property as we add the animation class,
+			 * instead it would intermittently show/hide the slide.
+			 *
+			 * Using a timeout seems to negate this.
+			 */
 			if ( 'backward' == direction ) {
-				base.$slides.eq(base.previous).addClass('next-out');
-				base.$slides.eq(base.current).addClass('prev-in');
+				base.$slides.eq(base.previous).css({ 'display': 'block' });
+				base.$slides.eq(base.current).css({ 'display': 'block' });
+
+				setTimeout(function() {
+					base.$slides.eq(base.previous).addClass('next-out');
+					base.$slides.eq(base.current).addClass('prev-in');
+				});
 			}
 			else {
-				base.$slides.eq(base.previous).addClass('prev-out');
-				base.$slides.eq(base.current).addClass('next-in');
+				base.$slides.eq(base.previous).css({ 'display': 'block' });
+				base.$slides.eq(base.current).css({ 'display': 'block' });
+
+				setTimeout(function() {
+					base.$slides.eq(base.previous).addClass('prev-out');
+					base.$slides.eq(base.current).addClass('next-in');
+				});
 			}
 
 			// After timeout, do some cleaning up.
@@ -350,8 +368,8 @@
 			base._cleanup = setTimeout(function() {
 
 				// Toggle the active slide
-				base.$slides.eq(base.current).addClass('active');
-				base.$slides.eq(base.previous).removeClass('active');
+				base.$slides.eq(base.current).css({ 'display': 'block' }).addClass('active');
+				base.$slides.eq(base.previous).css({ 'display': 'none' }).removeClass('active');
 				
 				// Remove all animation related classes
 				base.$slides.removeClass('next-in next-out prev-in prev-out');

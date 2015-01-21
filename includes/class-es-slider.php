@@ -524,7 +524,7 @@ class ES_Slider {
 		 *
 		 * The Javascript will set slides to "display: block".
 		 */
-		$html = "<div class=\"easingslider-slide\" style=\"display: none; {$animation_duration}\">";
+		$html = "<div class=\"easingslider-slide\" style=\"{$animation_duration}\">";
 
 			$html = apply_filters( 'easingslider_before_display_slide', $html, $slide, $this );
 		

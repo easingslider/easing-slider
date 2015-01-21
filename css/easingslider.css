@@ -48,21 +48,12 @@
 }
 
 .easingslider-slide {
-	display: none;
 	overflow: hidden;
 	position: absolute;
 	top: 0;
 	left: 0;
 	bottom: 0;
 	right: 0;
-}
-
-.easingslider-slide.active,
-.easingslider-slide.next-in,
-.easingslider-slide.next-out,
-.easingslider-slide.prev-in,
-.easingslider-slide.prev-out {
-	display: block;
 }
 
 .easingslider-slide.active {
