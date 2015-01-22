@@ -99,7 +99,7 @@
 			}
 
 			// Bind events
-			base.$el.on('load', base._updatePagination);
+			base.$el.on('loaded', base._updatePagination);
 			base.$el.on('transition.before', base._updatePagination);
 
 			// Enable click event for each icon
@@ -164,7 +164,7 @@
 
 			// Queue playback after the slider has loaded, if enabled.
 			if ( o.playback.enabled ) {
-				base.$el.on('load', base.startPlayback);
+				base.$el.on('loaded', base.startPlayback);
 			}
 
 			return base;
@@ -223,7 +223,7 @@
 						base.$el.addClass('has-loaded');
 
 						// Trigger events
-						base.$el.trigger('load', base);
+						base.$el.trigger('loaded', base);
 
 					}
 				});

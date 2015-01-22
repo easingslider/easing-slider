@@ -73,6 +73,16 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 
 == Changelog ==
 
+= 2.2.0.7 =
+* General improvements to cater for alternative slide types, such as videos or URL images.
+* Fixed a bug (related to above improvement) that would prevent slider from loading when slide didn't contain an image.
+* Fixed bug causing isolated jQuery errors when attempting to setup navigation elements that were disabled.
+* Transparent PNGs now play nicely.
+* Fixed some $_GET input validation security issues.
+* Improvded support for touch devices.
+* Added post type variable to slider object, allowing future extensions more flexibility.
+* Added support for HiDPI devices.
+
 = 2.2.0.6 =
 * Fixed z-index bug with dropdown menus in multiple themes.
 * Update manager is now fully working and querying extension updates correctly.
