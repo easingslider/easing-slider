@@ -1,9 +1,9 @@
-/**
- * 1.0 Slider
- *
- * All of our slider styling, including resets.
- * Very strict to ensure it doesn't get broken by themes, other plugins, etc.
- */
+/* Slider
+-------------------------------------------------------------- */
+.easingslider-video iframe {
+	z-index: -1;
+}
+
 .easingslider,
 .easingslider-viewport,
 .easingslider-slide,
@@ -38,7 +38,10 @@
 }
 
 .easingslider-preload {
-    background: url(../images/loading.gif) no-repeat center center #fff !important;
+    background-image: url(../images/loading.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #fff;
     width: 100% !important;
     height: 100% !important;
     position: absolute !important;
@@ -85,16 +88,14 @@
 	opacity: 1;
 }
 
-/**
- * 2.0 "Arrow" navigation
- *
- * CSS for our directional arrow navigation
- */
+/* Arrows
+-------------------------------------------------------------- */
 .easingslider-arrows {
     position: absolute;
-    top: 46%;
+    top: 50%;
     width: 30px;
     height: 30px;
+    margin-top: -15px;
     background-repeat: no-repeat;
     z-index: 40;
     cursor: pointer;
@@ -134,11 +135,8 @@
     padding-right: 20px;
 }
 
-/**
- * 2.1 "Pagination" navigation
- *
- * CSS for our icon pagination navigation
- */
+/* Pagination
+-------------------------------------------------------------- */
 .easingslider-pagination {
     position: absolute;
     z-index: 40;
@@ -247,11 +245,8 @@
     background-image: url(../images/nav-icon-active.png);
 }
 
-/**
- * 3.0 "Fade" effect
- *
- * CSS related to the "Fade" transition effect.
- */
+/* "Fade" transition
+-------------------------------------------------------------- */
 .easingslider.use-fade .easingslider-slide.next-in,
 .easingslider.use-fade .easingslider-slide.prev-in {
 	-webkit-animation: fadeIn 0.3s ease;
@@ -352,11 +347,8 @@
 	}
 }
 
-/**
- * 3.1 "Slide" effect
- *
- * CSS related to the "Slide" transition effect.
- */
+/* "Slide" transition
+-------------------------------------------------------------- */
 .easingslider.use-slide .easingslider-viewport {
 	overflow: hidden;
 }
@@ -587,4 +579,41 @@
 	100% {
 		transform: none;
 	}
+}
+
+/* Retina
+-------------------------------------------------------------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) {
+
+	.easingslider-preload {
+	    background-image: url(../images/loading@2x.gif);
+	    background-size: 24px 24px;
+	}
+
+	.easingslider-arrows.easingslider-next {
+	    background-image: url(../images/nav-arrow-next@2x.png);
+	    background-size: 30px 30px;
+	}
+
+	.easingslider-arrows.easingslider-prev {
+	    background-image: url(../images/nav-arrow-prev@2x.png);
+	    background-size: 30px 30px;
+	}
+
+    .easingslider .easingslider-icon {
+    	background-image: url(../images/nav-icon-inactive@2x.png);
+    	background-size: 14px 14px;
+    }
+
+    .easingslider .easingslider-icon.active {
+    	background-image: url(../images/nav-icon-active@2x.png);
+    	background-size: 14px 14px;
+    }
+
 }
