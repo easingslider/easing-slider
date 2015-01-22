@@ -82,6 +82,7 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 * Improvded support for touch devices.
 * Added post type variable to slider object, allowing future extensions more flexibility.
 * Added support for HiDPI devices.
+* Fixed conflict with MooTools.
 
 = 2.2.0.6 =
 * Fixed z-index bug with dropdown menus in multiple themes.
