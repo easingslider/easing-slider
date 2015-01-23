@@ -71,8 +71,15 @@
 }
 
 .easingslider-image {
-	height: auto;
-	width: 100%;
+	max-height: auto !important;
+	max-width: auto !important;
+	height: auto !important;
+	width: 100% !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
 }
 
 .easingslider .easingslider-arrows.has-hover,
