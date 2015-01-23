@@ -16,11 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 class ES_Slider {
 
 	/**
-	 * The post type
+	 * The object post type
 	 *
 	 * @var string
 	 */
-	public static $post_type = 'easingslider';
+	public static $object_type = 'easingslider';
 
 	/**
 	 * Constructor
@@ -64,7 +64,7 @@ class ES_Slider {
 		// Our default query arguments
 		$defaults = array(
 			'post_status'    => 'publish',
-			'post_type'      => self::$post_type,
+			'post_type'      => self::$object_type,
 			'orderby'        => 'ID',
 			'order'          => 'asc',
 			'posts_per_page' => -1
@@ -140,7 +140,7 @@ class ES_Slider {
 		}
 
 		// Bail if not our post type
-		if ( self::$post_type != $post->post_type ) {
+		if ( self::$object_type != $post->post_type ) {
 			return false;
 		}
 
@@ -166,7 +166,7 @@ class ES_Slider {
 	 */
 	public static function total( $post_status = 'publish' ) {
 
-		$total_items = wp_count_posts( self::$post_type );
+		$total_items = wp_count_posts( self::$object_type );
 
 		return $total_items->$post_status;
 
@@ -362,7 +362,7 @@ class ES_Slider {
 		$postdata_defaults = array(
 			'post_title'     => '',
 			'post_status'    => 'publish',
-			'post_type'      => self::$post_type
+			'post_type'      => self::$object_type
 		);
 
 		return apply_filters( 'easingslider_postdata_defaults', $postdata_defaults );

@@ -107,6 +107,11 @@ class ES_Sliders_List_Table extends WP_List_Table {
 		// Get the number of items per page
 		$per_page = (int) get_user_option( 'sliders_per_page' );
 
+		// Return default if false
+		if ( ! $per_page ) {
+			return 20;
+		}
+
 		return $per_page;
 
 	}
