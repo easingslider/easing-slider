@@ -1,5 +1,5 @@
 <script type="text/html" id="tmpl-easingslider-slide">
-	<div class="attachment-preview js--select-attachment">
+	<div class="attachment-preview {{ data.model.type }}-slide js--select-attachment">
 		<div class="toolbar">
 			<i class="dashicons dashicons-edit edit"></i>
 			<i class="dashicons dashicons-no-alt remove"></i>
