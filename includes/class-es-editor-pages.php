@@ -308,7 +308,7 @@ class ES_Editor_Pages {
 			$slider->save();
 
 			// Trigger actions
-			do_action( 'easingslider_save_slider_actions' );
+			do_action( 'easingslider_save_slider_actions', $slider );
 
 			// Tell the user
 			easingslider_show_notice( __( 'Slider has been saved successfully.', 'easingslider' ), 'updated' );
@@ -345,7 +345,7 @@ class ES_Editor_Pages {
 			$slider->save();
 
 			// Trigger actions
-			do_action( 'easingslider_publish_slider_actions' );
+			do_action( 'easingslider_publish_slider_actions', $slider );
 
 			// Redirect to the editor for our new slider
 			wp_redirect( "admin.php?page=easingslider_edit_sliders&edit={$slider->ID}" );
