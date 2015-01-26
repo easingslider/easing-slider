@@ -381,12 +381,12 @@
 				base._animating = false;
 
 				// Trigger event
-				base.$el.trigger('transition.after', base, eq, direction);
+				base.$el.trigger('transition.after', [ base, eq, direction ]);
 
 			}, o.transitions.duration);
 
 			// Trigger event
-			base.$el.trigger('transition.before', base, eq, direction);
+			base.$el.trigger('transition.before', [ base, eq, direction ]);
 
 			return base;
 
@@ -404,7 +404,7 @@
 			base._transition(eq, 'forward');
 
 			// Trigger event
-			base.$el.trigger('transition.next', base, eq, 'forward');
+			base.$el.trigger('transition.next', [ base, eq, 'forward' ]);
 
 			return base;
 
@@ -422,7 +422,7 @@
 			base._transition(eq, 'backward');
 
 			// Trigger event
-			base.$el.trigger('transition.prev', base, eq, 'backward');
+			base.$el.trigger('transition.prev', [ base, eq, 'backward' ]);
 
 			return base;
 
@@ -437,7 +437,7 @@
 			this._transition(eq, direction);
 
 			// Trigger event
-			base.$el.trigger('transition.to', base, eq, direction);
+			base.$el.trigger('transition.to', [ base, eq, direction ]);
 
 			return base;
 

@@ -92,6 +92,32 @@
 	opacity: 1;
 }
 
+/* Play
+-------------------------------------------------------------- */
+.easingslider-play {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image: url(../images/nav-play.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-color: transparent;
+	z-index: 50;
+	cursor: pointer;
+	opacity: 0.3;
+	-webkit-transition: opacity 0.1s ease-in;
+	-moz-transition: opacity 0.1s ease-in;
+	-ms-transition: opacity 0.1s ease-in;
+	-o-transition: opacity 0.1s ease-in;
+	transition: opacity 0.1s ease-in;
+}
+
+.easingslider-play:hover {
+	opacity: 1;
+}
+
 /* Arrows
 -------------------------------------------------------------- */
 .easingslider-arrows {
