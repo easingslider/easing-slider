@@ -78,10 +78,10 @@
 			<div class="field">
 				<label for="responsive">
 					<input type="hidden" name="dimensions[responsive]" value="false">
-					<input type="checkbox" name="dimensions[responsive]" id="responsive" value="true" <?php checked( $slider->dimensions->responsive, true ); ?>><span style="display: inline;"><?php _e( 'Make this slideshow responsive.', 'easingslider' ); ?></span>
+					<input type="checkbox" name="dimensions[responsive]" id="responsive" value="true" <?php checked( $slider->dimensions->responsive, true ); ?>><span style="display: inline;"><?php _e( 'Make this slider responsive.', 'easingslider' ); ?></span>
 				</label>
 			</div>
-			<p class="description"><?php _e( 'Check this option to make this slideshow responsive. If enabled, the "width" and "height" values above will act as maximums.', 'easingslider' ); ?></p>
+			<p class="description"><?php _e( 'Check this option to make this slider responsive. If enabled, the "width" and "height" values above will act as maximums.', 'easingslider' ); ?></p>
 		</div>
 
 		<?php
