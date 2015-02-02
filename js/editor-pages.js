@@ -152,7 +152,10 @@ window.EasingSlider = window.EasingSlider || {
 			}, this);
 
 			// Query the WordPress Media Library
-			var query = wp.media.query({ post__in: ids });
+			var query = wp.media.query({
+				post__in:       ids,
+				posts_per_page: -1
+			});
 
 			// Do the query
 			query.more().done(function() {
