@@ -161,18 +161,18 @@ class ES_Legacy {
 	 */
 	public function do_pro_shortcode( $atts ) {
 
-        // Extract shortcode attributes
-        extract(
-            shortcode_atts(
-                array( 'id' => false ),
-                $atts
-            )
-        );
+		// Extract shortcode attributes
+		extract(
+			shortcode_atts(
+				array( 'id' => false ),
+				$atts
+			)
+		);
 
-        // Display error message if no ID has been entered
-        if ( ! $id ) {
-            return __( 'Looks like you\'ve forgotten to add a slideshow ID to this shortcode. Oh dear!', 'easingslider' );
-        }
+		// Display error message if no ID has been entered
+		if ( ! $id ) {
+			return __( 'Looks like you\'ve forgotten to add a slideshow ID to this shortcode. Oh dear!', 'easingslider' );
+		}
 
 		return $this->render_pro_slider( $id );
 
@@ -227,14 +227,15 @@ class ES_Legacy {
 
 					// Populate the slide
 					$slide = (object) array(
-						'id'            => easingslider_validate_data( ( $key + 1 ) ),
-						'attachment_id' => easingslider_validate_data( $attachment_id ),
-						'type'          => 'image',
-						'alt'           => easingslider_validate_data( $legacy_slide['image-alt'] ),
-						'aspectRatio'   => null,
-						'link'          => 'custom',
-						'linkUrl'       => ( 'webpage' == $legacy_slide['image-link'] ) ? $legacy_slide['webpage-url'] : $legacy_slide['video-url'],
-						'title'         => easingslider_validate_data( $legacy_slide['image-title'] )
+						'id'              => easingslider_validate_data( ( $key + 1 ) ),
+						'attachment_id'   => easingslider_validate_data( $attachment_id ),
+						'type'            => 'image',
+						'alt'             => easingslider_validate_data( $legacy_slide['image-alt'] ),
+						'aspectRatio'     => null,
+						'link'            => 'custom',
+						'linkUrl'         => ( 'webpage' == $legacy_slide['image-link'] ) ? $legacy_slide['webpage-url'] : $legacy_slide['video-url'],
+						'linkTargetBlank' => false,
+						'title'           => easingslider_validate_data( $legacy_slide['image-title'] )
 					);
 
 					// Add an image URL if we aren't using an attachment
@@ -323,14 +324,15 @@ class ES_Legacy {
 
 					// Populate the slide
 					$slide = (object) array(
-						'id'            => easingslider_validate_data( $legacy_slide->id ),
-						'attachment_id' => easingslider_validate_data( $attachment_id ),
-						'type'          => 'image',
-						'alt'           => easingslider_validate_data( $legacy_slide->alt ),
-						'aspectRatio'   => null,
-						'link'          => ( $legacy_slide->link ) ? 'custom' : 'none',
-						'linkUrl'       => easingslider_validate_data( $legacy_slide->link ),
-						'title'         => easingslider_validate_data( $legacy_slide->title )
+						'id'              => easingslider_validate_data( $legacy_slide->id ),
+						'attachment_id'   => easingslider_validate_data( $attachment_id ),
+						'type'            => 'image',
+						'alt'             => easingslider_validate_data( $legacy_slide->alt ),
+						'aspectRatio'     => null,
+						'link'            => ( $legacy_slide->link ) ? 'custom' : 'none',
+						'linkUrl'         => easingslider_validate_data( $legacy_slide->link ),
+						'linkTargetBlank' => ( '_blank' == $legacy_slide->linkTarget ) ? '_blank': false,
+						'title'           => easingslider_validate_data( $legacy_slide->title )
 					);
 
 					// Add an image URL if we aren't using an attachment
@@ -531,15 +533,16 @@ class ES_Legacy {
 
 					// Push the slide data
 					$slider->slides[] = (object) array(
-						'id'            => $i,
-						'attachment_id' => null,
-						'type'          => 'image',
-						'alt'           => '',
-						'aspectRatio'   => null,
-						'link'          => ( get_option( "sImgLink{$i}" ) == '' ) ? 'none' : 'custom',
-						'linkUrl'       => easingslider_validate_data( get_option( "sImgLink{$i}" ) ),
-						'title'         => '',
-						'url'           => easingslider_validate_data( $image )
+						'id'              => $i,
+						'attachment_id'   => null,
+						'type'            => 'image',
+						'alt'             => '',
+						'aspectRatio'     => null,
+						'link'            => ( get_option( "sImgLink{$i}" ) == '' ) ? 'none' : 'custom',
+						'linkUrl'         => easingslider_validate_data( get_option( "sImgLink{$i}" ) ),
+						'linkTargetBlank' => false,
+						'title'           => '',
+						'url'             => easingslider_validate_data( $image )
 					);
 
 				}
@@ -622,14 +625,15 @@ class ES_Legacy {
 
 			// Populate the slide
 			$slide = (object) array(
-				'id'            => easingslider_validate_data( $legacy_slide->id ),
-				'attachment_id' => easingslider_validate_data( $attachment_id ),
-				'type'          => 'image',
-				'alt'           => easingslider_validate_data( $legacy_slide->alt ),
-				'aspectRatio'   => null,
-				'link'          => ( $legacy_slide->link ) ? 'custom' : 'none',
-				'linkUrl'       => easingslider_validate_data( $legacy_slide->link ),
-				'title'         => easingslider_validate_data( $legacy_slide->title )
+				'id'              => easingslider_validate_data( $legacy_slide->id ),
+				'attachment_id'   => easingslider_validate_data( $attachment_id ),
+				'type'            => 'image',
+				'alt'             => easingslider_validate_data( $legacy_slide->alt ),
+				'aspectRatio'     => null,
+				'link'            => ( $legacy_slide->link ) ? 'custom' : 'none',
+				'linkUrl'         => easingslider_validate_data( $legacy_slide->link ),
+				'linkTargetBlank' => ( '_blank' == $legacy_slide->linkTarget ) ? '_blank': false,
+				'title'           => easingslider_validate_data( $legacy_slide->title )
 			);
 
 			// Add an image URL if we aren't using an attachment

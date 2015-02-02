@@ -75,6 +75,15 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 
 == Changelog ==
 
+= 2.2.0.8 =
+* Readded support for opening slide links in a new window/tab.
+* Added proper extension descriptions to "Extensions" panel.
+* Prepared plugin for video slide support.
+* Improved some actions and filters to better facilitate developers and other extensions.
+* Fixed issue where blank shadow image would display is shadow was enabled but no image was set.
+* Fixed issue that limited attachments query to 40 images only.
+* Fixed various bugs experienced by users.
+
 = 2.2.0.7 =
 * General improvements to cater for alternative slide types, such as videos or URL images.
 * Fixed a bug (related to above improvement) that would prevent slider from loading when slide didn't contain an image.
