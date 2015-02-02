@@ -93,8 +93,10 @@ class ES_Customizations {
 						$html .= "width: {$customizations->arrows->width}px; ";
 					}
 					if ( $defaults->arrows->height != $customizations->arrows->height ) {
+						$margin_top = ( $customizations->arrows->height / 2 );
+
 						$html .= "height: {$customizations->arrows->height}px; ";
-						$html .= "margin-top: {($customizations->arrows->height / 2)}px; ";
+						$html .= "margin-top: {$margin_top}px; ";
 					}
 				$html .= "}";
 
