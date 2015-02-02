@@ -690,7 +690,7 @@ class ES_Slider {
 		if ( ! empty( $slide->link ) && 'none' != $slide->link ) {
 
 			// The link attributes string
-			$attributes_string = "href=\"{$slide->linkUrl}\" class=\"easingslider-link\"";
+			$attributes_string = "href=\"{$slide->linkUrl}\" target=\"{$slide->linkTargetBlank}\" class=\"easingslider-link\"";
 
 			// Apply filters to the string
 			$attributes_string = apply_filters( 'easingslider_open_link_html_attributes', $attributes_string, $slide, $slider );
