@@ -148,16 +148,16 @@
 		 */
 		base._setupPlayback = function() {
 
-			// Pause playback timer before the transition. It'll be reset after the transition has completed.
+			// Clear playback timer before the transition. It'll be reset after the transition has completed.
 			base.$el.on('transition.before', function() {
-				if ( o.playback.enabled ) {
-					base.pausePlayback();
+				if ( base._playbackTimer ) {
+					clearTimeout(base._playbackTimer);
 				}
 			});
 
-			// Once a transition has completed, restart playback, if enabled.
+			// Once a transition has completed, continue playback if we have an active timer.
 			base.$el.on('transition.after', function() {
-				if ( o.playback.enabled ) {
+				if ( base._playbackTimer ) {
 					base.startPlayback();
 				}
 			});
@@ -176,24 +176,45 @@
 		 */
 		base._preload = function() {
 
+			// Get the total number of images
+			var total_images = base.$slides.find('.easingslider-image').length;
+
 			// Preloaded slide count
 			base._preloadCount = 0;
 
 			// Loop through and preload each image slide. Doesn't stop on failure, just continues instead.
-			base.$el.find('.easingslider-image').each(function(index, image) {
+			base.$el.find('.easingslider-image').each(function() {
 
-				/**
-				 * Create a virtual image element. We set its src after event handler is registered.
-				 * We have to do this to prevent IE bugs (it doesn't always fire the onload event if image are loaded (from cache) before the event is bound)
-				 */
-				preloadImage = new Image();
+				// Load the image
+				$(this).one('load', function() {
 
-				// Bind preload functions. Still continues if a preload fails
-				preloadImage.onload  = base._load;
-				preloadImage.onerror = base._load;
+					// If all slides have been preloaded, hide the preloader and start the playback. Also increase preloader count.
+					if ( ++base._preloadCount == total_images ) {
+						base.$preload.animate({ 'opacity': 0 }, {
+							duration: 400,
+							complete: function() {
 
-				// Set image src attribute, thus preloading the image
-				preloadImage.src = image.src;
+								// Remove preloader
+								$(this).remove();
+
+								// Flag as loaded
+								base.$el.addClass('has-loaded');
+
+								// Trigger events
+								base.$el.trigger('loaded', base);
+
+							}
+						});
+					}
+
+				}).each(function() {
+
+					// Load on complete
+					if ( this.complete ) {
+						$(this).load();
+					}
+
+				});
 
 			});
 
@@ -236,9 +257,6 @@
 		 */
 		base.startPlayback = function() {
 
-			// Alter the option
-			o.playback.enabled = true;
-
 			// Runtime variable
 			base._runtime = new Date();
 
@@ -262,11 +280,11 @@
 		 */
 		base.endPlayback = function() {
 
-			// Alter the option
-			o.playback.enabled = false;
-
 			// Clear playback timer
 			clearTimeout(base._playbackTimer);
+
+			// Set timer to flase
+			base._playbackTimer = false;
 
 			// Trigger event
 			base.$el.trigger('playback.end', base);
