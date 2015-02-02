@@ -260,7 +260,7 @@ window.EasingSlider = window.EasingSlider || {
 		/**
 		 * Render callback for the content region in the 'browse' mode.
 		 */
-		browseContent: function( contentRegion ) {
+		browseContent: function(contentRegion) {
 
 			// Get the state
 			var state = this.state();
@@ -280,11 +280,9 @@ window.EasingSlider = window.EasingSlider || {
 				date:             state.get('date'),
 				display:          state.has('display') ? state.get('display') : state.get('displaySettings'),
 				dragInfo:         state.get('dragInfo'),
-
 				idealColumnWidth: state.get('idealColumnWidth'),
 				suggestedWidth:   state.get('suggestedWidth'),
 				suggestedHeight:  state.get('suggestedHeight'),
-
 				AttachmentView:   state.get('AttachmentView')
 			});
 
