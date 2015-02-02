@@ -158,6 +158,7 @@ class ES_Editor_Pages {
 			'delete_slides' => __( 'Are you sure you wish to delete all of this slider\'s images? This cannot be reversed.', 'easingslider' ),
 			'media_upload'  => array(
 				'title'              => __( 'Edit Slide', 'easingslider' ),
+				'update'             => __( 'Update', 'easingslider' ),
 				'image_from_media'   => __( 'Image from Media', 'easingslider' ),
 				'insert_into_slider' => __( 'Insert into Slider', 'easingslider' )
 			)

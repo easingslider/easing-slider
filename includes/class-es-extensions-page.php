@@ -107,39 +107,57 @@ class ES_Extensions_Page {
 		$available_extensions = array(
 			(object) array(
 				'title'   => __( 'Visual Customizer', 'easingslider' ),
-				'image'   => 'http://easingslider.com/wp-content/uploads/edd/2014/12/customizer.jpg',
-				'content' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi inventore corporis a omnis placeat cum, quam modi repellat incidunt, corrupti enim voluptate iusto unde sapiente labore suscipit tenetur voluptatem. Debitis.', 'easingslider' ),
+				'image'   => 'http://easingslider.com/wp-content/uploads/edd/2015/01/customizer1.jpg',
+				'content' => __( 'The Visual Customizer extension is a complete customization tool for beautifully sculpting the design of your sliders. Create a unique look and feel for each slider.', 'easingslider' ),
 				'link'    => 'http://easingslider.com/extensions/visual-customizer/'
 			),
 			(object) array(
 				'title'   => __( 'HTML Captions', 'easingslider' ),
-				'image'   => 'http://easingslider.com/wp-content/uploads/edd/2014/12/captions.jpg',
-				'content' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi inventore corporis a omnis placeat cum, quam modi repellat incidunt, corrupti enim voluptate iusto unde sapiente labore suscipit tenetur voluptatem. Debitis.', 'easingslider' ),
+				'image'   => 'http://easingslider.com/wp-content/uploads/edd/2015/01/captions1.jpg',
+				'content' => __( 'The “HTML Captions” extensions makes adding HTML captions and content to Easing Slider a breeze.', 'easingslider' ),
 				'link'    => 'http://easingslider.com/extensions/html-captions/'
 			),
 			(object) array(
 				'title'   => __( 'Touch & Swipe', 'easingslider' ),
-				'image'   => 'http://easingslider.com/wp-content/uploads/edd/2014/12/touch.jpg',
-				'content' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi inventore corporis a omnis placeat cum, quam modi repellat incidunt, corrupti enim voluptate iusto unde sapiente labore suscipit tenetur voluptatem. Debitis.', 'easingslider' ),
+				'image'   => 'http://easingslider.com/wp-content/uploads/edd/2015/01/touch1.jpg',
+				'content' => __( 'The “Touch & Swipe” extension enables slider touch gestures on mobile devices. iPhones, iPads, Androids, if it can be touched this is the extension for you.', 'easingslider' ),
 				'link'    => 'http://easingslider.com/extensions/touch-swipe/'
 			),
 			(object) array(
 				'title'   => __( 'Lightbox', 'easingslider' ),
-				'image'   => 'http://easingslider.com/wp-content/uploads/edd/2014/12/lightbox.jpg',
-				'content' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi inventore corporis a omnis placeat cum, quam modi repellat incidunt, corrupti enim voluptate iusto unde sapiente labore suscipit tenetur voluptatem. Debitis.', 'easingslider' ),
+				'image'   => 'http://easingslider.com/wp-content/uploads/edd/2015/01/lightbox1.jpg',
+				'content' => __( 'The Lightbox extension adds support for the jQuery Lightbox script. This simple extension makes it incredibly easy to create lightbox images or galleries for your slider.', 'easingslider' ),
 				'link'    => 'http://easingslider.com/extensions/lightbox/'
 			),
 			(object) array(
 				'title'   => __( 'Images from URL', 'easingslider' ),
-				'image'   => 'http://easingslider.com/wp-content/uploads/edd/2014/12/images-from-url.jpg',
-				'content' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi inventore corporis a omnis placeat cum, quam modi repellat incidunt, corrupti enim voluptate iusto unde sapiente labore suscipit tenetur voluptatem. Debitis.', 'easingslider' ),
+				'image'   => 'http://easingslider.com/wp-content/uploads/edd/2015/01/url-images.jpg',
+				'content' => __( 'The Images from URL extension makes adding image slides from an external URL simple.', 'easingslider' ),
 				'link'    => 'http://easingslider.com/extensions/images-url/'
 			),
 			(object) array(
 				'title'   => __( 'Featured Content', 'easingslider' ),
-				'image'   => 'http://easingslider.com/wp-content/uploads/edd/2014/12/featured-content.jpg',
-				'content' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi inventore corporis a omnis placeat cum, quam modi repellat incidunt, corrupti enim voluptate iusto unde sapiente labore suscipit tenetur voluptatem. Debitis.', 'easingslider' ),
+				'image'   => 'http://easingslider.com/wp-content/uploads/edd/2015/01/featured-content1.jpg',
+				'content' => __( 'The Featured Content extension allows you to source slides from posts types, taxonomies and other supported WordPress queries. Perfect for featured posts, etc.', 'easingslider' ),
 				'link'    => 'http://easingslider.com/extensions/featured-content/'
+			),
+			(object) array(
+				'title'   => __( 'Videos', 'easingslider' ),
+				'image'   => 'http://easingslider.com/wp-content/uploads/edd/2015/01/video.jpg',
+				'content' => __( 'The “Videos” extension makes adding video slides to your sliders a piece of cake. With this extension, you can create video slides from YouTube or Vimeo.', 'easingslider' ),
+				'link'    => 'http://easingslider.com/extensions/videos/'
+			),
+			(object) array(
+				'title'   => __( 'Schedule', 'easingslider' ),
+				'image'   => 'http://easingslider.com/wp-content/uploads/edd/2015/01/schedule.jpg',
+				'content' => __( 'The “Schedule” extension for Easing Slider allows you to easily schedule both sliders and individual slides to be displayed at specific times and dates.', 'easingslider' ),
+				'link'    => 'http://easingslider.com/extensions/schedule/'
+			),
+			(object) array(
+				'title'   => __( 'Nextgen Gallery', 'easingslider' ),
+				'image'   => 'http://easingslider.com/wp-content/uploads/edd/2015/01/nextgen-gallery.jpg',
+				'content' => __( 'The “Nextgen Gallery” extension allows you to easily integrate Easing Slider with your Nextgen galleries.', 'easingslider' ),
+				'link'    => 'http://easingslider.com/extensions/nextgen-gallery/'
 			)
 		);
 
