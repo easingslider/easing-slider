@@ -56,7 +56,12 @@
 							</option>
 						<# } #>
 					</select>
-					<input type="text" class="link-to-custom" data-setting="linkUrl" />
+					<div class="link-options">
+						<input type="text" class="link-to-custom" data-setting="linkUrl" />
+						<label>
+							<input type="checkbox" data-setting="linkTargetBlank" value="_blank" <# if ( data.model.linkTargetBlank ) { #>checked="checked"<# } #>><?php _e( 'Open link in a new window/tab', 'easingslider' ); ?>
+						</label>
+					</div>
 				</label>
 
 				<?php

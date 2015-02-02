@@ -48,14 +48,15 @@ window.EasingSlider = window.EasingSlider || {
 		 * Defaults
 		 */
 		defaults: _.defaults({
-			attachment_id: null,
-			type:          'image',
-			alt:           '',
-			aspectRatio:   null,
-			link:          'none',
-			linkUrl:       '',
-			title:         '',
-			url:           null
+			attachment_id:   null,
+			type:            'image',
+			alt:             '',
+			aspectRatio:     null,
+			link:            'none',
+			linkUrl:         '',
+			linkTargetBlank: false,
+			title:           '',
+			url:             null
 		}, wp.media.model.PostImage.prototype.defaults)
 
 	});
@@ -181,6 +182,25 @@ window.EasingSlider = window.EasingSlider || {
 	});
 
 	/**
+	 * Our "Add Slide" controllers for various slide types
+	 */
+	Editor.controllers.AddSlide = {
+
+		/**
+		 * Returns the appropriate "Add Slide" controller, based on the type of slide provided
+		 */
+		get: function(options) {
+			return new Editor.controllers.AddSlide[options.type](options);
+		}
+
+	};
+
+	/**
+	 * "Add Slide" controller for images
+	 */
+	Editor.controllers.AddSlide.image = wp.media.controller.Library.extend();
+
+	/**
 	 * Our "Edit Slide" controllers for various slide types
 	 */
 	Editor.controllers.EditSlide = {
@@ -235,13 +255,46 @@ window.EasingSlider = window.EasingSlider || {
 		},
 
 		/**
+		 * Render callback for the content region in the 'browse' mode.
+		 */
+		browseContent: function( contentRegion ) {
+
+			// Get the state
+			var state = this.state();
+
+			// Show the toolbar
+			this.$el.removeClass('hide-toolbar');
+
+			// Browse our library of attachments
+			contentRegion.view = new Editor.views.AddSlide.image({
+				controller:       this,
+				collection:       state.get('library'),
+				selection:        state.get('selection'),
+				model:            state,
+				sortable:         state.get('sortable'),
+				search:           state.get('searchable'),
+				filters:          state.get('filterable'),
+				date:             state.get('date'),
+				display:          state.has('display') ? state.get('display') : state.get('displaySettings'),
+				dragInfo:         state.get('dragInfo'),
+
+				idealColumnWidth: state.get('idealColumnWidth'),
+				suggestedWidth:   state.get('suggestedWidth'),
+				suggestedHeight:  state.get('suggestedHeight'),
+
+				AttachmentView:   state.get('AttachmentView')
+			});
+
+		},
+
+		/**
 		 * Creates our states
 		 */
 		createStates: function() {
 
 			// Add the default states
 			this.states.add([
-				new wp.media.controller.Library({
+				new Editor.controllers.AddSlide.image({
 					id: 'insert',
 					type: 'image',
 					title: _easingsliderEditorL10n.media_upload.image_from_media,
@@ -333,6 +386,7 @@ window.EasingSlider = window.EasingSlider || {
 		}
 
 	});
+
 	/**
 	 * Our "Edit Slide" frames for various slide types
 	 */
@@ -400,7 +454,7 @@ window.EasingSlider = window.EasingSlider || {
 		 */
 		imageDetailsContent: function(options) {
 
-			// Initiate the view		
+			// Initiate the view
 			options.view = new Editor.views.EditSlide.get({
 				type:       'image',
 				controller: this,
@@ -432,7 +486,15 @@ window.EasingSlider = window.EasingSlider || {
 
 			// Gather the settings
 			this.$('*[data-setting]').each(function() {
-				data[this.dataset.setting] = this.value;
+				
+				// Handle setting
+				if ( 'checkbox' == this.type ) {
+					data[this.dataset.setting] = ( this.checked ) ? this.value : false;
+				}
+				else {
+					data[this.dataset.setting] = this.value;
+				}
+
 			});
 
 			// Set the model data
@@ -963,6 +1025,7 @@ window.EasingSlider = window.EasingSlider || {
 			this.model.on('change', this._setData, this);
 			this.model.on('change:id', this._updateID, this);
 			this.model.on('change:url', this.render, this);
+			this.model.on('change:poster', this.render, this);
 			this.model.on('change:attachment_id', this.render, this);
 
 			// Bind additional attachment events if appropriate
@@ -1017,6 +1080,25 @@ window.EasingSlider = window.EasingSlider || {
 	});
 
 	/**
+	 * Our "Add Slide" views for various slide types
+	 */
+	Editor.views.AddSlide = {
+
+		/**
+		 * Returns the appropriate "Add Slide" view, based on the type of slide provided
+		 */
+		get: function(options) {
+			return new Editor.views.AddSlide[options.type](options);
+		}
+
+	};
+
+	/**
+	 * Our "Add Slide" view for images
+	 */
+	Editor.views.AddSlide.image = wp.media.view.AttachmentsBrowser.extend();
+
+	/**
 	 * Our "Edit Slide" views for various slide types
 	 */
 	Editor.views.EditSlide = {
@@ -1049,6 +1131,8 @@ window.EasingSlider = window.EasingSlider || {
 		 * Constructor
 		 */
 		initialize: function() {
+
+			console.log(this.model.get('linkTargetBlank'));
 
 			// Call parent constructor
 			wp.media.view.ImageDetails.prototype.initialize.apply(this, arguments);

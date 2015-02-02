@@ -28,25 +28,50 @@
     max-width: 60%;
 }
 
+.thumbnail .action .details-url {
+    width: 100%;
+    max-width: 700px;
+}
+
 .image-details .media-modal {
     left: 30px !important;
     right: 30px !important;
 }
 
-.image-details .details-url {
-    width: 100%;
-    max-width: 700px;
-}
-
-.image-details .settings {
+.attachment-info .settings {
     border-bottom-width: 0 !important;
 }
 
-.image-details .settings h3 {
+.attachment-info .settings h3 {
     margin: 10px 0;
+    position: relative;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #666;
 }
 
-.image-details .column-settings h3.no-border {
+.attachment-info .setting .link-options {
+    width: 65%;
+    float: right;
+    margin: 1px;
+}
+
+.attachment-info .setting .link-options input[type="text"] {
+    width: 98%;
+    float: none;
+    margin: 5px 0 0 0;
+}
+
+.attachment-info .setting .link-options label {
+    margin-top: 5px;
+}
+
+.attachment-info .setting .link-options input[type="checkbox"] {
+    margin: -1px 5px 0 0 !important;
+}
+
+.attachment-info .column-settings h3.no-border {
     border-top-width: 0;
     padding-top: 0;
 }
@@ -309,9 +334,39 @@
     opacity: 1;
 }
 
+@media only screen and (max-width: 900px) {
+    .attachment-info .setting .link-options {
+        width: 100%;
+        float: none;
+    }
+}
+
 @media only screen and (max-width: 640px), screen and (max-height: 400px) {
     .image-details .media-modal {
         left: 0 !important;
         right: 0 !important;
+    }
+
+    .image-details .media-modal select,
+    .image-details .media-modal textarea,
+    .image-details .media-modal input[type="url"],
+    .image-details .media-modal input[type="text"] {
+        font-size: 16px;
+        padding: 6px 10px;
+    }
+
+    .attachment-info .media-modal {
+        left: 0 !important;
+        right: 0 !important;
+    }
+
+    .attachment-info .setting .link-options {
+        width: 100%;
+        float: none;
+        margin: 1px;
+    }
+
+    .attachment-info .setting .link-options label {
+        margin-top: 8px;
     }
 }
