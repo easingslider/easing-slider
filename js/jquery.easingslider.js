@@ -163,7 +163,7 @@
 			});
 
 			// Queue playback after the slider has loaded, if enabled.
-			if ( o.playback.enabled ) {
+			if ( o.playback.enabled && base.count > 1 ) {
 				base.$el.on('loaded', base.startPlayback);
 			}
 
