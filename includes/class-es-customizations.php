@@ -191,6 +191,21 @@ class ES_Customizations {
 	}
 
 	/**
+	 * Removes customizations from slider container data (it's not needed).
+	 *
+	 * @param  array $metadata The array of metadata
+	 * @return array
+	 */
+	public function remove_data( $metadata ) {
+
+		// Remove the data
+		unset( $metadata['customizations'] );
+
+		return $metadata;
+
+	}
+
+	/**
 	 * Displays a drop shadow beneath the slider
 	 *
 	 * @param  string    $html   The slider HTML
