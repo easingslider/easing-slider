@@ -104,6 +104,44 @@ if ( ! function_exists( 'easingslider_admin_notice' ) ) {
 }
 
 /**
+ * Adds a slider to the rendered slider global array.
+ *
+ * @param  ES_Slider $slider The slider object
+ * @return void
+ */
+if ( ! function_exists( 'easingslider_store_rendered' ) ) {
+    function easingslider_store_rendered( $slider ) {
+
+        global $_rendered_sliders;
+
+        // Add slider to the global
+        $_rendered_sliders[] = $slider;
+
+    }
+    add_action( 'easingslider_render_slider', 'easingslider_store_rendered' );
+}
+
+/**
+ * Gets the global array or rendered sliders.
+ *
+ * @return false|array
+ */
+if ( ! function_exists( 'easingslider_get_rendered' ) ) {
+    function easingslider_get_rendered() {
+
+        global $_rendered_sliders;
+
+        // If we have rendered sliders, return them. False if otherwise.
+        if ( ! empty( $_rendered_sliders ) ) {
+            return $_rendered_sliders;
+        }
+
+        return false;
+
+    }
+}
+
+/**
  * Validates the data in an array for database insertion
  *
  * @param  mixed $data The data to validate
