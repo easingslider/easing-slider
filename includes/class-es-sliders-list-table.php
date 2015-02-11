@@ -46,12 +46,13 @@ class ES_Sliders_List_Table extends WP_List_Table {
 
 		// Set our columns
 		$columns = array(
-			'cb'          => '<input type="checkbox" />',
-			'ID'          => __( 'ID', 'easingslider' ),
-			'post_title'  => __( 'Title', 'easingslider' ),
-			'post_author' => __( 'Author', 'easingslider' ),
-			'post_date'   => __( 'Date', 'easingslider' ),
-			'shortcode'   => __( 'Shortcode', 'easingslider' )
+			'cb'                => '<input type="checkbox" />',
+			'ID'                => __( 'ID', 'easingslider' ),
+			'post_title'        => __( 'Title', 'easingslider' ),
+			'post_author'       => __( 'Author', 'easingslider' ),
+			'post_date'         => __( 'Date', 'easingslider' ),
+			'shortcode'         => __( 'Shortcode', 'easingslider' ),
+			'template_function' => __( 'Template Function', 'easingslider' )
 		);
 
 		return apply_filters( 'easingslider_sliders_list_table_columns', $columns );
@@ -363,7 +364,23 @@ class ES_Sliders_List_Table extends WP_List_Table {
 	 */
 	public function column_shortcode( $item ) {
 
-		return sprintf( '<code>[easingslider id="%s"]</code>', $item->ID );
+		$shortcode = sprintf( esc_html( '[easingslider id="%d"]' ), $item->ID );
+
+		return sprintf( '<input type="text" readonly="readonly" value="%s" />', $shortcode );
+
+	}
+
+	/**
+	 * Our template function column method
+	 *
+	 * @param  object $item Our column item
+	 * @return string
+	 */
+	public function column_template_function( $item ) {
+
+		$template_function = sprintf( esc_html( '<?php if ( function_exist( \'easingslider\' ) ) { easingslider( %d ); } ?>' ), $item->ID );
+
+		return sprintf( '<input type="text" readonly="readonly" value="%s" />', $template_function );
 
 	}
 
