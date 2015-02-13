@@ -73,8 +73,8 @@
 			if ( o.navigation.arrows ) {
 
 				// "Next" & "Previous" arrow functionality
-				base.$next.on(base._clickEvent, base.nextSlide);
-				base.$prev.on(base._clickEvent, base.prevSlide);
+				base.$next.bind(base._clickEvent, base.nextSlide);
+				base.$prev.bind(base._clickEvent, base.prevSlide);
 
 				// Add hover toggle if enabled
 				if ( o.navigation.arrows_hover ) {
@@ -99,11 +99,11 @@
 			if ( o.navigation.pagination ) {
 
 				// Bind events
-				base.$el.on('loaded', base._updatePagination);
-				base.$el.on('transition.before', base._updatePagination);
+				base.$el.bind('loaded', base._updatePagination);
+				base.$el.bind('transition.before', base._updatePagination);
 
 				// Enable click event for each icon
-				base.$icons.on(base._clickEvent, function() {
+				base.$icons.bind(base._clickEvent, function() {
 
 					// Get the next slide index and direction we are travelling
 					var eq        = $(this).index(),
@@ -151,14 +151,14 @@
 		base._setupPlayback = function() {
 
 			// Clear playback timer before the transition. It'll be reset after the transition has completed.
-			base.$el.on('transition.before', function() {
+			base.$el.bind('transition.before', function() {
 				if ( base._playbackTimer ) {
 					clearTimeout(base._playbackTimer);
 				}
 			});
 
 			// Once a transition has completed, continue playback if we have an active timer.
-			base.$el.on('transition.after', function() {
+			base.$el.bind('transition.after', function() {
 				if ( base._playbackTimer ) {
 					base.startPlayback();
 				}
@@ -166,7 +166,7 @@
 
 			// Queue playback after the slider has loaded, if enabled.
 			if ( o.playback.enabled && base.count > 1 ) {
-				base.$el.on('loaded', base.startPlayback);
+				base.$el.bind('loaded', base.startPlayback);
 			}
 
 			return base;
@@ -185,7 +185,7 @@
 				base._updateSize();
 
 				// Handle window resizing
-				$(window).on('resize', function() {
+				$(window).bind('resize', function() {
 					base._updateSize();
 				});
 			
