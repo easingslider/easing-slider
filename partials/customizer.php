@@ -1,6 +1,6 @@
 <div id="customize-container" class="customize-container">
 	<div class="wp-full-overlay expanded">
-		<form id="customize-controls" action="admin.php?page=<?php echo $page; if ( isset( $_GET['edit'] ) ) { echo "&amp;edit={$_GET['edit']}"; } ?>" method="post" class="wrap wp-full-overlay-sidebar">
+		<form id="customize-controls" action="admin.php?page=<?php echo esc_attr( $page ); if ( isset( $id ) ) { echo "&amp;edit=". esc_attr( $id ) .""; } ?>" method="post" class="wrap wp-full-overlay-sidebar">
 			<div id="customize-header-actions" class="wp-full-overlay-header">
 				<input type="submit" name="save" id="save" class="button button-primary save" value="<?php _e( 'Save', 'easingslider' ); ?>" />
 				<span class="spinner"></span>

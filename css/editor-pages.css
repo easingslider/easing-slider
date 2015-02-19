@@ -20,14 +20,6 @@
     width: 4em;
 }
 
-.media-toolbar .media-toolbar-primary {
-    max-width: 40%;
-}
-
-.media-toolbar .media-toolbar-secondary {
-    max-width: 60%;
-}
-
 .thumbnail .action .details-url {
     width: 100%;
     max-width: 700px;
@@ -88,6 +80,17 @@
     margin-top: 10px !important;
 }
 
+.media-modal .media-embed .thumbnail {
+    max-height: none;
+    max-width: none;
+}
+
+.media-modal .media-embed .thumbnail img {
+    max-height: none;
+    max-width: 1000px;
+    width: 100%;
+}
+
 .list {
     margin: 0 0 20px 20px !important;
 }
@@ -108,20 +111,36 @@
     height: auto;
 }
 
+.toolbar-container .media-toolbar .media-toolbar-primary,
+.toolbar-container .media-toolbar .media-toolbar-secondary {
+    max-width: 50%;
+    min-width: 384px;
+}
+
+.toolbar-container .media-toolbar .media-toolbar-primary {
+    text-align: right;
+}
+
 .toolbar-container .media-toolbar .media-button {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
 .toolbar-container .media-toolbar .randomize {
-    float: left;
-    margin-top: 9px;
-    margin-bottom: 9px;
-    line-height: 32px;
+    float: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 30px;
+    display: inline-block;
 }
 
 .toolbar-container .media-toolbar .randomize input[type="checkbox"] {
+    margin-top: -2px;
     margin-right: 8px;
+}
+
+.toolbar-container .media-toolbar .media-button {
+    float: none;
 }
 
 .toolbar-container .title-form {
@@ -131,7 +150,7 @@
 
 .toolbar-container .title-form .media-button {
     margin-top: 1px;
-    margin-left: 9px;
+    margin-left: 0;
 }
 
 .toolbar-container .title-form label {
@@ -150,11 +169,19 @@
     line-height: 1.5;
 }
 
+.main-container {
+    margin-right: 300px;
+}
+
+.slides-container {
+    width: 100%;
+    float: left;
+}
+
 .settings-container {
     float: right;
-    clear: right;
-    width: 285px;
-    padding-right: 5px;
+    margin-right: -300px;
+    width: 280px;
 }
 
 .settings-container .banners a {
@@ -242,6 +269,16 @@
     margin-right: 2px;
 }
 
+.settings-container .sidebar-content .advanced-options.hidden {
+    display: none !important;
+}
+
+.settings-container .sidebar-content .show-advanced-options {
+    margin: 15px 0;
+    font-weight: bold;
+    display: block;
+}
+
 .settings-container .sidebar-content .manage-slides-buttons .dashicons-plus {
     line-height: 28px;
 }
@@ -263,8 +300,8 @@
     margin-right: 5%;
 }
 
-.slides-container {
-    margin: 0 350px 0 0;
+#slides-browser .ui-sortable {
+    min-height: 300px;
 }
 
 #slides-browser .spinner {
@@ -334,6 +371,18 @@
     opacity: 1;
 }
 
+@media only screen and (max-width: 1040px) {
+    .toolbar-container .media-toolbar .media-toolbar-primary,
+    .toolbar-container .media-toolbar .media-toolbar-secondary {
+        max-width: 100%;
+        float: none;
+    }
+
+    .toolbar-container .media-toolbar .media-toolbar-primary {
+        text-align: left;
+    }
+}
+
 @media only screen and (max-width: 900px) {
     .attachment-info .setting .link-options {
         width: 100%;
@@ -341,7 +390,7 @@
     }
 }
 
-@media only screen and (max-width: 640px), screen and (max-height: 400px) {
+@media only screen and (max-width: 640px) {
     .image-details .media-modal {
         left: 0 !important;
         right: 0 !important;
@@ -368,5 +417,42 @@
 
     .attachment-info .setting .link-options label {
         margin-top: 8px;
+    }
+
+    .toolbar-container .media-toolbar .media-toolbar-primary {
+        margin-bottom: 15px;
+    }
+
+    .toolbar-container .media-toolbar .media-toolbar-secondary {
+        margin-top: 10px;
+    }
+
+    .toolbar-container .media-toolbar .randomize {
+        display: block;
+        float: none;
+    }
+
+    .toolbar-container .media-toolbar .media-button {
+        float: none;
+        margin: 0 10px 10px 0;
+    }
+
+    .main-container {
+        margin-right: 0;
+    }
+
+    .slides-container {
+        float: none;
+    }
+
+    #slides-browser .ui-sortable {
+        min-height: 100px;
+    }
+
+    .settings-container {
+        float: none;
+        margin-top: 20px;
+        margin-right: 0;
+        width: 100%;
     }
 }

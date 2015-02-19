@@ -185,6 +185,8 @@ class ES_Legacy {
 	 */
 	public function pro_upgrade_from_100() {
 
+		global $wpdb;
+
 		// Bail if this has already been carried out
 		if ( get_option( 'easingslider_upgraded_from_pro' ) ) {
 			return;

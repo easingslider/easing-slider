@@ -539,6 +539,7 @@ window.EasingSlider = window.EasingSlider || {
 			'click #save':                      '_clickSave',
 			'click .toolbar .edit':             '_clickEdit',
 			'click .toolbar .remove':           '_clickDelete',
+			'click .show-advanced-options':     '_clickAdvancedOptions',
 			'click .thumbnail':                 '_clickThumb',
 			'click .select-mode-toggle-button': '_toggleMode',
 			'click .sidebar-name':              '_toggleWidget'
@@ -567,6 +568,9 @@ window.EasingSlider = window.EasingSlider || {
 
 			// Disable select mode
 			this._selectMode = false;
+
+			// Set number of columns
+			this._setColumns();
 
 			// Show the spinner
 			this._showSpinner();
@@ -707,6 +711,21 @@ window.EasingSlider = window.EasingSlider || {
 
 			}
 
+		},
+
+		/**
+		 * Handles "advanced options" link click
+		 */
+		_clickAdvancedOptions: function(event) {
+
+			event.preventDefault();
+
+			// Get the advanced options
+			var $options = $(event.currentTarget).parent().find('.advanced-options');
+
+			// Find the closest advanced options and show it
+			$options.toggleClass('hidden');
+			
 		},
 
 		/**
@@ -1166,7 +1185,7 @@ window.EasingSlider = window.EasingSlider || {
 			'admin.php?page=:page&edit=:id&change=:slide': 'changeSlide',
 			'admin.php?page=:page&edit=:id&slide=:slide':  'editSlide',
 			'admin.php?page=:page&edit=:id':               'edit',
-			'admin.php?page=:page':                        'edit'
+			'admin.php?page=easingslider_publish_slider':  'edit'
 		},
 
 		/**

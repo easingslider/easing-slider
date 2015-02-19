@@ -183,7 +183,7 @@ class ES_Welcome_Pages {
 	public function display_view() {
 
 		// Get the current page
-		$page = $_GET['page'];
+		$page = sanitize_key( $_GET['page'] );
 
 		// Get the settings tabs
 		$tabs = $this->get_tabs();

@@ -48,11 +48,12 @@
 			// Set the current slide
 			base.$slides.eq(base.current).css({ 'display': 'block' }).addClass('active');
 
-			// Setup other components
+			// Setup components
 			base._setupArrows();
 			base._setupPagination();
 			base._setupPlayback();
 			base._setupResizing();
+			base._setupBackgrounds();
 
 			// Preload the slider
 			base._preload();
@@ -171,7 +172,7 @@
 
 			return base;
 
-		},
+		};
 
 		/**
 		 * Sets up the responsive support
@@ -185,15 +186,13 @@
 				base._updateSize();
 
 				// Handle window resizing
-				$(window).bind('resize', function() {
-					base._updateSize();
-				});
+				$(window).bind('resize', base._updateSize);
 			
 			}
 
 			return base;
 
-		},
+		};
 
 		/**
 		 * Updates the slider's size
@@ -204,7 +203,7 @@
 			var width = base.$el.outerWidth();
 
 			// If it has changed, resize the height to match.
-			if ( width <= base.width ) {
+			if ( width <= base.width && o.dimensions.keep_ratio ) {
 
 				// Using the default slider width, let's calculate the percentage change and thus calculate the new height.
 				var height = Math.floor((width / base.width) * base.height);
@@ -212,11 +211,38 @@
 				// Set the viewport height
 				base.$viewport.css({ 'height': height +'px' });
 
+				// Trigger event
+				base.$el.trigger('resize', [base, width, height]);
+
 			}
 
 			return base;
 
-		},
+		};
+
+		/**
+		 * Sets up the background slides, if enabled
+		 */
+		base._setupBackgrounds = function() {
+
+			// Handle background images, if enabled
+			if ( o.dimensions.background_images ) {
+				base.$slides.each(function() {
+
+					// Establish variables
+					var $slide = $(this),
+						$image = $slide.find('.easingslider-image');
+
+					// Set background
+					$slide.addClass('easingslider-background-slide').css({ 'background-image': 'url('+ $image.attr('src') +')' });
+
+					// Hide slide image
+					$image.css({ 'display': 'none' });
+
+				});
+			}
+
+		};
 
 		/**
 		 * Preloads the slider
@@ -297,7 +323,7 @@
 				});
 			}
 
-		},
+		};
 
 		/**
 		 * Starts automatic playback
@@ -527,7 +553,9 @@
 			height:              400,
 			responsive:          true,
 			full_width:          false,
-			image_resizing:      false
+			image_resizing:      false,
+			keep_ratio:          true,
+			background_images:   false
 		},
 		transitions: {
 			effect:              'fade',

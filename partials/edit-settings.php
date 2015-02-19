@@ -1,11 +1,11 @@
 <div class="wrap">
     <h2 class="nav-tab-wrapper">
         <?php foreach ( $tabs as $slug => $label ) : ?>
-            <a href="admin.php?page=<?php echo $page; ?>&amp;tab=<?php echo esc_attr( $slug ); ?>" class="nav-tab <?php echo ( $current_tab == $slug ) ? 'nav-tab-active' : ''; ?>"><?php echo esc_html( $label ); ?></a>
+            <a href="admin.php?page=<?php echo esc_attr( $page ); ?>&amp;tab=<?php echo esc_attr( $slug ); ?>" class="nav-tab <?php echo ( $current_tab == $slug ) ? 'nav-tab-active' : ''; ?>"><?php echo esc_html( $label ); ?></a>
         <?php endforeach; ?>
     </h2>
 
-    <form name="post" action="admin.php?page=<?php echo $page; ?>&amp;tab=<?php echo $current_tab; ?>" method="post">
+    <form name="post" action="admin.php?page=<?php echo esc_attr( $page ); ?>&amp;tab=<?php echo $current_tab; ?>" method="post">
         <?php
             /**
              * Security nonce field

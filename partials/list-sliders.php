@@ -6,7 +6,7 @@
         </a>
 
         <?php if ( isset( $_GET['s'] ) && ! empty( $_GET['s'] ) ) : ?>
-            <span class="subtitle"><?php printf( __( 'Search results for &#8220;%s&#8221;', 'easingslider' ), $_GET['s'] ); ?></span>
+            <span class="subtitle"><?php printf( __( 'Search results for &#8220;%s&#8221;', 'easingslider' ), esc_attr( $_GET['s'] ) ); ?></span>
         <?php endif; ?>
     </h2>
 
@@ -18,7 +18,7 @@
     ?>
 
     <form id="sliders-list" method="get">
-        <input type="hidden" name="page" value="<?php echo $_GET['page']; ?>" />
+        <input type="hidden" name="page" value="<?php echo esc_attr( $page ); ?>" />
 
         <?php
             /**

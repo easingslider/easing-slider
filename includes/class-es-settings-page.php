@@ -119,7 +119,7 @@ class ES_Settings_Page {
 	 */
 	public function current_tab() {
 
-		return ( isset( $_GET['tab'] ) ) ? $_GET['tab'] : 'general';
+		return ( isset( $_GET['tab'] ) ) ? sanitize_key( $_GET['tab'] ) : 'general';
 
 	}
 
@@ -186,7 +186,7 @@ class ES_Settings_Page {
 	public function display_view() {
 
 		// Get the current page
-		$page = $_GET['page'];
+		$page = sanitize_key( $_GET['page'] );
 
 		// Get the settings
 		$settings = get_option( 'easingslider_settings' );

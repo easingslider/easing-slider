@@ -284,7 +284,6 @@ class Easing_Slider {
 		add_action(    'easingslider_remove_data',             array( $extensions_page,   'remove_capabilities' ) );
 
 		add_action(    'delete_attachment',                    array( $image_resizer,     'delete_resized_attachments' ) );
-		add_filter(    'easingslider_modify_image_url',        array( $image_resizer,     'resized_image_url' ), 10, 3 );
 
 		add_action(    'init',                                 array( $legacy,            'lite_upgrade_from_200' ), 1 );
 		add_action(    'init',                                 array( $legacy,            'lite_upgrade_from_100' ), 2 );
@@ -319,8 +318,10 @@ class Easing_Slider {
 		add_filter(    'easingslider_pre_save_slider',         array( $slider,            'no_title' ) );
 		add_filter(    'easingslider_pre_display_slider',      array( $slider,            'maybe_randomize' ) );
 		add_filter(    'easingslider_get_html_data',           array( $slider,            'cleanup_data' ) );
+		add_filter(    'easingslider_before_display_slider',   array( $slider,            'no_script' ), 10, 2 );
 		add_filter(    'easingslider_before_slider_content',   array( $slider,            'add_preload' ), 10, 2 );
 		add_filter(    'easingslider_display_image_slide',     array( $slider,            'add_image' ), 10, 3 );
+		add_filter(    'easingslider_modify_image_url',        array( $slider,            'resize_image' ), 10, 3 );
 		add_filter(    'easingslider_before_display_slide',    array( $slider,            'open_link' ), 10, 3 );
 		add_filter(    'easingslider_after_display_slide',     array( $slider,            'close_link' ), 10, 3 );
 
@@ -363,6 +364,7 @@ class Easing_Slider {
 			 * Define hooks
 			 */
 			add_filter( 'easingslider_metadata_defaults',     array( $customizations,    'merge_defaults' ) );
+			add_filter( 'easingslider_get_container_data',    array( $customizations,    'remove_data' ), 10, 2 );
 			add_filter( 'easingslider_after_display_slider',  array( $customizations,    'drop_shadow' ), 10, 2 );
 			add_filter( 'easingslider_before_display_slider', array( $customizations,    'display_styling' ), 10, 2 );
 

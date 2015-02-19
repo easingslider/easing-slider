@@ -190,7 +190,7 @@ class ES_Customizer {
 	public function display_view() {
 
 		// Get the current page
-		$page = $_GET['page'];
+		$page = sanitize_key( $_GET['page'] );
 
 		// We need Easing Slider to be loaded by now, so continue if it has.
 		if ( class_exists( 'ES_Slider' ) ) {
@@ -208,7 +208,7 @@ class ES_Customizer {
 			if ( isset( $_GET['edit'] ) ) {
 
 				// Get and validate the ID, protecting against XSS attacks
-				$id = esc_attr( $_GET['edit'] );
+				$id = sanitize_key( $_GET['edit'] );
 
 				// Get the slider
 				$slider = ES_Slider::find( $id );

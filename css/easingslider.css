@@ -70,6 +70,14 @@
 	z-index: 30 !important;
 }
 
+.easingslider-background-slide {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
 .easingslider-link {
 	position: relative !important;
 	display: block !important;

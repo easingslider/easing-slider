@@ -17,13 +17,14 @@ class ES_Image_Resizer {
 	/**
 	 * Resizes an image
 	 *
-	 * @param  string   $url    The image URL
-	 * @param  int      $width  The desired width
-	 * @param  int      $height The desired height
-	 * @param  boolean  $crop   Toggles cropping
+	 * @param  string   $url     The image URL
+	 * @param  int      $width   The desired width
+	 * @param  int      $height  The desired height
+	 * @param  boolean  $crop    Toggles cropping
+	 * @param  int      $quality The resized image quality
 	 * @return array|WP_Error
 	 */
-	public function resize( $url, $width, $height, $crop = true ) {
+	public function resize( $url, $width, $height, $crop = true, $quality = 100 ) {
 
 		global $wpdb;
 
@@ -84,6 +85,9 @@ class ES_Image_Resizer {
 			if ( is_wp_error( $editor ) ) {
 				return array( 'url' => $url, 'width' => $width, 'height' => $height );
 			}
+
+			// Set the quality
+			$editor->set_quality( $quality );
 
 			// Get the original image size
 			$size        = $editor->get_size();
@@ -167,21 +171,13 @@ class ES_Image_Resizer {
 	 * @return object
 	 */
 	public function resized_image_url( $image_url, $width, $height ) {
-
-		// Get plugin settings
-		$settings = get_option( 'easingslider_settings' );
-
-		// Check for resizing
-		if ( ! empty( $settings->image_resizing ) ) {
 				
-			// Resize the image
-			$resized_image = $this->resize( $image_url, $width, $height, true );
+		// Resize the image
+		$resized_image = $this->resize( $image_url, $width, $height, true );
 
-			// Check for errors
-			if ( ! is_wp_error( $resized_image ) ) {
-				$image_url = $resized_image['url'];
-			}
-
+		// Check for errors
+		if ( ! is_wp_error( $resized_image ) ) {
+			$image_url = $resized_image['url'];
 		}
 
 		return $image_url;

@@ -44,6 +44,32 @@
 	</div>
 </div>
 
+<!-- Support Easing Slider -->
+<?php if ( apply_filters( 'easingslider_show_advert', __return_true() ) ) : ?>
+	<?php
+		/**
+		 * Create the Tweet URL
+		 */
+		$tweet_url = add_query_arg( array(
+			'text'     => __( 'Check out Easing Slider, an easy to use free slider plugin for WordPress.', 'easingslider' ),
+			'url'      => 'http://easingslider.com/',
+			'via'      => 'EasingSlider',
+			'hashtags' => 'wordpress',
+		), 'https://twitter.com/intent/tweet' );
+	?>
+
+	<div class="widgets-holder-wrap fixed">
+		<a href="http://easingslider.com/addons/pro-bundle" target="_blank">
+			<img src="<?php echo plugin_dir_url( Easing_Slider::$file ) . 'images/pro-bundle.png'; ?>" alt="\"Pro\" add-on bundle" style="display: block; width: 100%;" />
+		</a>
+
+		<div class="sidebar-content widgets-sortables clearfix">
+			<p><?php printf( __( 'Like Easing Slider? <br><a href="%s">Support us with a Tweet &raquo;</a>', 'easingslider' ), $tweet_url ); ?>
+			<p><?php printf( __( 'Remove this ad? <br><a href="%s" target="_blank">Purchase a premium add-on &raquo;</a>', 'easingslider' ), 'http://easingslider.com/addons' ); ?></p>
+		</div>
+	</div>
+<?php endif; ?>
+
 <!-- Dimensions -->
 <div class="widgets-holder-wrap">
 	<div class="sidebar-name">
@@ -82,6 +108,48 @@
 				</label>
 			</div>
 			<p class="description"><?php _e( 'Check this option to make this slider responsive. If enabled, the "width" and "height" values above will act as maximums.', 'easingslider' ); ?></p>
+		</div>
+
+		<div>
+			<a href="#" class="show-advanced-options"><?php printf( '+ %s', __( 'Advanced Options', 'easingslider' ) ); ?></a>
+			<div class="advanced-options hidden">
+				<div>
+					<div class="field">
+						<label for="full_width">
+							<input type="hidden" name="dimensions[full_width]" value="false">
+							<input type="checkbox" name="dimensions[full_width]" id="full_width" value="true" <?php checked( $slider->dimensions->full_width, true ); ?>><span style="display: inline;"><?php _e( 'Enable 100% full width.', 'easingslider' ); ?></span>
+						</label>
+					</div>
+					<p class="description"><?php _e( 'When enabled, the slider will set its container width to 100%. This option works for responsive sliders only. For best results, it\'s recommend that you disable image resizing when this option is enabled.', 'easingslider' ); ?></p>
+				</div>
+				<div>
+					<div class="field">
+						<label for="image_resizing">
+							<input type="hidden" name="dimensions[image_resizing]" value="false">
+							<input type="checkbox" name="dimensions[image_resizing]" id="image_resizing" value="true" <?php checked( $slider->dimensions->image_resizing, true ); ?>><span style="display: inline;"><?php _e( 'Crop & resize images to fit slider.', 'easingslider' ); ?></span>
+						</label>
+					</div>
+					<p class="description"><?php _e( 'Tick this option to have the slider crop & resize images to fit the slider dimensions. This will only work with images from the WordPress Media Library.', 'easingslider' ); ?></p>
+				</div>
+				<div>
+					<div class="field">
+						<label for="keep_ratio">
+							<input type="hidden" name="dimensions[keep_ratio]" value="false">
+							<input type="checkbox" name="dimensions[keep_ratio]" id="keep_ratio" value="true" <?php checked( $slider->dimensions->keep_ratio, true ); ?>><span style="display: inline;"><?php _e( 'Proportionally resize slider.', 'easingslider' ); ?></span>
+						</label>
+					</div>
+					<p class="description"><?php _e( 'This option enables proportional slider resizing for responsive sliders. This maintains the aspect ratio. Disable this option for fixed height sliders.', 'easingslider' ); ?></p>
+				</div>
+				<div>
+					<div class="field">
+						<label for="background_images">
+							<input type="hidden" name="dimensions[background_images]" value="false">
+							<input type="checkbox" name="dimensions[background_images]" id="background_images" value="true" <?php checked( $slider->dimensions->background_images, true ); ?>><span style="display: inline;"><?php _e( 'Use background images.', 'easingslider' ); ?></span>
+						</label>
+					</div>
+					<p class="description"><?php _e( 'Enable this option if you want the slider to use CSS background images for image slides.', 'easingslider' ); ?></p>
+				</div>
+			</div>
 		</div>
 
 		<?php

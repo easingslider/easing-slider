@@ -3,7 +3,7 @@
 }
 
 .updated.notice {
-    border-color: #ffba00 !important;
+	border-color: #ffba00 !important;
 }
 
 .extension {
@@ -13,12 +13,13 @@
 	padding: 15px;
 	float: left;
 	width: 300px;
-	height: 350px;
+	height: 330px;
 	position: relative;
 }
 
 .extension a {
 	display: block;
+	margin: -16px -16px 15px -16px;
 }
 
 .extension img {
@@ -26,8 +27,8 @@
 	height: auto;
 }
 
-.extension .button {
+.extension .button-primary {
 	position: absolute;
-	bottom: 10px;
-	right: 10px;
+	bottom: 15px;
+	left: 15px;
 }

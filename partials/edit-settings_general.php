@@ -1,27 +1,6 @@
 <table class="form-table">
 	<tbody>
 		<tr>
-			<th scope="row"><?php _e( 'Image Resizing', 'easingslider' ); ?></th>
-			<td>
-				<label for="image_resizing_true">
-					<input type="radio" name="settings[image_resizing]" id="image_resizing_true" value="true" <?php checked( $settings->image_resizing, true ); ?>>
-					<span><?php _e( 'Enable', 'easingslider' ); ?></span>
-				</label>
-
-				<label for="image_resizing_false">
-					<input type="radio" name="settings[image_resizing]" id="image_resizing_false" value="false" <?php checked( $settings->image_resizing, false ); ?>>
-					<span><?php _e( 'Disable', 'easingslider' ); ?></span>
-				</label>
-
-				<p class="description"><?php _e( 'Enable or disable the image resizing functionality. Disable this if you do not want the slide images to be resized.', 'easingslider' ); ?></p>
-			</td>
-		</tr>
-	</tbody>
-</table>
-
-<table class="form-table">
-	<tbody>
-		<tr>
 			<th scope="row"><?php _e( 'Asset Loading', 'easingslider' ); ?></th>
 			<td>
 				<label for="assets_header">

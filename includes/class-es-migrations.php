@@ -54,6 +54,44 @@ class ES_Migrations {
 	}
 
 	/**
+	 * Updates the plugin to v2.2.1.
+	 *
+	 * @param  int $version The current plugin version
+	 * @return void
+	 */
+	public function migrate_to_221( $version ) {
+
+		// Continue if upgrading from a lower version
+		if ( version_compare( $version, '2.2.1', '<' ) ) {
+
+			// Get the settings
+			$settings = get_option( 'easingslider_settings' );
+
+			// Bail if we have no settings or the setting we need
+			if ( ! $settings OR ! isset( $settings->image_resizing ) ) {
+				return;
+			}
+
+			// Get all sliders
+			$sliders = ES_Slider::all();
+
+			// Migrate the "Image Resizing" option
+			foreach ( $sliders as $slider ) {
+				$slider->dimensions->image_resizing = $settings->image_resizing;
+				$slider->save();
+			}
+
+			// Unset the settings option
+			unset( $settings->image_resizing );
+
+			// Update the settings
+			update_option( 'easingslider_settings', $settings );
+
+		}
+
+	}
+
+	/**
 	 * Updates the plugin version
 	 *
 	 * @return void

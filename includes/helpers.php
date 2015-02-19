@@ -52,8 +52,17 @@ if ( ! function_exists( 'easingslider_register_extension' ) ) {
 
         // Setup updates and licensing
         if ( class_exists( 'ES_Update_Manager' ) ) {
-            return new ES_Update_Manager( $name, $file, $version );
+
+            // Hide advert
+            add_filter( 'easingslider_show_advert', '__return_false' );
+
+            // Initiate update manager
+            $update_manager = new ES_Update_Manager( $name, $file, $version );
+
+            return $update_manager;
         }
+        
+        
         
     }
 }

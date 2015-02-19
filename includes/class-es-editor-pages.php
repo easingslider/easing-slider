@@ -297,7 +297,7 @@ class ES_Editor_Pages {
 			}
 
 			// Get and validate the ID, protecting against XSS attacks
-			$id = esc_attr( $_GET['edit'] );
+			$id = sanitize_key( $_GET['edit'] );
 
 			// Get our slider
 			$slider = ES_Slider::find( $id );
@@ -366,13 +366,13 @@ class ES_Editor_Pages {
 	public function display_edit_view() {
 
 		// Get the page
-		$page = $_GET['page'];
+		$page = sanitize_key( $_GET['page'] );
 
 		// Show the appropriate view
 		if ( isset( $_GET['edit'] ) ) {
 
 			// Get and validate the ID, protecting against XSS attacks
-			$id = esc_attr( $_GET['edit'] );
+			$id = sanitize_key( $_GET['edit'] );
 
 			// Get the slider by its ID
 			$slider = ES_Slider::find( $id );
@@ -401,7 +401,7 @@ class ES_Editor_Pages {
 	public function display_publish_view() {
 
 		// Get the current page
-		$page = $_GET['page'];
+		$page = sanitize_key( $_GET['page'] );
 
 		// Initiate a new slider
 		$slider = ES_Slider::create();

@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Defines our plugin public facing functionality
  *
+ * @uses   ES_Image_Resizer
  * @uses   Easing_Slider
  * @author Matthew Ruddy
  */
@@ -258,13 +259,13 @@ class ES_Slider {
 		$html = apply_filters( 'easingslider_before_display_slider', '', $slider );
 
 		// Start the output
-		$html .= "<div class=\"". esc_attr( $slider->get_html_classes() ) ."\" data-options=\"". esc_attr( $slider->get_html_data() ) ."\" style=\"". esc_attr( $slider->get_html_styles() ) ."\">";
+		$html .= "<div class=\"". esc_attr( $slider->get_container_classes() ) ."\" data-options=\"". esc_attr( $slider->get_container_data() ) ."\" style=\"". esc_attr( $slider->get_container_styles() ) ."\">";
 
 		// Inner "before" filter
 		$html = apply_filters( 'easingslider_before_slider_content', $html, $slider );
 
 			// Open the viewport
-			$html .= "<div class=\"easingslider-viewport\" style=\"padding-top: ". ( 100 * $slider->calculate_aspect_ratio() ) ."% !important;\">";
+			$html .= "<div class=\"easingslider-viewport\" style=\"". esc_attr( $slider->get_viewport_styles() ) ."\">";
 
 				// Output the slides
 				foreach ( $slider->slides as $slide ) {
@@ -385,7 +386,11 @@ class ES_Slider {
 			'dimensions'  => (object) array(
 				'width'               => 640,
 				'height'              => 400,
-				'responsive'          => true
+				'responsive'          => true,
+				'full_width'          => false,
+				'image_resizing'      => false,
+				'keep_ratio'          => true,
+				'background_images'   => false
 			),
 			'transitions' => (object) array(
 				'effect'              => 'fade',
@@ -472,47 +477,85 @@ class ES_Slider {
 	}
 
 	/**
-	 * Returns HTML classes
+	 * Returns HTML container data options attribute
 	 *
 	 * @return string
 	 */
-	protected function get_html_classes() {
+	protected function get_container_data() {
 
-		$classes = "easingslider easingslider-{$this->ID} use-{$this->transitions->effect}";
+		// Get metadata
+		$metadata = $this->get_metadata();
 
-		return apply_filters( 'easingslider_get_html_classes', $classes, $this );
+		// Remove slides as we don't need them
+		unset( $metadata['slides'] );
+
+		return json_encode( apply_filters( 'easingslider_get_container_data', $metadata, $this ) );
+		
+	}
+
+	/**
+	 * Returns HTML container classes
+	 *
+	 * @return string
+	 */
+	protected function get_container_classes() {
+
+		$classes = "easingslider easingslider-{$this->ID} no-js use-{$this->transitions->effect}";
+
+		return apply_filters( 'easingslider_get_container_classes', $classes, $this );
 
 	}
 
 	/**
-	 * Returns HTML styling
+	 * Returns HTML container styling
 	 *
 	 * @return string
 	 */
-	protected function get_html_styles() {
+	protected function get_container_styles() {
 
+		// Handle responsive and fixed dimensions separately
 		if ( $this->dimensions->responsive ) {
-			$styles = "max-width: {$this->dimensions->width}px !important; max-height: {$this->dimensions->height}px !important;";
+
+			// Handle full width if enabled or disabled
+			if ( $this->dimensions->full_width ) {
+				$styles = "max-width: 100% !important; ";
+			}
+			else {
+				$styles = "max-width: {$this->dimensions->width}px !important; ";
+			}
+
+			// Limit the max height
+			$styles .= "max-height: {$this->dimensions->height}px !important;";
+			
 		}
 		else {
+
+			// Add fixed dimensions for non-responsive
 			$styles = "width: {$this->dimensions->width}px !important; height: {$this->dimensions->height}px !important;";
+
 		}
 
-		return apply_filters( 'easingslider_get_html_styles', $styles, $this );
+		return apply_filters( 'easingslider_get_container_styles', $styles, $this );
 
 	}
 
 	/**
-	 * Returns HTML data options attribute
+	 * Returns HTML viewport styling
 	 *
 	 * @return string
 	 */
-	protected function get_html_data() {
+	protected function get_viewport_styles() {
 
-		$data = $this->get_metadata();
+		// Set the height
+		$styles = "height: {$this->dimensions->height}px;";
 
-		return json_encode( apply_filters( 'easingslider_get_html_data', $data, $this ) );
-		
+		// Limit max height when responsive
+		if ( $this->dimensions->responsive ) {
+			$styles .= "max-height: {$this->dimensions->height}px;";
+		}
+
+		return apply_filters( 'easingslider_get_viewport_styles', $styles, $this );
+
 	}
 
 	/**
@@ -531,7 +574,7 @@ class ES_Slider {
 		 *
 		 * The Javascript will set slides to "display: block".
 		 */
-		$html = "<div class=\"easingslider-slide easingslider-{$slide->type}-slide\" style=\"{$animation_duration}\">";
+		$html = "<div class=\"easingslider-slide easingslider-slide-{$slide->id} easingslider-{$slide->type}-slide\" style=\"{$animation_duration}\">";
 
 			$html = apply_filters( 'easingslider_before_display_slide', $html, $slide, $this );
 		
@@ -639,6 +682,36 @@ class ES_Slider {
 	}
 
 	/**
+	 * Adds "<noscript>" styling to slider for when Javascript is disabled
+	 *
+	 * @param  string $html   The slider HTML
+	 * @param  object $slider The slider object
+	 * @return string
+	 */
+	public function no_script( $html, $slider ) {
+
+		// Add the "<noscript">
+		$html .= "<noscript>";
+			$html .= "<style type=\"text/css\"> ";
+				$html .= ".easingslider-{$slider->ID} .easingslider-preload { ";
+					$html .= "display: none; ";
+				$html .= "} ";
+
+				$html .= ".easingslider-{$slider->ID} .easingslider-slide { ";
+					$html .= "display: none; ";
+				$html .= "} ";
+
+				$html .= ".easingslider-{$slider->ID} .easingslider-slide-1 { ";
+					$html .= "display: block !important; ";
+				$html .= "} ";
+			$html .= "</style> ";
+		$html .= "</noscript>";
+
+		return $html;
+
+	}
+
+	/**
 	 * Adds the HTML for the preloader
 	 *
 	 * @param  string $html   The slider HTML
@@ -668,12 +741,37 @@ class ES_Slider {
 		$image_url = ( $slide->attachment_id ) ? wp_get_attachment_url( $slide->attachment_id ) : $slide->url;
 
 		// Filter for modifying the image URL (needed for resizing, etc).
-		$image_url = apply_filters( 'easingslider_modify_image_url', $image_url, $slider->dimensions->width, $slider->dimensions->height );
+		$image_url = apply_filters( 'easingslider_modify_image_url', $image_url, $slide, $slider );
 
 		// Add the HTML
 		$html .= "<img src=\"{$image_url}\" title=\"{$slide->title}\" alt=\"{$slide->alt}\" class=\"easingslider-image\" />";
 
 		return $html;
+
+	}
+
+	/**
+	 * Resizes an image
+	 * 
+	 * @param  string $image_url The image URL
+	 * @param  object $slide     The slide object
+	 * @param  object $slider    The slider object
+	 * @return string
+	 */
+	public function resize_image( $image_url, $slide, $slider ) {
+
+		// Resize the image if enabled
+		if ( $slider->dimensions->image_resizing ) {
+
+			// Initiate image resizer
+			$image_resizer = new ES_Image_Resizer();
+
+			// Resize the image
+			$image_url = $image_resizer->resized_image_url( $image_url, $slider->dimensions->width, $slider->dimensions->height );
+
+		}
+
+		return $image_url;
 
 	}
 
