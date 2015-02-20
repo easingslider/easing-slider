@@ -692,7 +692,7 @@ class ES_Slider {
 
 		// Add the "<noscript">
 		$html .= "<noscript>";
-			$html .= "<style type=\"text/css\"> ";
+			$html .= "<style type=\"text/css\">";
 				$html .= ".easingslider-{$slider->ID} .easingslider-preload { ";
 					$html .= "display: none; ";
 				$html .= "} ";
@@ -703,8 +703,8 @@ class ES_Slider {
 
 				$html .= ".easingslider-{$slider->ID} .easingslider-slide-1 { ";
 					$html .= "display: block !important; ";
-				$html .= "} ";
-			$html .= "</style> ";
+				$html .= "}";
+			$html .= "</style>";
 		$html .= "</noscript>";
 
 		return $html;

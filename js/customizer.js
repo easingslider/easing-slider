@@ -180,7 +180,7 @@ window.EasingSlider = window.EasingSlider || { Customizer: { models: {}, views: 
 
 			});
 
-		},
+		}
 
 	});
 
