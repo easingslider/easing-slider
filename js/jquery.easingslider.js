@@ -212,7 +212,7 @@
 				base.$viewport.css({ 'height': height +'px' });
 
 				// Trigger event
-				base.$el.trigger('resize', [base, width, height]);
+				base.$el.trigger('size.update', [base, width, height]);
 
 			}
 
