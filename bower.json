@@ -1,0 +1,19 @@
+{
+  "name": "Easing Slider",
+  "version": "3.0.0",
+  "homepage": "https://github.com/easingslider/easing-slider",
+  "authors": [
+    "MatthewRuddy <info@matthewruddy.com>"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "owlcarousel": "~1.3.2"
+  }
+}

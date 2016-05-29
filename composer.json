@@ -1,0 +1,23 @@
+{
+    "name": "easingslider/easing-slider",
+    "description": "Just another slider plugin for WordPress.",
+    "keywords": ["easingslider"],
+    "type": "wordpress-plugin",
+    "homepage": "http://easingslider.com",
+    "license": "GPL-2.0+",
+    "require": {
+        "php": ">=5.3.0",
+        "composer/installers": "~1.0",
+        "rdlowrey/auryn": "^1.4"
+    },
+    "autoload": {
+        "files": [
+            "src/Foundation/helpers.php",
+            "src/Plugin/helpers.php"
+        ],
+        "psr-4": {
+            "EasingSlider\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}

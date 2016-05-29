@@ -1,0 +1,243 @@
+/* Global
+-------------------------------------------------------------- */
+.easingslider-wrapper,
+.easingslider-item,
+.easingslider-slide {
+    height: 100%;
+}
+
+.easingslider-link {
+    display: block;
+}
+
+/* Background Images
+-------------------------------------------------------------- */
+.easingslider-background-image {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
+
+/* Lazy Loading
+-------------------------------------------------------------- */
+.easingslider-item.loading {
+    background-image: url(../images/loading.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/* Wrapper Outer
+-------------------------------------------------------------- */
+.easingslider-wrapper-outer {
+    height: 100%;
+}
+
+/* Arrows
+-------------------------------------------------------------- */
+.easingslider-prev,
+.easingslider-next {
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    background-repeat: no-repeat;
+    z-index: 40;
+    cursor: pointer;
+}
+
+.easingslider-next {
+    background-image: url(../images/nav-arrow-next.png);
+    background-position: top right;
+}
+
+.easingslider-prev {
+    background-image: url(../images/nav-arrow-prev.png);
+    background-position: top left;
+}
+
+.easingslider-arrows-inside .easingslider-next {
+    right: 10px;
+}
+
+.easingslider-arrows-inside .easingslider-prev {
+    left: 10px;
+}
+
+.easingslider-arrows-outside .easingslider-next {
+    right: -40px;
+    padding-left: 20px;
+}
+
+.easingslider-arrows-outside .easingslider-prev {
+    left: -40px;
+    padding-right: 20px;
+}
+
+.easingslider-arrows-hover .easingslider-prev,
+.easingslider-arrows-hover .easingslider-next {
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease, -webkit-transform 0.1s ease-in;
+    -moz-transition: opacity 0.3s ease, -moz-transform 0.1s ease-in;
+    -ms-transition: opacity 0.3s ease, -ms-transform 0.1s ease-in;
+    -o-transition: opacity 0.3s ease, -o-transform 0.1s ease-in;
+    transition: opacity 0.3s ease, transform 0.1s ease-in;
+}
+
+.easingslider-arrows-hover .easingslider-prev {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    -moz-transform: translate3d(-10px, 0, 0);
+    -ms-transform: translate3d(-10px, 0, 0);
+    -o-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+}
+
+.easingslider-arrows-hover .easingslider-next {
+    -webkit-transform: translate3d(10px, 0, 0);
+    -moz-transform: translate3d(10px, 0, 0);
+    -ms-transform: translate3d(10px, 0, 0);
+    -o-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+}
+
+.easingslider-arrows-hover:hover .easingslider-prev,
+.easingslider-arrows-hover:hover .easingslider-next {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+/* Pagination
+-------------------------------------------------------------- */
+.easingslider-pagination {
+    position: absolute;
+    height: 17px;
+    z-index: 40;
+}
+
+.easingslider-pagination .easingslider-page {
+    display: inline-block;
+    *display: inline; /** IE7 hack */
+    zoom: 1; /** IE7 hack */
+}
+
+.easingslider-pagination .easingslider-page span {
+    width: 15px;
+    height: 15px;
+    margin: 0 2px 0 0;
+    padding: 0;
+    background-image: url(../images/nav-icon-inactive.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    display: block;
+    z-index: 40;
+    cursor: pointer;
+}
+
+.easingslider-pagination .easingslider-page:last-child span {
+    margin-right: 0;
+}
+
+.easingslider-pagination .easingslider-page.active span {
+    background-image: url(../images/nav-icon-active.png);
+}
+
+.easingslider-pagination-inside.easingslider-pagination-bottom-left .easingslider-pagination {
+    bottom: 10px;
+    left: 10px;
+}
+
+.easingslider-pagination-inside.easingslider-pagination-bottom-right .easingslider-pagination {
+    bottom: 10px;
+    right: 10px;
+}
+
+.easingslider-pagination-inside.easingslider-pagination-bottom-center .easingslider-pagination {
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.easingslider-pagination-inside.easingslider-pagination-top-left .easingslider-pagination {
+    top: 10px;
+    left: 10px;
+}
+
+.easingslider-pagination-inside.easingslider-pagination-top-right .easingslider-pagination {
+    top: 10px;
+    right: 10px;
+}
+
+.easingslider-pagination-inside.easingslider-pagination-top-center .easingslider-pagination {
+    top: 10px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.easingslider-pagination-outside.easingslider-pagination-bottom-left .easingslider-pagination {
+    bottom: -25px;
+    left: 0;
+    padding-top: 20px;
+}
+
+.easingslider-pagination-outside.easingslider-pagination-bottom-right .easingslider-pagination {
+    bottom: -25px;
+    right: 0;
+    padding-top: 20px;
+}
+
+.easingslider-pagination-outside.easingslider-pagination-bottom-center .easingslider-pagination {
+    bottom: -25px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.easingslider-pagination-outside.easingslider-pagination-top-left .easingslider-pagination {
+    top: -25px;
+    left: 0;
+    padding-bottom: 20px;
+}
+
+.easingslider-pagination-outside.easingslider-pagination-top-right .easingslider-pagination {
+    top: -25px;
+    right: 0;
+    padding-bottom: 20px;
+}
+
+.easingslider-pagination-outside.easingslider-pagination-top-center .easingslider-pagination {
+    top: -25px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.easingslider-pagination-hover .easingslider-pagination {
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease;
+    -moz-transition: opacity 0.3s ease;
+    -ms-transition: opacity 0.3s ease;
+    -o-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+
+.easingslider-pagination-hover:hover .easingslider-pagination {
+    opacity: 1;
+}
