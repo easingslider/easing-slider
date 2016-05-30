@@ -28,7 +28,7 @@ class Slider extends Model
 			'height'              => 400,
 			'responsive'          => true,
 			'full_width'          => false,
-			'image_resizing'      => false,
+			'image_resizing'      => true,
 			'auto_height'         => false,
 			'transition_effect'   => 'fade',
 			'transition_duration' => 400,

@@ -3,27 +3,17 @@
 .easingslider-wrapper,
 .easingslider-item,
 .easingslider-slide {
-    height: 100%;
+    /*height: 100%;*/
 }
 
 .easingslider-link {
     display: block;
 }
 
-/* Background Images
--------------------------------------------------------------- */
-.easingslider-background-image {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
+.easingslider-image {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
 }
 
 /* Lazy Loading
@@ -37,7 +27,7 @@
 /* Wrapper Outer
 -------------------------------------------------------------- */
 .easingslider-wrapper-outer {
-    height: 100%;
+    /*height: 100%;*/
 }
 
 /* Arrows

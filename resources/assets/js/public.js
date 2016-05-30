@@ -16,6 +16,7 @@
 		base.$el      = $(base.el);
 		base.$wrapper = base.$el.find('.easingslider-wrapper');
 		base.$slides  = base.$el.find('.easingslider-slide');
+		base.$images  = base.$el.find('.easingslider-image');
 
 		// Get options
 		base.options = window['EasingSlider'+ base.$el.attr('data-id')];
@@ -77,6 +78,14 @@
 				// Set the wrapper height
 				base.$el.css({ 'height': newHeight +'px' });
 				base.$wrapper.css({ 'height': newHeight +'px' });
+				base.$images.css({ 'max-height': newHeight +'px' });
+
+			} else {
+
+				// Set image height(s) only
+				base.$el.css({ 'height': base.options.height +'px' });
+				base.$wrapper.css({ 'height': base.options.height +'px' });
+				base.$images.css({ 'max-height': base.options.height +'px' });
 
 			}
 

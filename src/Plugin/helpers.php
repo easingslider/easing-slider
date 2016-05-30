@@ -56,10 +56,13 @@ if ( ! function_exists('easingslider_container_classes')) {
 			'easingslider-container'
 		);
 
-		// Dimensions
+		// Full width
 		if (true == $slider->full_width) {
 			$classes[] = 'easingslider-full-width';
-		} elseif (true == $slider->auto_height) {
+		}
+
+		// Auto height/aspect ratio
+		if (true == $slider->auto_height) {
 			$classes[] = 'easingslider-auto-height';
 		} else {
 			$classes[] = 'easingslider-aspect-ratio';
@@ -168,33 +171,22 @@ if ( ! function_exists('easingslider_inline_styles')) {
 			} else {
 				$styles .= "max-width: {$slider->width}px; ";
 			}
-
-			if (false == $slider->auto_height) {
-				$styles .= "max-height: {$slider->height}px; ";
-			}
 		$styles .= "}\n";
-
-		// Styling for wrapper "height"
-		$styles .= '.easingslider-wrapper-outer { ';
-			if (false == $slider->auto_height) {
-				$styles .= "max-height: {$slider->height}px; ";
-			}
-		$styles .= "}\n";
-
-		// Styling for "full width" background images
-		if (true == $slider->full_width) {
-			$styles .= '.easingslider-background-image { ';
-				$styles .= "height: {$slider->height}px;";
+		
+		// Styling for slide dimensions
+		if (false == $slider->auto_height) {
+			$styles .= '.easingslider-image { ';
+				$styles .= 'max-height: '. absint($slider->height) .'px; ';
+				$styles .= 'max-width: '. absint($slider->width) .'px; ';
 			$styles .= "}\n";
 		}
-
 
 		// Styling for "fade" transition speed
 		if ($slider->transition_effect) {
 			$styles .= '.easingslider-fade-in, .easingslider-fade-out { ';
-				$styles .= '-webkit-animation-duration: '. esc_attr($slider->transition_duration) .'ms; ';
-				$styles .= '-moz-animation-duration: '. esc_attr($slider->transition_duration) .'ms; ';
-				$styles .= 'animation-duration: '. esc_attr($slider->transition_duration) .'ms; ';
+				$styles .= '-webkit-animation-duration: '. absint($slider->transition_duration) .'ms; ';
+				$styles .= '-moz-animation-duration: '. absint($slider->transition_duration) .'ms; ';
+				$styles .= 'animation-duration: '. absint($slider->transition_duration) .'ms; ';
 			$styles .= "}\n";
 		}
 
@@ -261,14 +253,10 @@ if ( ! function_exists('easingslider_display_image_slide')) {
 					 * Here we use background images for "full width" sliders to achieve desired effect.
 					 */
 				?>
-				<?php if (true == $slider->full_width) : ?>
-					<div class="easingslider-background-image" style="background-image: url(<?php echo esc_attr($slide->url); ?>);"></div>
+				<?php if (true === $slider->lazy_loading) : ?>
+					<img src="<?php echo esc_attr(easingslider_get_placeholder_pixel()); ?>" data-src="<?php echo esc_attr($slide->url); ?>" alt="<?php echo esc_attr($slide->alt); ?>" title="<?php echo esc_attr($slide->title); ?>" class="easingslider-image easingslider-lazy" />
 				<?php else : ?>
-					<?php if (true === $slider->lazy_loading) : ?>
-						<img src="<?php echo esc_attr(easingslider_get_placeholder_pixel()); ?>" data-src="<?php echo esc_attr($slide->url); ?>" alt="<?php echo esc_attr($slide->alt); ?>" title="<?php echo esc_attr($slide->title); ?>" class="easingslider-image easingslider-lazy" />
-					<?php else : ?>
-						<img src="<?php echo esc_attr($slide->url); ?>" alt="<?php echo esc_attr($slide->alt); ?>" title="<?php echo esc_attr($slide->title); ?>" class="easingslider-image" />
-					<?php endif; ?>
+					<img src="<?php echo esc_attr($slide->url); ?>" alt="<?php echo esc_attr($slide->alt); ?>" title="<?php echo esc_attr($slide->title); ?>" class="easingslider-image" />
 				<?php endif; ?>
 			<?php if ( ! empty($slide->link) && 'none' != $slide->link) : ?></a><?php endif; ?>
 		<?php
