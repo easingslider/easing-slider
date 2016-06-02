@@ -50,7 +50,7 @@ abstract class Upgrades implements UpgradesContract
 	 */
 	protected function defineHooks()
 	{
-		add_action('init', array($this, 'doUpgrades'));
+		add_action('admin_init', array($this, 'doUpgrades'));
 	}
 
 	/**
