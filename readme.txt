@@ -1,36 +1,49 @@
 === Easing Slider  ===
 Homepage: http://easingslider.com
 Contributors: MatthewRuddy
-Tags: slideshow, slider, slides, slide, gallery, images, image, responsive, mobile, jquery, javascript, featured, content
+Tags: slider, wordpress slider, carousel, image slider, responsive slider, slide, slider, slideshow, wordpress slideshow, youtube slider, photo slider, banner rotator, best slider, content slider, fullwidth slider, gallery, hardware accelerate, mobile slider,post slider, swipe, touch slider, page slider, slider plugin, slider shortcode
 Requires at least: 4.5
-Tested up to: 4.5
+Tested up to: 4.6
 Stable tag: 3.0.0
 
-Easing Slider is an easy to use slider plugin. Simple and lightweight, is makes creating beautiful WordPress sliders a breeze.
+The easiest way to create sliders with WordPress.
 
 == Description ==
 
-Easing Slider is an extremely easy to use slider plugin for WordPress. It is built to be lightweight and simple, enabling you to create beautiful sliders quickly and efficiently. It comes with many great features, some of which include:
+Creating sliders with WordPress has always been a tricky business. Similiar plugins try to provide a solution but none really hit the mark. Easing Slider aims to fix that. This plugin focuses on achieving it's core purpose - to create and manage sliders with ease. It aims to keep slider creation simple, require little to no learning curve, and fit into the WordPress admin area like it was included from the start.
 
-* Fully responsive & mobile ready
-* Bulk image uploading, integrated with new WordPress Media Library
-* CSS3 transitions for ultra smooth transitions
-* Navigation arrows & pagination
-* Preloading functionality on page load
-* A visual editor for customizing basic styling
-* Developer friendly with built-in Javascript events
-* Dozens of extensions that greatly enhance plugin functionality
-* Lots of actions & filters for custom functionality
+Put simply, Easing Slider makes creating sliders simple by providing just the features you need.
 
-<strong>Easing Slider has many great extensions that can vastly enhance the plugin's functionality. <a href="http://easingslider.com/extensions">Browse them all here</a>.</strong>
+> Need additionals features? Easing Slider is fully flexible and can be enhanced with add-ons available to license holders only. Want to gain access? <a href="http://easingslider.com/#product-pricing" target="_blank">See Pricing</a>.
 
-Throughly tested on iPhone, iPad and multiple Android devices, Easing Slider is the perfect solution for mobile sliders. We've used CSS3 animation to ensure ultra smooth transitions on supported devices, with graceful fallbacks for older browsers.
+Some of the best Easing Slider features include:
 
-We've also integrated the new WordPress Media Library workflow to provide a better media management experience. Similar to the Media Library, the learning curve and minimal and the admin interface feels instantly recognisable. Bulk uploading images to your slider is now easy, requiring just a few clicks.
+#### Primary Features:
+* Responsive & ready for all devices
+* Seamless integration with the WordPress admin area
+* Full WordPress Media Library integration
+* Smooth transitions thanks to hardware acceleration
+* Professional & reliable code by experienced PHP developers
+* Lazy Loading for extremely fast page loading times
+* Lots of add-ons to enhance functionality greatly (<a href="http://easingslider.com/addons" target="_blank">See our Website</a>)
 
-Last but not least, we've left plenty of opportunity for custom plugin modifications using the WordPress Action & Filter APIs. You can completely create your own external functionality, or purchase <a href="http://easingslider.com/extensions">one of our extensions</a> to avail of pre-built additional features.
+#### Support
+Need help & support? No problems. If you ever run into any trouble, don't hesitate to <a href="http://easingslider.com/support" target="_blank">Contact Us</a>.
 
-<strong>Follow & contribute to this plugin on <a href="https://github.com/easingslider/easing-slider">Github</a>.</strong>
+#### Add-ons
+Easing Slider is highly focused to ensure a solid user experience. To ensure this, we offer our additional features as installable add-ons. This ensures that you're using only the features you require, with nothing else to pollute your product experience.
+
+Just some of the functionality offered:
+* **Simple Captions** - Add captions to your slides with minimal effort!
+* **Posts Feed** - Source slides from WordPress posts, pages, or a custom post type.
+* **Thumbnails** - Use thumbnails as for slider pagination, instead of icons.
+* **Video Slides** - Add videos to your sliders from YouTube, Vimeo or Wistia.
+* **Carousel** - Turn your slider(s) into a carousel, showing multiple slides at once.
+* **Lightbox** - Link images to a jQuery Lightbox
+* **External Images** -
+
+#### Embracing Open Source
+Easing Slider is fully open source. We welcome all contributions, issues and criticism. Please don't hesitate to follow & contribute through Github. You can find our repository <a href="https://github.com/easingslider/easing-slider">here</a>.
 
 == Installation ==
 
@@ -74,6 +87,9 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 7. A preview of a slider. This is how is should appear on your WordPress site (may differ based on your settings).
 
 == Changelog ==
+
+= 3.0.0 =
+* A complete internal rebuild, now fully compatible with current versions of WordPress and those coming in the future. Marks the start of a new product direction for Easing Slider, and a renewed committment to continued development!
 
 = 2.2.1.1 =
 * Fixed “Maximum call stack exceeded” bug encountered when displaying multiple sliders on a single page.
