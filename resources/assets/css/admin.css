@@ -678,6 +678,17 @@ div[id*="__wp-uploader-id"] .media-modal .media-modal-close:hover .media-modal-i
     display: block;
 }
 
+/* Upgrade Info
+-------------------------------------------------------------- */
+.upgrade-info .upgrade-info-title {
+    font-size: 24px;
+}
+
+.upgrade-info .upgrade-info-list li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
 /* Media Queries
 -------------------------------------------------------------- */
 @media only screen and (max-width: 1040px) {
