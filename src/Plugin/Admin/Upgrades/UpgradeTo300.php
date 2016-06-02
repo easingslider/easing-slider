@@ -194,30 +194,32 @@ class UpgradeTo300 extends Upgrader
 			// New data
 			$data = array();
 
-			// Map settings
+			// Map linear values
 			$data['post_title'] = get_the_title($oldSlider->ID);
 			$data['type'] = 'media';
 			$data['slides'] = $oldSlider->slides;
-			$data['randomize'] = $oldSlider->general->randomize;
-			$data['width'] = $oldSlider->dimensions->width;
-			$data['height'] = $oldSlider->dimensions->height;
 			$data['responsive'] = true;
-			$data['full_width'] = $oldSlider->dimensions->full_width;
 			$data['image_resizing'] = true;
 			$data['auto_height'] = false;
-			$data['background_images'] = $oldSlider->dimensions->background_images;
 			$data['lazy_loading'] = true;
-			$data['transition_effect'] = $oldSlider->transitions->effect;
-			$data['transition_duration'] = $oldSlider->transitions->duration;
-			$data['arrows'] = $oldSlider->navigation->arrows;
-			$data['arrows_hover'] = $oldSlider->navigation->arrows_hover;
-			$data['arrows_position'] = $oldSlider->navigation->arrows_position;
-			$data['pagination'] = $oldSlider->navigation->pagination;
-			$data['pagination_hover'] = $oldSlider->navigation->pagination_hover;
-			$data['pagination_position'] = $oldSlider->navigation->pagination_position;
-			$data['pagination_location'] = $oldSlider->navigation->pagination_location;
-			$data['playback_enabled'] = $oldSlider->playback->enabled;
-			$data['playback_pause'] = $oldSlider->playback->pause;
+
+			// Map dynamic values
+			$data = $this->setSliderAttribute($data, 'randomize', $oldSlider, 'general', 'randomize');
+			$data = $this->setSliderAttribute($data, 'width', $oldSlider, 'dimensions', 'width');
+			$data = $this->setSliderAttribute($data, 'height', $oldSlider, 'dimensions', 'height');
+			$data = $this->setSliderAttribute($data, 'full_width', $oldSlider, 'dimensions', 'full_width');
+			$data = $this->setSliderAttribute($data, 'background_images', $oldSlider, 'dimensions', 'background_images');
+			$data = $this->setSliderAttribute($data, 'transition_effect', $oldSlider, 'transitions', 'effect');
+			$data = $this->setSliderAttribute($data, 'transition_duration', $oldSlider, 'transitions', 'duration');
+			$data = $this->setSliderAttribute($data, 'arrows', $oldSlider, 'navigation', 'arrows');
+			$data = $this->setSliderAttribute($data, 'arrows_hover', $oldSlider, 'navigation', 'arrows_hover');
+			$data = $this->setSliderAttribute($data, 'arrows_position', $oldSlider, 'navigation', 'arrows_position');
+			$data = $this->setSliderAttribute($data, 'pagination', $oldSlider, 'navigation', 'pagination');
+			$data = $this->setSliderAttribute($data, 'pagination_hover', $oldSlider, 'navigation', 'pagination_hover');
+			$data = $this->setSliderAttribute($data, 'pagination_position', $oldSlider, 'navigation', 'pagination_position');
+			$data = $this->setSliderAttribute($data, 'pagination_location', $oldSlider, 'navigation', 'pagination_location');
+			$data = $this->setSliderAttribute($data, 'playback_enabled', $oldSlider, 'playback', 'enabled');
+			$data = $this->setSliderAttribute($data, 'playback_pause', $oldSlider, 'playback', 'pause');
 
 			// Update the slider with new data
 			$sliders->update($oldSlider->ID, $data);
@@ -231,6 +233,25 @@ class UpgradeTo300 extends Upgrader
 			delete_post_meta($oldSlider->ID, '_easingslider_playback', true);
 
 		}
+	}
+
+	/**
+	 * Sets a slider attribute, if the old slider value exists.
+	 *
+	 * @param  array  $slider
+	 * @param  string $key
+	 * @param  object $oldSlider
+	 * @param  string $oldSection
+	 * @param  string $oldKey
+	 * @return array
+	 */
+	protected function setSliderAttribute($slider, $key, $oldSlider, $oldSection, $oldValue)
+	{
+		if (isset($oldSlider->{$oldSection}->{$oldValue})) {
+			$slider[$key] = $oldSlider->{$oldSection}->{$oldValue};
+		}
+
+		return $slider;
 	}
 
 	/**
