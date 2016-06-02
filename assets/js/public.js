@@ -1578,8 +1578,11 @@ if (typeof Object.create !== "function") {
 		 */
 		base.doResize = function() {
 
-			// Get the current width
+			// Get the current width & wrapper width
 			var currentWidth = base.$el.outerWidth();
+
+			// Get the outer wrapper
+			var outerWrapper = base.$el.find('.easingslider-wrapper-outer');
 
 			// If it has changed, resize the height to match.
 			if ( currentWidth <= base.options.width ) {
@@ -1600,6 +1603,9 @@ if (typeof Object.create !== "function") {
 				base.$images.css({ 'max-height': base.options.height +'px' });
 
 			}
+
+			// Prevent subpixel rendering by rounding width
+			outerWrapper.css({ 'width': Math.floor(outerWrapper.outerWidth()) +'px' });
 
 			return base;
 
