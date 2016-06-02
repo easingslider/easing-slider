@@ -37,7 +37,7 @@ class UpgradeTo300 extends Upgrader
 	 *
 	 * @var string
 	 */
-	protected $upgradeFrom = '2.2.1';
+	protected $upgradeFrom = '2.2';
 
 	/**
 	 * The version we're upgrading too
@@ -203,7 +203,7 @@ class UpgradeTo300 extends Upgrader
 			$data['height'] = $oldSlider->dimensions->height;
 			$data['responsive'] = true;
 			$data['full_width'] = $oldSlider->dimensions->full_width;
-			$data['image_resizing'] = $oldSlider->dimensions->image_resizing;
+			$data['image_resizing'] = true;
 			$data['auto_height'] = false;
 			$data['background_images'] = $oldSlider->dimensions->background_images;
 			$data['lazy_loading'] = true;
