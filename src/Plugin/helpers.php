@@ -504,11 +504,7 @@ if ( ! function_exists('easingslider_admin_show_upgrade_info')) {
 				<ul class="upgrade-info-list">
 					<li>
 						<span class="dashicons dashicons-info"></span>
-						<a href="http://easingslider.com/addon-compatibility" target="_blank"><?php _e('Addon Compatibility & Changes', 'easingslider'); ?></a>
-					</li>
-					<li>
-						<span class="dashicons dashicons-admin-network"></span>
-						<a href="http://easingslider.com/licensing-changes" target="_blank"><?php _e('Free License Upgrade', 'easingslider'); ?></a>
+						<a href="http://easingslider.com/important-changes" target="_blank"><?php _e('Important Addon & Licensing Changes', 'easingslider'); ?></a>
 					</li>
 					<li>
 						<span class="dashicons dashicons-dismiss"></span>
