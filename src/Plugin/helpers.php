@@ -466,3 +466,69 @@ if ( ! function_exists('easingslider_admin_upgrade_license_response')) {
 	}
 	add_filter('easingslider_edd_license_handler_error_response', 'easingslider_admin_upgrade_license_response', 10, 2);
 }
+
+if ( ! function_exists('easingslider_admin_upgrade_info_notice')) {
+	/**
+	 * Triggers a notice that is shown to users who have upgraded from v2.* to v3.0.0.
+	 *
+	 * @return void
+	 */
+	function easingslider_admin_upgrade_info_notice()
+	{
+		$hasUpgraded = get_option('easingslider_upgraded_from_v2', false);
+
+		if ($hasUpgraded) {
+			add_action('admin_notices', 'easingslider_admin_show_upgrade_info');
+		}
+	}
+	add_action('admin_init', 'easingslider_admin_upgrade_info_notice');
+}
+
+if ( ! function_exists('easingslider_admin_show_upgrade_info')) {
+	/**
+	 * Shows a notice to users who have upgraded.
+	 *
+	 * @return void
+	 */
+	function easingslider_admin_show_upgrade_info()
+	{
+		// Bail if not on one of our admin pages
+		if ( ! easingslider_is_admin()) {
+			return;
+		}
+
+		?>
+			<div class="message updated upgrade-info">
+				<p class="upgrade-info-title"><?php _e('Thanks for Upgrading!', 'easingslider'); ?></p>
+				<p class="upgrade-info-text"><?php _e('Thank you for upgrading to Easing Slider v3! So much has changed - please check out the important update information below.', 'easingslider'); ?></p>
+				<ul class="upgrade-info-list">
+					<li>
+						<span class="dashicons dashicons-info"></span>
+						<a href="http://easingslider.com/addon-compatibility" target="_blank"><?php _e('Addon Compatibility & Changes', 'easingslider'); ?></a>
+					</li>
+					<li>
+						<span class="dashicons dashicons-admin-network"></span>
+						<a href="http://easingslider.com/licensing-changes" target="_blank"><?php _e('Free License Upgrade', 'easingslider'); ?></a>
+					</li>
+					<li>
+						<span class="dashicons dashicons-dismiss"></span>
+						<a href="<?php echo esc_attr(add_query_arg('easingslider_action', 'dismiss_upgrade_info')); ?>"><?php _e('Dismiss', 'easingslider'); ?></a>
+					</li>
+				</ul>
+			</div>
+		<?php
+	}
+}
+
+if ( ! function_exists('easingslider_admin_dismiss_upgrade_info')) {
+	/**
+	 * Dismisses the upgrade info notice
+	 *
+	 * @return void
+	 */
+	function easingslider_admin_dismiss_upgrade_info()
+	{
+		delete_option('easingslider_upgraded_from_v2');
+	}
+	add_action('easingslider_dismiss_upgrade_info', 'easingslider_admin_dismiss_upgrade_info');
+}

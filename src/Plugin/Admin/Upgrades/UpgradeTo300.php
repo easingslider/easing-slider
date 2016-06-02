@@ -70,6 +70,17 @@ class UpgradeTo300 extends Upgrader
 	}
 
 	/**
+	 * Sets an option telling us that this user has upgraded from a previous version to v3.0.0.
+	 * This allows us to conditionally display an notice providing information related to the upgrade.
+	 *
+	 * @return void
+	 */
+	protected function setupUpgradeNotice()
+	{
+		add_option('easingslider_upgraded_from_v2', true);
+	}
+
+	/**
 	 * Migrates the license key
 	 *
 	 * @return void
@@ -273,9 +284,11 @@ class UpgradeTo300 extends Upgrader
 	 */
 	protected function doUpgrade()
 	{
-		$this->upgradeCapabilities();
+		$this->setupUpgradeNotice();
 
 		$this->migrateLicense();
+
+		$this->upgradeCapabilities();
 
 		$this->upgradeSettings();
 
