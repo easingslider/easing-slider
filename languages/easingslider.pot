@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Easing Slider 3.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/easing-slider\n"
-"POT-Creation-Date: 2016-06-02 12:23:35+00:00\n"
+"POT-Creation-Date: 2016-06-02 17:03:56+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -452,25 +452,21 @@ msgid ""
 "here</a> to get your new license key for free."
 msgstr ""
 
-#: src/Plugin/helpers.php:497
+#: src/Plugin/helpers.php:502
 msgid "Thanks for Upgrading!"
 msgstr ""
 
-#: src/Plugin/helpers.php:498
+#: src/Plugin/helpers.php:503
 msgid ""
-"Thank you for upgrading to Easing Slider v3. Lots has changed, please see "
-"some important information on this update below."
+"Thank you for upgrading to Easing Slider v3! So much has changed - please "
+"check out the important update information below."
 msgstr ""
 
-#: src/Plugin/helpers.php:502
-msgid "Note on Addon Compatibility"
+#: src/Plugin/helpers.php:507
+msgid "Important Addon & Licensing Changes"
 msgstr ""
 
-#: src/Plugin/helpers.php:506
-msgid "Documentation"
-msgstr ""
-
-#: src/Plugin/helpers.php:510
+#: src/Plugin/helpers.php:511
 msgid "Dismiss"
 msgstr ""
 
