@@ -22,6 +22,18 @@ abstract class OptionArray extends Option implements OptionArrayContract
 	public $value = array();
 
 	/**
+	 * Gets the option value
+	 *
+	 * @return mixed
+	 */
+	public function getValue()
+	{
+		$value = get_option($this->name, $this->getDefaults());
+
+		return array_merge($this->getDefaults(), (array) $value);
+	}
+
+	/**
 	 * Checks if an offset exists
 	 *
 	 * @param  mixed $offset
