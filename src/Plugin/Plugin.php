@@ -159,7 +159,7 @@ final class Plugin extends BasePlugin
 	protected function setl10n()
 	{
 		// Load plugin textdomain
-		load_plugin_textdomain('easingslider', false, plugin_basename(EASINGSLIDER_PLUGIN_FILE) . '/languages/');
+		load_plugin_textdomain('easingslider', false, dirname(plugin_basename(EASINGSLIDER_PLUGIN_FILE)) . '/languages/');
 	}
 
 	/**
