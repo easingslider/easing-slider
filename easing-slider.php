@@ -47,6 +47,11 @@ function easingslider_check_requirements()
 {
 	global $wp_version;
 
+	// Load deactivation function is it hasn't been loaded already
+	if ( ! function_exists('deactivate_plugins')) {
+		require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+	}
+
 	// Deactivate the plugin if using less than PHP 5.3.
 	if (version_compare(PHP_VERSION, '5.3.0', '<')) {
 		deactivate_plugins(plugin_basename(EASINGSLIDER_PLUGIN_FILE));
