@@ -108,7 +108,7 @@ class UpgradeTo300 extends Upgrade
 		$settings['remove_data'] = $oldSettings['remove_data'];
 
 		// Set the new settings
-		$this->settings->value = $settings;
+		$this->settings->setValue($settings);
 
 		// Update the settings
 		$this->settings->save();
