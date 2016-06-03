@@ -39,6 +39,35 @@ define('EASINGSLIDER_TEMPLATES_DIR', EASINGSLIDER_PLUGIN_DIR .'templates/');
 define('EASINGSLIDER_TEMPLATES_URL', EASINGSLIDER_PLUGIN_URL .'templates/');
 
 /**
+ * Checks requirements to ensure we have the minimum PHP and WordPress versions required.
+ *
+ * @return void
+ */
+function easingslider_check_requirements()
+{
+	global $wp_version;
+
+	// Deactivate the plugin if using less than PHP 5.3.
+	if (version_compare(PHP_VERSION, '5.3.0', '<')) {
+		deactivate_plugins(plugin_basename(EASINGSLIDER_PLUGIN_FILE));
+		wp_die(sprintf(__('Sorry, but your version of PHP (v%s) is not supported by Easing Slider. PHP v5.3.0 or greater is required. The plugin has been deactivated. <a href="%s">Return to the Dashboard.</a>', 'easingslider'), PHP_VERSION, admin_url()));
+		exit();
+	}
+
+	// Deactivate the plugin if the WordPress version is below the minimum required.
+	if (version_compare($wp_version, '4.5', '<')) {
+		deactivate_plugins(plugin_basename(EASINGSLIDER_PLUGIN_FILE));
+		wp_die(sprintf(__('Sorry, but your version of WordPress, <strong>%s</strong>, is not supported by Easing Slider. The plugin has been deactivated. <a href="%s">Return to the Dashboard.</a>', 'easingslider'), $wp_version, admin_url()));
+		exit();
+	}
+}
+
+/**
+ * Do the requirements check
+ */
+easingslider_check_requirements();
+
+/**
  * Autoload dependencies
  */
 require_once('vendor/autoload.php');

@@ -43,30 +43,6 @@ class Activator extends BaseActivator
 	}
 
 	/**
-	 * Checks our require and deactivates the plugin if those requirements aren't met.
-	 *
-	 * @return void
-	 */
-	protected function checkRequirements()
-	{
-		global $wp_version;
-
-		// Deactivate the plugin if using less than PHP 5.3.
-		if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-			deactivate_plugins(plugin_basename(EASINGSLIDER_PLUGIN_FILE));
-			wp_die(sprintf(__('Sorry, but your version of PHP (v%s) is not supported. PHP v5.3.0 or greater is required. The plugin has been deactivated. <a href="%s">Return to the Dashboard.</a>', 'easingslider'), PHP_VERSION, admin_url()));
-			exit();
-		}
-
-		// Deactivate the plugin if the WordPress version is below the minimum required.
-		if (version_compare($wp_version, '4.5', '<')) {
-			deactivate_plugins(plugin_basename(EASINGSLIDER_PLUGIN_FILE));
-			wp_die(sprintf(__('Sorry, but your version of WordPress, <strong>%s</strong>, is not supported. The plugin has been deactivated. <a href="%s">Return to the Dashboard.</a>', 'easingslider'), $wp_version, admin_url()));
-			exit();
-		}
-	}
-
-	/**
 	 * Creates our capabilities
 	 *
 	 * @return void
@@ -104,8 +80,6 @@ class Activator extends BaseActivator
 	 */
 	public function activate()
 	{
-		$this->checkRequirements();
-
 		$this->createCapabilities();
 
 		$this->flushRewriteRules();
