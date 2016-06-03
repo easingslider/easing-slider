@@ -11,10 +11,5 @@ if ( ! defined('ABSPATH')) {
 
 interface Upgrader
 {
-	/**
-	 * Executes an upgrade
-	 *
-	 * @return void
-	 */
-	public function upgrade();
+	//
 }

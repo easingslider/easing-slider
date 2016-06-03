@@ -4,10 +4,9 @@ namespace EasingSlider\Plugin\Admin\Upgrades;
 
 use WP_Roles;
 use WP_Query;
-use EasingSlider\Plugin\Admin\Upgrades\Upgrader;
+use EasingSlider\Foundation\Admin\Upgrades\Upgrade;
 use EasingSlider\Plugin\Contracts\Options\License;
 use EasingSlider\Plugin\Contracts\Options\Settings;
-use EasingSlider\Plugin\Contracts\Options\Version;
 
 /**
  * Exit if accessed directly
@@ -16,7 +15,7 @@ if ( ! defined('ABSPATH')) {
 	exit;
 }
 
-class UpgradeTo300 extends Upgrader
+class UpgradeTo300 extends Upgrade
 {
 	/**
 	 * Settings
@@ -47,26 +46,16 @@ class UpgradeTo300 extends Upgrader
 	protected $upgradeTo = '3.0.0';
 
 	/**
-	 * Operator for version comparison
-	 *
-	 * @var string
-	 */
-	protected $operator = '>=';
-
-	/**
 	 * Constructor
 	 *
-	 * @param  \EasingSlider\Plugin\Contracts\Options\Version  $version
 	 * @param  \EasingSlider\Plugin\Contracts\Options\Settings $settings
 	 * @param  \EasingSlider\Plugin\Contracts\Options\License  $license
 	 * @return void
 	 */
-	public function __construct(Version $version, Settings $settings, License $license)
+	public function __construct(Settings $settings, License $license)
 	{
 		$this->settings = $settings;
 		$this->license = $license;
-
-		parent::__construct($version);
 	}
 
 	/**
@@ -299,11 +288,11 @@ class UpgradeTo300 extends Upgrader
 	}
 
 	/**
-	 * Handles the upgrade
+	 * Executes the upgrade
 	 *
 	 * @return void
 	 */
-	protected function doUpgrade()
+	public function upgrade()
 	{
 		$this->setupUpgradeNotice();
 

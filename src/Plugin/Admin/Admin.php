@@ -71,11 +71,11 @@ class Admin extends BaseAdmin
 	protected $notices;
 
 	/**
-	 * Upgrades
+	 * Upgrader
 	 *
-	 * @var \EasingSlider\Foundation\Contracts\Admin\Upgrades\Upgrades
+	 * @var \EasingSlider\Foundation\Contracts\Admin\Upgrades\Upgrader
 	 */
-	protected $upgrades;
+	protected $upgrader;
 
 	/**
 	 * Aliases
@@ -92,7 +92,7 @@ class Admin extends BaseAdmin
 		'\EasingSlider\Foundation\Contracts\Admin\Menus\Menu'                     => '\EasingSlider\Plugin\Admin\Menus\Menu',
 		'\EasingSlider\Foundation\Contracts\Admin\Panels\Panels'                  => '\EasingSlider\Plugin\Admin\Panels\Panels',
 		'\EasingSlider\Foundation\Contracts\Admin\PluginUpdaters\PluginUpdater'   => '\EasingSlider\Plugin\Admin\AddonUpdater',
-		'\EasingSlider\Foundation\Contracts\Admin\Upgrades\Upgrades'              => '\EasingSlider\Plugin\Admin\Upgrades\Upgrades',
+		'\EasingSlider\Foundation\Contracts\Admin\Upgrades\Upgrader'              => '\EasingSlider\Plugin\Admin\Upgrades\Upgrader',
 		'\EasingSlider\Plugin\Contracts\Admin\Validators\License'                 => '\EasingSlider\Plugin\Admin\Validators\License',
 		'\EasingSlider\Plugin\Contracts\Admin\Validators\Settings'                => '\EasingSlider\Plugin\Admin\Validators\Settings',
 		'\EasingSlider\Plugin\Contracts\Admin\Validators\Slider'                  => '\EasingSlider\Plugin\Admin\Validators\Slider'
@@ -111,7 +111,7 @@ class Admin extends BaseAdmin
 		'\EasingSlider\Foundation\Contracts\Admin\LicenseHandlers\LicenseHandler',
 		'\EasingSlider\Foundation\Contracts\Admin\Menus\Menu',
 		'\EasingSlider\Foundation\Contracts\Admin\Panels\Panels',
-		'\EasingSlider\Foundation\Contracts\Admin\Upgrades\Upgrades'
+		'\EasingSlider\Foundation\Contracts\Admin\Upgrades\Upgrader'
 	);
 
 	/**
@@ -128,6 +128,6 @@ class Admin extends BaseAdmin
 		$this->mediaButton    = $this->plugin->make('\EasingSlider\Plugin\Admin\MediaButton');
 		$this->menu           = $this->plugin->make('\EasingSlider\Foundation\Contracts\Admin\Menus\Menu');
 		$this->notices        = $this->plugin->make('\EasingSlider\Foundation\Contracts\Admin\Notices\NoticeHandler');
-		$this->upgrades       = $this->plugin->make('\EasingSlider\Foundation\Contracts\Admin\Upgrades\Upgrades');
+		$this->upgrader       = $this->plugin->make('\EasingSlider\Foundation\Contracts\Admin\Upgrades\Upgrader');
 	}
 }

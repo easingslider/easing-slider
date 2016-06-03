@@ -2,8 +2,9 @@
 
 namespace EasingSlider\Foundation\Admin\Upgrades;
 
+use EasingSlider\Foundation\Contracts\Admin\Upgrades\Upgrade;
 use EasingSlider\Foundation\Contracts\Admin\Upgrades\Upgrader as UpgraderContract;
-use EasingSlider\Foundation\Contracts\Options\Option;
+use EasingSlider\Foundation\Contracts\Plugin;
 
 /**
  * Exit if accessed directly
@@ -15,93 +16,139 @@ if ( ! defined('ABSPATH')) {
 abstract class Upgrader implements UpgraderContract
 {
 	/**
+	 * Upgrades
+	 *
+	 * @var array
+	 */
+	protected $upgrades = array();
+
+	/**
+	 * Plugin
+	 *
+	 * @var \EasingSlider\Foundation\Contracts\Plugin
+	 */
+	protected $plugin;
+
+	/**
 	 * Version
 	 *
-	 * @var \EasingSlider\Foundation\Contracts\Options\Option
+	 * @var \EasingSlider\Plugin\Contracts\Options\Version
 	 */
 	protected $version;
 
 	/**
-	 * The version we're upgrading from (or greater)
-	 *
-	 * @var string
-	 */
-	protected $upgradeFrom;
-
-	/**
-	 * The version we're upgrading too
-	 *
-	 * @var string
-	 */
-	protected $upgradeTo;
-
-	/**
-	 * Operator for version comparison
-	 *
-	 * @var string
-	 */
-	protected $operator = '=';
-
-	/**
 	 * Constructor
 	 *
-	 * @param \EasingSlider\Foundation\Contracts\Options\Option $version
+	 * @param  \EasingSlider\Foundation\Contracts\Plugin $plugin
 	 * @return void
 	 */
-	public function __construct(Option $version)
+	public function __construct(Plugin $plugin)
 	{
-		$this->version = $version;
+		$this->plugin = $plugin;
+
+		$this->version = $plugin->version();
+
+		$this->defineHooks();
+
+		$this->boot();
 	}
 
 	/**
-	 * Checks if we meet the requirements to upgrade
-	 *
-	 * @return boolean
-	 */
-	protected function meetsRequirements()
-	{
-		// Get the current version
-		$version = $this->version->getValue();
-
-		// Compare version against upgrade "to" and "from" values to ensure a strict bracket of eligible versions.
-		if (version_compare($version, $this->upgradeFrom, '>=')) {
-			if (version_compare($version, $this->upgradeTo, '<')) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * Updates the current plugin version.
+	 * Define hooks
 	 *
 	 * @return void
 	 */
-	protected function updateVersion()
+	protected function defineHooks()
 	{
-		$this->version->setValue($this->upgradeTo);
+		add_action('admin_init', array($this, 'doUpgrades'));
+	}
+
+	/**
+	 * Gets the plugin version
+	 *
+	 * @return string
+	 */
+	protected function getVersion()
+	{
+		return $this->version->getValue();
+	}
+
+	/**
+	 * Gets the current plugin version
+	 *
+	 * @return string
+	 */
+	protected function getCurrentVersion()
+	{
+		return EASINGSLIDER_VERSION;
+	}
+
+	/**
+	 * Sets the plugin version
+	 *
+	 * @param  string $version
+	 * @return void
+	 */
+	protected function setVersion($version)
+	{
+		$this->version->setValue($version);
 		$this->version->save();
 	}
 
 	/**
-	 * Executes an upgrade, first checking the version.
+	 * Sets the current plugin version
 	 *
 	 * @return void
 	 */
-	public function upgrade()
+	protected function setCurrentVersion()
 	{
-		if ($this->meetsRequirements()) {
-			$this->doUpgrade();
+		$version = $this->getVersion();
+		$currentVersion = $this->getCurrentVersion();
 
-			$this->updateVersion();
+		if ($currentVersion != $version) {
+			$this->setVersion($currentVersion);
 		}
 	}
 
 	/**
-	 * Handles the upgrade
+	 * Handles an upgrade
+	 *
+	 * @param  \EasingSlider\Foundation\Contracts\Admin\Upgrades\Upgrade $upgrade
+	 * @return void
+	 */
+	protected function handleUpgrade(Upgrade $upgrade)
+	{
+		$version = $this->getVersion();
+
+		if ($upgrade->isEligible($version)) {
+
+			// Do the upgrade
+			$upgrade->upgrade();
+
+			// Set the version
+			$this->setVersion($upgrade->getVersion());
+
+		}
+	}
+
+	/**
+	 * Do upgrades
 	 *
 	 * @return void
 	 */
-	abstract protected function doUpgrade();
+	public function doUpgrades()
+	{
+		foreach ($this->upgrades as $upgrade) {
+			$this->handleUpgrade($upgrade);
+		}
+
+		$this->setCurrentVersion();
+	}
+
+	/**
+	 * Boot
+	 *
+	 * @return void
+	 */
+	abstract protected function boot();
 }
