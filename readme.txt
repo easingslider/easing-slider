@@ -4,7 +4,7 @@ Contributors: MatthewRuddy
 Tags: slider, wordpress slider, carousel, image slider, responsive slider, slide, slider, slideshow, wordpress slideshow, youtube slider, photo slider, banner rotator, best slider, content slider, fullwidth slider, gallery, hardware accelerate, mobile slider,post slider, swipe, touch slider, page slider, slider plugin, slider shortcode
 Requires at least: 4.5
 Tested up to: 4.6
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 
 The easiest way to create sliders with WordPress.
 

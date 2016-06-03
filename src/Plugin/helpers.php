@@ -61,6 +61,11 @@ if ( ! function_exists('easingslider_container_classes')) {
 			$classes[] = 'easingslider-full-width';
 		}
 
+		// Image resizing
+		if (true == $slider->image_resizing) {
+			$classes[] = 'easingslider-resizing-enabled';
+		}
+
 		// Auto height/aspect ratio
 		if (true == $slider->auto_height) {
 			$classes[] = 'easingslider-auto-height';
@@ -169,7 +174,7 @@ if ( ! function_exists('easingslider_inline_styles')) {
 			if (true == $slider->full_width) {
 				$styles .= 'width: 100%; ';
 			} else {
-				$styles .= "max-width: {$slider->width}px; ";
+				$styles .= 'max-width: '. absint($slider->width) .'px; ';
 			}
 		$styles .= "}\n";
 		

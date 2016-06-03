@@ -14,9 +14,6 @@
 		// Establish our elements
 		base.el       = el;
 		base.$el      = $(base.el);
-		base.$wrapper = base.$el.find('.easingslider-wrapper');
-		base.$slides  = base.$el.find('.easingslider-slide');
-		base.$images  = base.$el.find('.easingslider-image');
 
 		// Get options
 		base.options = window['EasingSlider'+ base.$el.attr('data-id')];
@@ -66,11 +63,17 @@
 		 */
 		base.doResize = function() {
 
-			// Get the current width & wrapper width
-			var currentWidth = base.$el.outerWidth();
+			// Get elements
+			var $el = base.$el;
+			var $wrapper = $el.find('.easingslider-wrapper');
+			var $items = $el.find('.easingslider-item');
+			var $images = $el.find('.easingslider-image');
+
+			// Get the current width & height
+			var currentWidth = $el.outerWidth();
 
 			// Get the outer wrapper
-			var outerWrapper = base.$el.find('.easingslider-wrapper-outer');
+			var outerWrapper = $el.find('.easingslider-wrapper-outer');
 
 			// If it has changed, resize the height to match.
 			if ( currentWidth <= base.options.width ) {
@@ -78,17 +81,19 @@
 				// Using the default slider width, let's calculate the percentage change and thus calculate the new height.
 				var newHeight = Math.floor((currentWidth / base.options.width) * base.options.height);
 
-				// Set the wrapper height
-				base.$el.css({ 'height': newHeight +'px' });
-				base.$wrapper.css({ 'height': newHeight +'px' });
-				base.$images.css({ 'max-height': newHeight +'px' });
+				// Set heights
+				$el.css({ 'height': newHeight +'px' });
+				$items.css({ 'height': newHeight +'px' });
+				$wrapper.css({ 'height': newHeight +'px' });
+				$images.css({ 'max-height': newHeight +'px' });
 
 			} else {
 
-				// Set image height(s) only
-				base.$el.css({ 'height': base.options.height +'px' });
-				base.$wrapper.css({ 'height': base.options.height +'px' });
-				base.$images.css({ 'max-height': base.options.height +'px' });
+				// Set heights
+				$el.css({ 'height': base.options.height +'px' });
+				$wrapper.css({ 'height': base.options.height +'px' });
+				$item.css({ 'height': base.options.height +'px' });
+				$images.css({ 'max-height': base.options.height +'px' });
 
 			}
 

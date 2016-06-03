@@ -2,9 +2,9 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Easing Slider 3.0.0\n"
+"Project-Id-Version: Easing Slider 3.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/easing-slider\n"
-"POT-Creation-Date: 2016-06-03 12:02:22+00:00\n"
+"POT-Creation-Date: 2016-06-03 12:49:47+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -445,28 +445,28 @@ msgstr ""
 msgid " (ID #%s)"
 msgstr ""
 
-#: src/Plugin/helpers.php:461
+#: src/Plugin/helpers.php:466
 msgid ""
 "An upgrade to your license key is required to allow addon access when using "
 "Easing Slider v3.0.0 or greater. <a href=\"%s\" target=\"_blank\">Click "
 "here</a> to get your new license key for free."
 msgstr ""
 
-#: src/Plugin/helpers.php:502
+#: src/Plugin/helpers.php:507
 msgid "Thanks for Upgrading!"
 msgstr ""
 
-#: src/Plugin/helpers.php:503
+#: src/Plugin/helpers.php:508
 msgid ""
 "Thank you for upgrading to Easing Slider v3! So much has changed - please "
 "check out the important update information below."
 msgstr ""
 
-#: src/Plugin/helpers.php:507
+#: src/Plugin/helpers.php:512
 msgid "Important Addon & Licensing Changes"
 msgstr ""
 
-#: src/Plugin/helpers.php:511
+#: src/Plugin/helpers.php:516
 msgid "Dismiss"
 msgstr ""
 

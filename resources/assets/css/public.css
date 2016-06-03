@@ -1,5 +1,11 @@
 /* Slides
 -------------------------------------------------------------- */
+.easingslider-resizing-enabled .easingslider-image {
+    width: 100%;
+}
+
+/* Slides
+-------------------------------------------------------------- */
 .easingslider-slide {
     background-color: #fff;
 }
