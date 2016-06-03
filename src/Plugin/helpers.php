@@ -505,23 +505,6 @@ if ( ! function_exists('easingslider_admin_upgrade_license_response')) {
 	add_filter('easingslider_edd_license_handler_error_response', 'easingslider_admin_upgrade_license_response', 10, 2);
 }
 
-if ( ! function_exists('easingslider_admin_upgrade_info_notice')) {
-	/**
-	 * Triggers a notice that is shown to users who have upgraded from v2.* to v3.0.0.
-	 *
-	 * @return void
-	 */
-	function easingslider_admin_upgrade_info_notice()
-	{
-		$hasUpgraded = get_option('easingslider_upgraded_from_v2', false);
-
-		if ($hasUpgraded) {
-			add_action('admin_notices', 'easingslider_admin_show_upgrade_info');
-		}
-	}
-	add_action('admin_init', 'easingslider_admin_upgrade_info_notice');
-}
-
 if ( ! function_exists('easingslider_admin_show_upgrade_info')) {
 	/**
 	 * Shows a notice to users who have upgraded.
@@ -532,6 +515,11 @@ if ( ! function_exists('easingslider_admin_show_upgrade_info')) {
 	{
 		// Bail if not on one of our admin pages
 		if ( ! easingslider_is_admin()) {
+			return;
+		}
+
+		// Bail if we've not upgraded from v2
+		if ( ! get_option('easingslider_upgraded_from_v2', false)) {
 			return;
 		}
 
@@ -552,6 +540,7 @@ if ( ! function_exists('easingslider_admin_show_upgrade_info')) {
 			</div>
 		<?php
 	}
+	add_action('admin_notices', 'easingslider_admin_show_upgrade_info');
 }
 
 if ( ! function_exists('easingslider_admin_dismiss_upgrade_info')) {
