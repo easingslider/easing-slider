@@ -233,6 +233,12 @@
 @keyframes scaleUpTo {
   to { opacity: 0; transform: scale(1.5); }
 }
+/* Slides
+-------------------------------------------------------------- */
+.easingslider-slide {
+    background-color: #fff;
+}
+
 /* Images
 -------------------------------------------------------------- */
 .easingslider-image {
