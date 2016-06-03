@@ -4,7 +4,7 @@ Contributors: MatthewRuddy
 Tags: slider, wordpress slider, carousel, image slider, responsive slider, slide, slider, slideshow, wordpress slideshow, youtube slider, photo slider, banner rotator, best slider, content slider, fullwidth slider, gallery, hardware accelerate, mobile slider,post slider, swipe, touch slider, page slider, slider plugin, slider shortcode
 Requires at least: 4.5
 Tested up to: 4.6
-Stable tag: 3.0.1
+Stable tag: 3.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -89,11 +89,14 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 
 == Changelog ==
 
-= 3.0.1 =
+= 3.0.2 - June 3rd, 2016 =
+* Refactored boot sequence to prevent errors prior to completing PHP & WordPress version checks.
+
+= 3.0.1 - June 3rd, 2016 =
 * Fixed bug that prevented lazy loading icon from showing when loading is in progress.
 * Minimum requirement checks now occur before any PHP v5.3 namespaced code gets loaded, thus preventing fatal errors.
 
-= 3.0.0 =
+= 3.0.0 - June 3rd, 2016 =
 * A complete internal rebuild, now fully compatible with current versions of WordPress and those coming in the future. Marks the start of a new product direction for Easing Slider, and a renewed committment to continued development!
 
 = 2.2.1.1 =

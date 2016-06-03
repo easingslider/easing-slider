@@ -2,9 +2,9 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Easing Slider 3.0.1\n"
+"Project-Id-Version: Easing Slider 3.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/easing-slider\n"
-"POT-Creation-Date: 2016-06-03 12:49:47+00:00\n"
+"POT-Creation-Date: 2016-06-03 17:31:56+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -73,20 +73,6 @@ msgstr ""
 
 #: src/Foundation/Admin/Panels/SettingsApiPanel.php:362
 msgid "The callback function used for the <strong>%s</strong> setting is missing."
-msgstr ""
-
-#: src/Plugin/Activation/Activator.php:57
-msgid ""
-"Sorry, but your version of PHP (v%s) is not supported. PHP v5.3.0 or "
-"greater is required. The plugin has been deactivated. <a href=\"%s\">Return "
-"to the Dashboard.</a>"
-msgstr ""
-
-#: src/Plugin/Activation/Activator.php:64
-msgid ""
-"Sorry, but your version of WordPress, <strong>%s</strong>, is not "
-"supported. The plugin has been deactivated. <a href=\"%s\">Return to the "
-"Dashboard.</a>"
 msgstr ""
 
 #: src/Plugin/Admin/Actions/Addons.php:102
@@ -445,28 +431,28 @@ msgstr ""
 msgid " (ID #%s)"
 msgstr ""
 
-#: src/Plugin/helpers.php:466
+#: src/Plugin/helpers.php:499
 msgid ""
 "An upgrade to your license key is required to allow addon access when using "
 "Easing Slider v3.0.0 or greater. <a href=\"%s\" target=\"_blank\">Click "
 "here</a> to get your new license key for free."
 msgstr ""
 
-#: src/Plugin/helpers.php:507
+#: src/Plugin/helpers.php:540
 msgid "Thanks for Upgrading!"
 msgstr ""
 
-#: src/Plugin/helpers.php:508
+#: src/Plugin/helpers.php:541
 msgid ""
 "Thank you for upgrading to Easing Slider v3! So much has changed - please "
 "check out the important update information below."
 msgstr ""
 
-#: src/Plugin/helpers.php:512
+#: src/Plugin/helpers.php:545
 msgid "Important Addon & Licensing Changes"
 msgstr ""
 
-#: src/Plugin/helpers.php:516
+#: src/Plugin/helpers.php:549
 msgid "Dismiss"
 msgstr ""
 

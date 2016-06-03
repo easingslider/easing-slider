@@ -11,6 +11,23 @@ if ( ! defined('ABSPATH')) {
 	exit;
 }
 
+if ( ! function_exists('Easing_Slider')) {
+	/**
+	 * The main function responsible for returning the one true Easing_Slider instance to functions everywhere.
+	 *
+	 * Use this function like you would a global variable, except without needing
+	 * to declare the global.
+	 *
+	 * Example: <?php $easing_slider = Easing_Slider(); ?>
+	 *
+	 * @return Easing_Slider
+	 */
+	function Easing_Slider()
+	{
+		return \EasingSlider\Plugin\Plugin::instance();
+	}
+}
+
 if ( ! function_exists('easingslider')) {
 	/**
 	 * Alias for displaying a slider shortcode
@@ -20,8 +37,24 @@ if ( ! function_exists('easingslider')) {
 	 */
 	function easingslider($id)
 	{
-		return Easing_Slider()->shortcode()->render(array('id' => $id));
+		$shortcode = Easing_Slider()->shortcode();
+
+		return $shortcode->render(array('id' => $id));
 	}
+}
+
+if ( ! function_exists('easingslider_activate')) {
+	/**
+	 * Activator
+	 *
+	 * @return void
+	 */
+	function easingslider_activate()
+	{	
+		$activator = Easing_Slider()->activator();
+		$activator->activate();
+	}
+	register_activation_hook(__FILE__, 'easingslider_activate');
 }
 
 if ( ! function_exists('easingslider_get_template_part')) {

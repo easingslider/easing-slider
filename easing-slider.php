@@ -3,7 +3,7 @@
  * Plugin Name: Easing Slider
  * Plugin URI: http://easingslider.com/
  * Description: A simple WordPress plugin for creating beautiful sliders.
- * Version: 3.0.1
+ * Version: 3.0.2
  * Author: Matthew Ruddy
  * Author URI: http://matthewruddy.com
  * License: GPL2
@@ -25,7 +25,7 @@ if ( ! defined('ABSPATH')) {
 /**
  * Define constants
  */
-define('EASINGSLIDER_VERSION', '3.0.1');
+define('EASINGSLIDER_VERSION', '3.0.2');
 define('EASINGSLIDER_NAME', 'Easing Slider');
 define('EASINGSLIDER_API_URL', 'http://easingslider.com/');
 define('EASINGSLIDER_PLUGIN_DIR', plugin_dir_path(__FILE__));
@@ -39,11 +39,12 @@ define('EASINGSLIDER_TEMPLATES_DIR', EASINGSLIDER_PLUGIN_DIR .'templates/');
 define('EASINGSLIDER_TEMPLATES_URL', EASINGSLIDER_PLUGIN_URL .'templates/');
 
 /**
- * Checks requirements to ensure we have the minimum PHP and WordPress versions required.
+ * Checks requirements to ensure we have the minimum PHP and WordPress versions required,
+ * and if we do, boots the plugin.
  *
  * @return void
  */
-function easingslider_check_requirements()
+function easingslider_boot()
 {
 	global $wp_version;
 
@@ -65,50 +66,15 @@ function easingslider_check_requirements()
 		wp_die(sprintf(__('Sorry, but your version of WordPress, <strong>%s</strong>, is not supported by Easing Slider. The plugin has been deactivated. <a href="%s">Return to the Dashboard.</a>', 'easingslider'), $wp_version, admin_url()));
 		exit();
 	}
-}
 
-/**
- * Do the requirements check
- */
-easingslider_check_requirements();
+	// Everything is good to go, let's load our dependencies
+	require_once('vendor/autoload.php');
 
-/**
- * Autoload dependencies
- */
-require_once('vendor/autoload.php');
-
-/**
- * The main function responsible for returning the one true Easing_Slider instance to functions everywhere.
- *
- * Use this function like you would a global variable, except without needing
- * to declare the global.
- *
- * Example: <?php $easing_slider = Easing_Slider(); ?>
- *
- * @return Easing_Slider
- */
-function Easing_Slider()
-{
-	return \EasingSlider\Plugin\Plugin::instance();
+	// Now let's boot the plugin
+	Easing_Slider();
 }
 
 /**
  * Let's go!
  */
-Easing_Slider();
-
-/**
- * Activator
- *
- * @return void
- */
-function easingslider_activate()
-{	
-	$activator = Easing_Slider()->activator();
-	$activator->activate();
-}
-
-/**
- * Register activation hook
- */
-register_activation_hook(__FILE__, 'easingslider_activate');
+easingslider_boot();
