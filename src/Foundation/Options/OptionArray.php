@@ -15,6 +15,13 @@ if ( ! defined('ABSPATH')) {
 abstract class OptionArray extends Option implements OptionArrayContract
 {
 	/**
+	 * Value
+	 *
+	 * @var array
+	 */
+	public $value = array();
+
+	/**
 	 * Checks if an offset exists
 	 *
 	 * @param  mixed $offset
