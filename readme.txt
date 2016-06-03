@@ -5,6 +5,8 @@ Tags: slider, wordpress slider, carousel, image slider, responsive slider, slide
 Requires at least: 4.5
 Tested up to: 4.6
 Stable tag: 3.0.1
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 The easiest way to create sliders with WordPress.
 
@@ -18,7 +20,7 @@ Put simply, Easing Slider makes creating sliders simple by providing just the fe
 
 Some of the best Easing Slider features include:
 
-#### Primary Features:
+#### Primary Features
 * Responsive & ready for all devices
 * Seamless integration with the WordPress admin area
 * Full WordPress Media Library integration
@@ -30,19 +32,18 @@ Some of the best Easing Slider features include:
 #### Support
 Need help & support? No problems. If you ever run into any trouble, don't hesitate to <a href="http://easingslider.com/support" target="_blank">Contact Us</a>.
 
-#### Add-ons
-Easing Slider is highly focused to ensure a solid user experience. To ensure this, we offer our additional features as installable add-ons. This ensures that you're using only the features you require, with nothing else to pollute your product experience.
+#### Additional Features
+Easing Slider is highly focused to ensure a solid user experience. To ensure this, we offer our additional features as installable add-ons. This ensures that you're using only the features you require, with nothing else to pollute your product experience. Some additional feature available include:
 
-Just some of the functionality offered:
-* **Simple Captions** - Add captions to your slides with minimal effort!
-* **Posts Feed** - Source slides from WordPress posts, pages, or a custom post type.
-* **Thumbnails** - Use thumbnails as for slider pagination, instead of icons.
-* **Video Slides** - Add videos to your sliders from YouTube, Vimeo or Wistia.
-* **Carousel** - Turn your slider(s) into a carousel, showing multiple slides at once.
-* **Lightbox** - Link images to a jQuery Lightbox
-* **External Images** -
+*  **Simple Captions** - Add captions to your slides with minimal effort!
+*  **Posts Feed** - Source slides from WordPress posts, pages, or a custom post type.
+*  **Thumbnails** - Use thumbnails as for slider pagination, instead of icons.
+*  **Video Slides** - Add videos to your sliders from YouTube, Vimeo or Wistia.
+*  **Carousel** - Turn your slider(s) into a carousel, showing multiple slides at once.
+*  **Lightbox** - Link images to a jQuery Lightbox
+*  **External Images** - Add images from external sites via URL
 
-#### Embracing Open Source
+#### Contributing
 Easing Slider is fully open source. We welcome all contributions, issues and criticism. Please don't hesitate to follow & contribute through Github. You can find our repository <a href="https://github.com/easingslider/easing-slider">here</a>.
 
 == Installation ==
@@ -87,6 +88,10 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 7. A preview of a slider. This is how is should appear on your WordPress site (may differ based on your settings).
 
 == Changelog ==
+
+= 3.0.1 =
+* Fixed bug that prevented lazy loading icon from showing when loading is in progress.
+* Minimum requirement checks now occur before any PHP v5.3 namespaced code gets loaded, thus preventing fatal errors.
 
 = 3.0.0 =
 * A complete internal rebuild, now fully compatible with current versions of WordPress and those coming in the future. Marks the start of a new product direction for Easing Slider, and a renewed committment to continued development!
