@@ -155,9 +155,12 @@ abstract class SettingsApiPanel extends Panel implements PanelContract
 		// Parse referer
 		parse_str($_POST['_wp_http_referer'], $referrer);
 
-		// Get the settings section and current tab
+		// Get the settings sections and tabs
 		$settings = $this->getSections();
-		$tab = isset($referrer['tab']) ? $referrer['tab'] : array_shift($this->getTabs());
+		$tabs = $this->getTabs();
+
+		// Get the current tab
+		$tab = isset($referrer['tab']) ? $referrer['tab'] : current($tabs);
 		
 		// Validate
 		$input = $this->validateInput($input);
