@@ -63,6 +63,35 @@ abstract class Upgrades implements UpgradesContract
 		foreach ($this->upgraders as $upgrader) {
 			$upgrader->upgrade();
 		}
+
+		if ( ! $this->isVersionUpdated()) {
+			$this->setCurrentVersion();
+		}
+	}
+
+	/**
+	 * Checks if the current plugin version is up to date
+	 *
+	 * @return boolean
+	 */
+	protected function isVersionUpdated()
+	{
+		$version = $this->plugin->version();
+
+		return (EASINGSLIDER_VERSION == $version->getValue()) ? true : false;
+	}
+
+	/**
+	 * Sets the current plugin version
+	 *
+	 * @return void
+	 */
+	protected function setCurrentVersion()
+	{
+		$version = $this->plugin->version();
+
+		$version->setValue(EASINGSLIDER_VERSION);
+		$version->save();
 	}
 
 	/**

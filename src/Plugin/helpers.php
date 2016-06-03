@@ -54,7 +54,7 @@ if ( ! function_exists('easingslider_activate')) {
 		$activator = Easing_Slider()->activator();
 		$activator->activate();
 	}
-	register_activation_hook(__FILE__, 'easingslider_activate');
+	register_activation_hook(EASINGSLIDER_PLUGIN_FILE, 'easingslider_activate');
 }
 
 if ( ! function_exists('easingslider_get_template_part')) {

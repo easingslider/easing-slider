@@ -91,6 +91,7 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 
 = 3.0.2 - June 3rd, 2016 =
 * Refactored boot sequence to prevent errors prior to completing PHP & WordPress version checks.
+* Fixed issue that lead to version number not getting updated unless an updater class existed.
 
 = 3.0.1 - June 3rd, 2016 =
 * Fixed bug that prevented lazy loading icon from showing when loading is in progress.

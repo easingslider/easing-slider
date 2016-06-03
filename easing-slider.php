@@ -56,14 +56,14 @@ function easingslider_boot()
 	// Deactivate the plugin if using less than PHP 5.3.
 	if (version_compare(PHP_VERSION, '5.3.0', '<')) {
 		deactivate_plugins(plugin_basename(EASINGSLIDER_PLUGIN_FILE));
-		wp_die(sprintf(__('Sorry, but your version of PHP (v%s) is not supported by Easing Slider. PHP v5.3.0 or greater is required. The plugin has been deactivated. <a href="%s">Return to the Dashboard.</a>', 'easingslider'), PHP_VERSION, admin_url()));
+		wp_die(sprintf(__('Sorry, but your version of PHP (%s) is not supported by Easing Slider. PHP 5.3 or greater is required. We recommend contacting your hosting provider to have your PHP version upgraded. Easing Slider has been deactivated. <a href="%s">Return to the Dashboard.</a>', 'easingslider'), PHP_VERSION, admin_url()));
 		exit();
 	}
 
 	// Deactivate the plugin if the WordPress version is below the minimum required.
 	if (version_compare($wp_version, '4.5', '<')) {
 		deactivate_plugins(plugin_basename(EASINGSLIDER_PLUGIN_FILE));
-		wp_die(sprintf(__('Sorry, but your version of WordPress, <strong>%s</strong>, is not supported by Easing Slider. The plugin has been deactivated. <a href="%s">Return to the Dashboard.</a>', 'easingslider'), $wp_version, admin_url()));
+		wp_die(sprintf(__('Sorry, but your version of WordPress, <strong>%s</strong>, is not supported by Easing Slider. Easing Slider has been deactivated. <a href="%s">Return to the Dashboard.</a>', 'easingslider'), $wp_version, admin_url()));
 		exit();
 	}
 
