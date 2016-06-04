@@ -91,6 +91,7 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 
 = 3.0.3 - June 4th, 2016 =
 * Fixed issue that caused template function not to display unless echoed.
+* Fixed `Fatal error: Can't inherit abstract function` related issues (known PHP bug https://bugs.php.net/bug.php?id=66818)
 
 = 3.0.2 - June 3rd, 2016 =
 * Refactored boot sequence to prevent errors prior to completing PHP & WordPress version checks.
