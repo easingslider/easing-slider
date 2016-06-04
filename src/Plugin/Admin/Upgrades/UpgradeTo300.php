@@ -195,7 +195,6 @@ class UpgradeTo300 extends Upgrade
 			$data['post_title'] = get_the_title($oldSlider->ID);
 			$data['type'] = 'media';
 			$data['slides'] = $oldSlider->slides;
-			$data['responsive'] = true;
 			$data['image_resizing'] = true;
 			$data['auto_height'] = false;
 			$data['lazy_loading'] = true;

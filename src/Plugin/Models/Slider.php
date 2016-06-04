@@ -26,7 +26,6 @@ class Slider extends Model
 			'randomize'           => false,
 			'width'               => 640,
 			'height'              => 400,
-			'responsive'          => true,
 			'full_width'          => false,
 			'image_resizing'      => true,
 			'auto_height'         => false,
