@@ -5,8 +5,10 @@ namespace EasingSlider\Plugin\Admin\Upgrades;
 use WP_Roles;
 use WP_Query;
 use EasingSlider\Foundation\Admin\Upgrades\Upgrade;
+use EasingSlider\Foundation\Contracts\Repositories\Repository;
 use EasingSlider\Plugin\Contracts\Options\License;
 use EasingSlider\Plugin\Contracts\Options\Settings;
+
 
 /**
  * Exit if accessed directly
@@ -17,6 +19,13 @@ if ( ! defined('ABSPATH')) {
 
 class UpgradeTo300 extends Upgrade
 {
+	/**
+	 * Sliders
+	 *
+	 * @var \EasingSlider\Foundation\Contracts\Repositories\Repository
+	 */
+	protected $sliders;
+
 	/**
 	 * Settings
 	 *
@@ -48,12 +57,14 @@ class UpgradeTo300 extends Upgrade
 	/**
 	 * Constructor
 	 *
-	 * @param  \EasingSlider\Plugin\Contracts\Options\Settings $settings
-	 * @param  \EasingSlider\Plugin\Contracts\Options\License  $license
+	 * @param  \EasingSlider\Foundation\Contracts\Repositories\Repository $sliders
+	 * @param  \EasingSlider\Plugin\Contracts\Options\Settings            $settings
+	 * @param  \EasingSlider\Plugin\Contracts\Options\License             $license
 	 * @return void
 	 */
-	public function __construct(Settings $settings, License $license)
+	public function __construct(Repository $sliders, Settings $settings, License $license)
 	{
+		$this->sliders = $sliders;
 		$this->settings = $settings;
 		$this->license = $license;
 	}
@@ -168,9 +179,6 @@ class UpgradeTo300 extends Upgrade
 	 */
 	protected function upgradeSliders()
 	{
-		// Get sliders
-		$sliders = Easing_Slider()->sliders();
-
 		// Get old sliders
 		$oldSliders = $this->getOldSliders();
 
@@ -211,7 +219,7 @@ class UpgradeTo300 extends Upgrade
 			$data = $this->setSliderAttribute($data, 'playback_pause', $oldSlider, 'playback', 'pause');
 
 			// Update the slider with new data
-			$sliders->update($oldSlider->ID, $data);
+			$this->sliders->update($oldSlider->ID, $data);
 
 			// Delete old slider meta
 			delete_post_meta($oldSlider->ID, '_easingslider_slides', true);
