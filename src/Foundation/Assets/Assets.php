@@ -29,5 +29,8 @@ abstract class Assets implements AssetsContract
 	 *
 	 * @return void
 	 */
-	abstract public function enqueue();
+	public function enqueue()
+	{
+		//
+	}
 }

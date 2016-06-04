@@ -56,5 +56,8 @@ abstract class Shortcode implements ShortcodeContract
 	 * @param  array $atts
 	 * @return string
 	 */
-	abstract public function render($atts = array());
+	public function render($atts = array())
+	{
+		//
+	}
 }

@@ -136,19 +136,28 @@ abstract class LicenseHandler implements LicenseHandlerContract
 	 *
 	 * @return boolean
 	 */
-	abstract public function isValid();
+	public function isValid()
+	{
+		//
+	}
 
 	/**
 	 * Activates the license key
 	 *
 	 * @return object
 	 */
-	abstract public function activate();
+	public function activate()
+	{
+		//
+	}
 
 	/**
 	 * Deactivates the license key
 	 *
 	 * @return object
 	 */
-	abstract public function deactivate();
+	public function deactivate()
+	{
+		//
+	}
 }

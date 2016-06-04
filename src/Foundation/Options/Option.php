@@ -95,5 +95,8 @@ abstract class Option implements OptionContract
 	 *
 	 * @return mixed
 	 */
-	abstract public function getDefaults();
+	public function getDefaults()
+	{
+		//
+	}
 }

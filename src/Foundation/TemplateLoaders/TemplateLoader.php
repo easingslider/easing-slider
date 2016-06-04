@@ -153,5 +153,8 @@ abstract class TemplateLoader implements TemplateLoaderContract
 	 *
 	 * @return string
 	 */
-	abstract public function getThemeTemplateDirName();
+	public function getThemeTemplateDirName()
+	{
+		//
+	}
 }

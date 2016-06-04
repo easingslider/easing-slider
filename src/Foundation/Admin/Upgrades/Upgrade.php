@@ -61,5 +61,8 @@ abstract class Upgrade implements UpgradeContract
 	 *
 	 * @return void
 	 */
-	abstract public function upgrade();
+	public function upgrade()
+	{
+		//
+	}
 }

@@ -18,5 +18,8 @@ abstract class Uninstaller implements UninstallerContract
 	 *
 	 * @return void
 	 */
-	abstract public function uninstall();
+	public function uninstall()
+	{
+		//
+	}
 }

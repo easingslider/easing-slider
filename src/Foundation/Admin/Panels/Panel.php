@@ -67,5 +67,8 @@ abstract class Panel implements PanelContract
 	 *
 	 * @return void
 	 */
-	abstract public function display();
+	public function display()
+	{
+		//
+	}
 }

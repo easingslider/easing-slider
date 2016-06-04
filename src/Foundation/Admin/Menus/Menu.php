@@ -228,5 +228,8 @@ abstract class Menu implements MenuContract
 	 *
 	 * @return void
 	 */
-	abstract public function setupMenu();
+	public function setupMenu()
+	{
+		//
+	}
 }

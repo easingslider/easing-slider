@@ -105,5 +105,8 @@ abstract class Widget extends WP_Widget implements WidgetContract
 	 * @param  array $instance
 	 * @return void
 	 */
-	abstract public function display($instance);
+	public function display($instance)
+	{
+		//
+	}
 }

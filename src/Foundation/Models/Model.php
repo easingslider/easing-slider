@@ -114,5 +114,8 @@ abstract class Model implements ModelContract
 	 *
 	 * @return array
 	 */
-	abstract public function getDefaults();
+	public function getDefaults()
+	{
+		//
+	}
 }

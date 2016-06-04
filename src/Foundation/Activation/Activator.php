@@ -18,5 +18,8 @@ abstract class Activator implements ActivatorContract
 	 *
 	 * @return void
 	 */
-	abstract public function activate();
+	public function activate()
+	{
+		//
+	}
 }
