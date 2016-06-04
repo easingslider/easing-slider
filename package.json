@@ -1,7 +1,7 @@
 {
   "name": "easing-slider",
   "title": "Easing Slider",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "devDependencies": {
     "grunt": "0.4.5",
     "grunt-contrib-concat": "^0.5.1",
