@@ -4,7 +4,7 @@ Contributors: MatthewRuddy
 Tags: slider, wordpress slider, carousel, image slider, responsive slider, slide, slider, slideshow, wordpress slideshow, youtube slider, photo slider, banner rotator, best slider, content slider, fullwidth slider, gallery, hardware accelerate, mobile slider,post slider, swipe, touch slider, page slider, slider plugin, slider shortcode
 Requires at least: 4.5
 Tested up to: 4.6
-Stable tag: 3.0.3
+Stable tag: 3.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -89,7 +89,7 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 
 == Changelog ==
 
-= 3.0.3 - June 4th, 2016 =
+= 3.0.4 - June 4th, 2016 =
 * Fixed issue that caused template function not to display unless echoed.
 * Fixed `Fatal error: Can't inherit abstract function` related issues (known PHP bug https://bugs.php.net/bug.php?id=66818)
 
