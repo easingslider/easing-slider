@@ -39,7 +39,7 @@ if ( ! function_exists('easingslider')) {
 	{
 		$shortcode = Easing_Slider()->shortcode();
 
-		return $shortcode->render(array('id' => $id));
+		echo $shortcode->render(array('id' => $id));
 	}
 }
 
