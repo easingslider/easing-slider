@@ -8,4 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'aeb63d164f6cca31ad3c0b587e63813b' => $baseDir . '/src/Foundation/helpers.php',
     '8820040b8131984b49e14e759290eb43' => $baseDir . '/src/Plugin/helpers.php',
+    'd782bda2a4ad2f46f68d9f8f32084f2c' => $baseDir . '/src/Plugin/legacy.php',
 );

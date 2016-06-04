@@ -13,7 +13,8 @@
     "autoload": {
         "files": [
             "src/Foundation/helpers.php",
-            "src/Plugin/helpers.php"
+            "src/Plugin/helpers.php",
+            "src/Plugin/legacy.php"
         ],
         "psr-4": {
             "EasingSlider\\": "src/"

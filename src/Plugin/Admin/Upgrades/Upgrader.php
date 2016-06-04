@@ -20,6 +20,7 @@ class Upgrader extends BaseUpgrader
 	 */
 	protected function boot()
 	{
+		$this->upgrades[] = $this->plugin->make('\EasingSlider\Plugin\Admin\Upgrades\UpgradeTo220');
 		$this->upgrades[] = $this->plugin->make('\EasingSlider\Plugin\Admin\Upgrades\UpgradeTo300');
 	}
 }
