@@ -85,17 +85,22 @@ class ImportFromLite extends Upgrade
 	 */
 	protected function createLiteSlider()
 	{
+		global $wpdb;
+
 		$data = array();
 
 		// Get the "Easing Slider 'Lite'" slider
 		$liteSlider = $this->getLiteSlider();
 
-		if ($liteSlider) {
+		// Also get the 'Lite' slider reference ID
+		$liteSliderId = get_option('easingslider_lite_slider_id', false);
+
+		if ($liteSlider && ! $liteSliderId) {
 
 			// Map linear attributes
 			$data['post_title'] = __('Your Slider', 'easingslider');
 			$data['type'] = 'media';
-			$data['slides'] = $liteSlider->slides;
+			$data['slides'] = array();
 			$data['image_resizing'] = true;
 			$data['auto_height'] = false;
 			$data['lazy_loading'] = true;
@@ -117,6 +122,38 @@ class ImportFromLite extends Upgrade
 			$data = $this->setSliderAttribute($data, 'pagination_location', $liteSlider, 'navigation', 'pagination_location');
 			$data = $this->setSliderAttribute($data, 'playback_enabled', $liteSlider, 'playback', 'enabled');
 			$data = $this->setSliderAttribute($data, 'playback_pause', $liteSlider, 'playback', 'pause');
+
+			// Add the slides
+			foreach ($liteSlider->slides as $liteSlide) {
+
+				// Query the guid
+				$attachmentQuery = $wpdb->prepare("SELECT ID FROM {$wpdb->posts} WHERE guid='%s'", $liteSlide->url);
+
+				// Attempt to get the attachment of this image
+				$attachmentId = $wpdb->get_var($attachmentQuery);
+
+				// Populate the slide
+				$slide = (object) array(
+					'id'              => absint($liteSlide->id),
+					'attachment_id'   => absint($attachmentId),
+					'type'            => 'image',
+					'alt'             => sanitize_text_field($liteSlide->alt),
+					'aspectRatio'     => null,
+					'link'            => ($liteSlide->link) ? 'custom' : 'none',
+					'linkUrl'         => sanitize_text_field($liteSlide->link),
+					'linkTargetBlank' => ('_blank' == $liteSlide->linkTarget) ? '_blank': false,
+					'title'           => sanitize_text_field($liteSlide->title)
+				);
+
+				// Add an image URL if we aren't using an attachment
+				if ( ! $attachmentId) {
+					$slide->url = sanitize_text_field($liteSlider->url);
+				}
+
+				// Add the slide
+				$data['slides'][] = $slide;
+
+			}
 			
 			// Create the slider
 			$slider = $this->sliders->create($data);
