@@ -12,7 +12,7 @@ if ( ! defined('ABSPATH')) {
 	exit;
 }
 
-class UpgradeTo220 extends Upgrade
+class ImportFromLite extends Upgrade
 {
 	/**
 	 * Sliders
@@ -22,18 +22,11 @@ class UpgradeTo220 extends Upgrade
 	protected $sliders;
 
 	/**
-	 * The version we're upgrading from (or greater)
+	 * Force
 	 *
-	 * @var string
+	 * @var boolean
 	 */
-	protected $upgradeFrom = '2.1';
-
-	/**
-	 * The version we're upgrading too
-	 *
-	 * @var string
-	 */
-	protected $upgradeTo = '2.2';
+	protected $force = true;
 
 	/**
 	 * Constructor

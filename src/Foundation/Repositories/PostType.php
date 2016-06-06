@@ -106,6 +106,9 @@ abstract class PostType implements RepositoryContract
 	 */
 	public function create($data = array())
 	{
+		// Merge data with defaults
+		$data = array_merge($this->defaultPostData(), $data);
+
 		// Create the post
 		$id = wp_insert_post($this->purgeMetaData($data));
 
