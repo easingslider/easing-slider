@@ -121,7 +121,7 @@ class Slider extends Widget
 	public function display($instance)
 	{
 		if ( ! empty($instance['id'])) {
-			$this->shortcode->render(array('id' => $instance['id']));
+			echo $this->shortcode->render(array('id' => $instance['id']));
 		}
 	}
 }
