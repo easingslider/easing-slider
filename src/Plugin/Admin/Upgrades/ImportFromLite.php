@@ -125,8 +125,8 @@ class ImportFromLite extends Upgrade
 			update_option('easingslider_lite_slider_id', $slider->ID);
 
 			// Delete the old slider
-			delete_option('easingsliderlite_slideshow');
-			delete_option('rivasliderlite_slideshow');
+			// delete_option('easingsliderlite_slideshow');
+			// delete_option('rivasliderlite_slideshow');
 		
 		}
 	}
