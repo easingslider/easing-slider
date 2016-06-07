@@ -163,11 +163,11 @@ class UpgradeTo300 extends Upgrade
 				'type'            => 'image',
 				'id'              => absint($oldSlide->id),
 				'attachment_id'   => absint($oldSlide->attachment_id),
-				'alt'             => $oldSlide->alt,
-				'link'            => $oldSlide->link,
-				'linkUrl'         => $oldSlide->linkUrl,
+				'alt'             => sanitize_text_field($oldSlide->alt),
+				'link'            => sanitize_text_field($oldSlide->link),
+				'linkUrl'         => sanitize_text_field($oldSlide->linkUrl),
 				'linkTargetBlank' => (true == $oldSlide->linkTargetBlank) ? true : false,
-				'title'           => $oldSlide->title,
+				'title'           => sanitize_text_field($oldSlide->title),
 				'url'             => null
 			);
 
