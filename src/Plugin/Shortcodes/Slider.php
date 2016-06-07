@@ -2,6 +2,7 @@
 
 namespace EasingSlider\Plugin\Shortcodes;
 
+use EasingSlider\Foundation\Contracts\Models\Model;
 use EasingSlider\Foundation\Contracts\Repositories\Repository;
 use EasingSlider\Foundation\Shortcodes\Shortcode;
 use EasingSlider\Plugin\Views\Slider as SliderView;
@@ -43,6 +44,46 @@ class Slider extends Shortcode
 	}
 
 	/**
+	 * Minifies the HTML output. Some plugins have a habit of
+	 * parsing post HTML content, and injecting nasty `<code>` and `<pre>` tags into the markup.
+	 * 
+	 * This in turn breaks Easing Slider. Minifying the HTML can prevent this.
+	 *
+	 * @param  string $content
+	 * @return string
+	 */
+	protected function minifyOutput($content)
+	{
+		$content = preg_replace('!/\*.*?\*/!s', '', $content);
+        $content = preg_replace('/\n\s*\n/', "\n", $content);
+        $content = str_replace(array("\r\n", "\r", "\t", "\n"), '', $content);
+
+        return $content;
+	}
+
+	/**
+	 * Renders the view for this shortcode
+	 *
+	 * @param  \EasingSlider\Foundation\Contracts\Models\Model $slider
+	 * @return string
+	 */
+	protected function renderView(Model $slider)
+	{
+		// Start output buffer
+		ob_start();
+
+		// Display the slider
+		$view = new SliderView($slider);
+		$view->display();
+
+		// Get content from output buffer
+		$content = ob_get_clean();
+
+		// Minify & return
+		return $this->minifyOutput($content);
+	}
+
+	/**
 	 * Renders the shortcode
 	 *
 	 * @param  array $atts
@@ -62,22 +103,15 @@ class Slider extends Shortcode
 			// Find the slider
 			$slider = $this->sliders->find($atts->id);
 
-			// Continue if we have a slider. Otheriwse display error message if no slider has been found
+			// Continue if we have a slider
 			if ($slider) {
 
-				// Start output buffer
-				ob_start();
-
-				// Display the slider
-				$view = new SliderView($slider);
-				$view->display();
-
-				// Return output buffer
-				return ob_get_clean();
+				// Render and return view
+				return $this->renderView($slider);
 
 			} else {
-				
-				// Show admins an error
+
+				// Tell user no slider has been found (admins only)
 				if (is_super_admin()) {
 					return sprintf(__('<p><strong>The slider specified (ID #%d) could not be found.</strong></p>', 'easingslider'), $atts->id);
 				}
