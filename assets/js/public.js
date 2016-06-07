@@ -1610,7 +1610,7 @@ if (typeof Object.create !== "function") {
 			}
 
 			// Prevent subpixel rendering by rounding width
-			outerWrapper.css({ 'width': Math.floor(outerWrapper.outerWidth()) +'px' });
+			outerWrapper.css({ 'width': Math.floor(outerWrapper.width()) +'px' });
 
 			return base;
 

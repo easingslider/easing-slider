@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Easing Slider 3.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/easing-slider\n"
-"POT-Creation-Date: 2016-06-04 08:24:35+00:00\n"
+"POT-Creation-Date: 2016-06-07 15:45:53+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -395,6 +395,10 @@ msgstr ""
 
 #: src/Plugin/Admin/UpgraderSkin.php:85
 msgid "There was an error installing the addon. Please try again."
+msgstr ""
+
+#: src/Plugin/Admin/Upgrades/UpgradeTo220.php:150
+msgid "Your Slider"
 msgstr ""
 
 #: src/Plugin/Shortcodes/Slider.php:82
