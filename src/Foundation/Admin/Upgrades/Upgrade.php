@@ -15,13 +15,6 @@ if ( ! defined('ABSPATH')) {
 abstract class Upgrade implements UpgradeContract
 {
 	/**
-	 * Forces the upgrade, regardless of version
-	 *
-	 * @var boolean
-	 */
-	protected $force = false;
-
-	/**
 	 * The version we're upgrading from (or greater)
 	 *
 	 * @var string
@@ -53,11 +46,6 @@ abstract class Upgrade implements UpgradeContract
 	 */
 	public function isEligible($version)
 	{
-		// Always eligible if forced
-		if (true === $this->force) {
-			return true;
-		}
-
 		// Compare version against upgrade "to" and "from" values to ensure a strict bracket of eligible versions.
 		if (version_compare($version, $this->upgradeFrom, '>=')) {
 			if (version_compare($version, $this->upgradeTo, '<')) {
