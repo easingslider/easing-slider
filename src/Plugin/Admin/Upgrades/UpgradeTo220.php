@@ -55,20 +55,6 @@ class UpgradeTo220 extends Upgrade
 	protected $referenceId = 'easingslider_lite_slider_id';
 
 	/**
-	 * "Lite" Slider Meta Keys
-	 *
-	 * @var array
-	 */
-	protected $liteSliderMetaKeys = array(
-		'slides'      => '_easingslider_slides',
-		'general'     => '_easingslider_general',
-		'dimensions'  => '_easingslider_dimensions',
-		'transitions' => '_easingslider_transitions',
-		'navigation'  => '_easingslider_navigation',
-		'playback'    => '_easingslider_playback'
-	);
-
-	/**
 	 * Checks if the provided version is eligible for an upgrade
 	 * 
 	 * We've hijacked this method here as our data structures were vastly different
@@ -160,8 +146,8 @@ class UpgradeTo220 extends Upgrade
 	{
 		// Create the post
 		$postId = wp_insert_post(array(
-			'post_type' => 'easingslider',
-			'post_title' => __('Your Slider', 'easingslider'),
+			'post_type'   => 'easingslider',
+			'post_title'  => __('Your Slider', 'easingslider'),
 			'post_status' => 'publish',
 		));
 
@@ -224,16 +210,6 @@ class UpgradeTo220 extends Upgrade
 	}
 
 	/**
-	 * Checks if the upgrade has already been performed
-	 * 
-	 * @return boolean
-	 */
-	protected function hasAlreadyUpgraded()
-	{
-		return get_option($this->upgradeFlag, false);
-	}
-
-	/**
 	 * Sets the reference ID
 	 *
 	 * @param int $id
@@ -252,6 +228,16 @@ class UpgradeTo220 extends Upgrade
 	protected function markAsUpgraded()
 	{
 		update_option($this->upgradeFlag, true);
+	}
+
+	/**
+	 * Checks if the upgrade has already been performed
+	 * 
+	 * @return boolean
+	 */
+	protected function hasAlreadyUpgraded()
+	{
+		return get_option($this->upgradeFlag, false);
 	}
 
 	/**
