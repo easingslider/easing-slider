@@ -93,6 +93,7 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 * Improvements to legacy functionality. Upgrade from v2.1 or v2.2 should now be much smoother.
 * Added support for installing addons where FTP access is required.
 * Shortcode HTML output is now minified to avoid issues related to other plugins parsing post content and injecting markup.
+* Slight tweaks to Javascript that should improve accuracy of responsive slider width calculations.
 
 = 3.0.4 - June 6th, 2016 =
 * Added additional legacy functionality for users upgrading from v2.1.*.
