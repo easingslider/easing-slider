@@ -74,6 +74,7 @@ class Assets extends BaseAssets
 			'base_url'      => easingslider_get_admin_base_url(),
 			'delete_slide'  => __('Are you sure you wish to delete this slide? This cannot be reversed.', 'easingslider'),
 			'delete_slides' => __('Are you sure you wish to delete all of this slider\'s images? This cannot be reversed.', 'easingslider'),
+			'ftp_error'     => __('Unable to connect via FTP. Please make sure your credentials are correct and try again.', 'easingslider'),
 			'media_upload'  => array(
 				'title'              => __('Edit Slide', 'easingslider'),
 				'back'               => __('Back', 'easingslider'),

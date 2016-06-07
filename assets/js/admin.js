@@ -2100,8 +2100,9 @@ _.extend(EasingSlider.Admin, {
 
 			// Establish variables
 			var $button  = $(this);
-			var $el      = $button.parents('.addon-status');
-			var $message = $el.find('.status-message');
+			var $addons  = $button.parents('.addons');
+			var $status  = $button.parents('.addon-status');
+			var $message = $status.find('.status-message');
 
 			// Remove errors
 			$('.action-error').remove();
@@ -2129,6 +2130,77 @@ _.extend(EasingSlider.Admin, {
 						return false;
 					}
 
+					// Ask for credentials if needed
+					if ( response.form ) {
+
+						// Hide addons temporarily
+						$addons.hide();
+
+						// Display the form to ask for user credentials
+						$addons.after('<div class="action-error error">' + response.form + '</div>');
+
+						// Add a disabled attribute the install button
+						$button.attr('disabled', true);
+
+						// Act when "Proceed" with FTP credentials button is clicked
+						$(document).on('click', '#upgrade', function(event) {
+							event.preventDefault();
+
+							// Get FTP credentials
+							var $proceedButton = $(this);
+							var hostname       = $proceedButton.parent().parent().find('#hostname').val();
+							var username       = $proceedButton.parent().parent().find('#username').val();
+							var password       = $proceedButton.parent().parent().find('#password').val();
+							var connect        = $proceedButton.parent().parent().parent().parent();
+
+							// Now let's attempt the Ajax request again
+							$.ajax({
+								url: ajaxurl,
+								type: 'post',
+								async: true,
+								cache: false,
+								dataType: 'json',
+								data: {
+									action:   'easingslider_install_addon',
+									nonce:    _easingsliderAdminL10n.nonces.install,
+									plugin:   $button.attr('data-plugin'),
+									hostname: hostname,
+									username: username,
+									password: password
+								},
+								success: function(response) {
+
+									// If there is a WP Error instance, output it here and quit the script.
+									if ( response.error ) {
+										$button
+											.attr('data-plugin', response.plugin)
+											.text(_easingsliderAdminL10n.buttons.activate)
+											.removeClass('js-install-addon')
+											.addClass('js-activate-addon');
+									}
+
+									if ( response.form ) {
+										$addons.after('<div class="action-error error"><p>'+ _easingsliderAdminL10n.ftp_error +'</p></div>');
+									}
+
+									// Update message
+									$message.text(_easingsliderAdminL10n.messages.inactive);
+
+									// Change status
+									$status.removeClass('not-installed').addClass('is-inactive');
+
+								},
+								error: function(xhr, textStatus, event) {
+									return false;
+								}
+							});
+						});
+
+						// No need to continue.
+						return;
+
+					}
+
 					// The Ajax request was successful, update the button.
 					$button
 						.attr('data-plugin', response.plugin)
@@ -2140,7 +2212,7 @@ _.extend(EasingSlider.Admin, {
 					$message.text(_easingsliderAdminL10n.messages.inactive);
 
 					// Change status
-					$el.removeClass('not-installed').addClass('is-inactive');
+					$status.removeClass('not-installed').addClass('is-inactive');
 
 				},
 				error: function(xhr, textStatus, event) {
