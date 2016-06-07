@@ -2170,8 +2170,6 @@ _.extend(EasingSlider.Admin, {
 								},
 								success: function(response) {
 
-									console.log(response);
-
 									// If there is a WP Error instance, output it here and quit the script.
 									if ( response.error ) {
 										$button
