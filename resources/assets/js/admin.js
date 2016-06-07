@@ -2148,10 +2148,10 @@ _.extend(EasingSlider.Admin, {
 
 							// Get FTP credentials
 							var $proceedButton = $(this);
+							var $connectForm   = $proceedButton.parent().parent().parent().parent();
 							var hostname       = $proceedButton.parent().parent().find('#hostname').val();
 							var username       = $proceedButton.parent().parent().find('#username').val();
 							var password       = $proceedButton.parent().parent().find('#password').val();
-							var connect        = $proceedButton.parent().parent().parent().parent();
 
 							// Now let's attempt the Ajax request again
 							$.ajax({
@@ -2170,6 +2170,8 @@ _.extend(EasingSlider.Admin, {
 								},
 								success: function(response) {
 
+									console.log(response);
+
 									// If there is a WP Error instance, output it here and quit the script.
 									if ( response.error ) {
 										$button
@@ -2177,11 +2179,20 @@ _.extend(EasingSlider.Admin, {
 											.text(_easingsliderAdminL10n.buttons.activate)
 											.removeClass('js-install-addon')
 											.addClass('js-activate-addon');
+
+										return false;
 									}
 
 									if ( response.form ) {
 										$addons.after('<div class="action-error error"><p>'+ _easingsliderAdminL10n.ftp_error +'</p></div>');
+										return false;
 									}
+
+									// Hide the FTP connection form
+									$connectForm.remove();
+
+									// Show addons again
+									$addons.show();
 
 									// Update message
 									$message.text(_easingsliderAdminL10n.messages.inactive);

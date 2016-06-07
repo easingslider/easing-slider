@@ -89,11 +89,18 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 
 == Changelog ==
 
-= 3.0.5 - June 6th, 2016 =
-* Fixed issue that caused template function not to display unless echoed.
-* Fixed `Fatal error: Can't inherit abstract function` related issues (known PHP bug https://bugs.php.net/bug.php?id=66818).
+= 3.0.5 - June 7th, 2016 =
+* Improvements to legacy functionality. Upgrade from v2.1 or v2.2 should now be much smoother.
+* Added support for installing addons where FTP access is required.
+* Shortcode HTML output is now minified to avoid issues related to other plugins parsing post content and injecting markup.
+
+= 3.0.4 - June 6th, 2016 =
 * Added additional legacy functionality for users upgrading from v2.1.*.
 * Fixed issue that would cause widget not to display.
+
+= 3.0.3 - June 4th, 2016 =
+* Fixed issue that caused template function not to display unless echoed.
+* Fixed `Fatal error: Can't inherit abstract function` related issues (known PHP bug https://bugs.php.net/bug.php?id=66818)
 
 = 3.0.2 - June 3rd, 2016 =
 * Refactored boot sequence to prevent errors prior to completing PHP & WordPress version checks.
