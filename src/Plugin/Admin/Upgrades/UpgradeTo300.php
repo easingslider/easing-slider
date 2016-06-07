@@ -231,7 +231,7 @@ class UpgradeTo300 extends Upgrade
 	 *
 	 * @return void
 	 */
-	protected function setupUpgradeInfoNotice()
+	public function setupUpgradeInfoNotice()
 	{
 		add_option('easingslider_upgraded_from_v2', true);
 	}
@@ -241,7 +241,7 @@ class UpgradeTo300 extends Upgrade
 	 *
 	 * @return void
 	 */
-	protected function migrateLicense()
+	public function migrateLicense()
 	{
 		// Set the license key
 		$this->license['key'] = get_option('easingslider_license_key');
@@ -258,7 +258,7 @@ class UpgradeTo300 extends Upgrade
 	 *
 	 * @return void
 	 */
-	protected function upgradeSettings()
+	public function upgradeSettings()
 	{
 		// Get new settings array of defaults
 		$settings = $this->settings->getDefaults();
@@ -286,7 +286,7 @@ class UpgradeTo300 extends Upgrade
 	 * 
 	 * @return void
 	 */
-	protected function transferCapabilities()
+	public function transferCapabilities()
 	{
 		global $wp_roles;
 
@@ -333,7 +333,7 @@ class UpgradeTo300 extends Upgrade
 	 * 
 	 * @return void
 	 */
-	protected function upgradeSliders()
+	public function upgradeSliders()
 	{
 		// Get old sliders
 		$oldSliders = $this->getOldSliders();

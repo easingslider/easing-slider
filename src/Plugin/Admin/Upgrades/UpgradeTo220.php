@@ -2,13 +2,7 @@
 
 namespace EasingSlider\Plugin\Admin\Upgrades;
 
-use WP_Roles;
-use WP_Query;
 use EasingSlider\Foundation\Admin\Upgrades\Upgrade;
-use EasingSlider\Foundation\Contracts\Repositories\Repository;
-use EasingSlider\Plugin\Contracts\Options\License;
-use EasingSlider\Plugin\Contracts\Options\Settings;
-
 
 /**
  * Exit if accessed directly
