@@ -89,7 +89,7 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 
 == Changelog ==
 
-= 3.0.5 - June 7th, 2016 =
+= 3.0.5 - June 8th, 2016 =
 * Improvements to upgrade process from versions 2.1 and 2.2. Process should now be much smoother.
 * Added support for installing addons where FTP access is required.
 * Shortcode HTML output is now minified to avoid issues related to other plugins parsing post content and injecting markup.
