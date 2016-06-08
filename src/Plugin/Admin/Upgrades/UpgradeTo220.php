@@ -141,7 +141,7 @@ class UpgradeTo220 extends Upgrade
 		// Create the post
 		$postId = wp_insert_post(array(
 			'post_type'   => 'easingslider',
-			'post_title'  => __('Your Slider', 'easingslider'),
+			'post_title'  => __('Easing Slider "Lite"', 'easingslider'),
 			'post_status' => 'publish',
 		));
 
