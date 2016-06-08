@@ -94,6 +94,7 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 * Added support for installing addons where FTP access is required.
 * Shortcode HTML output is now minified to avoid issues related to other plugins parsing post content and injecting markup.
 * Slight tweaks to Javascript that should improve accuracy of responsive slider width calculations.
+* Slides are now centered when container is set to 100% fluid width.
 
 = 3.0.4 - June 6th, 2016 =
 * Added additional legacy functionality for users upgrading from v2.1.*.
