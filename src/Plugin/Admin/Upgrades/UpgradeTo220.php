@@ -235,24 +235,6 @@ class UpgradeTo220 extends Upgrade
 	}
 
 	/**
-	 * Upgrades the "Lite" slider
-	 * 
-	 * @return void
-	 */
-	protected function upgradeSlider()
-	{
-		$liteSlider = $this->getLiteSlider();
-
-		if ($liteSlider) {
-			$sliderId = $this->createUpgradedSlider($liteSlider);
-
-			$this->setReferenceId($sliderId);
-
-			$this->markAsUpgraded();
-		}
-	}
-
-	/**
 	 * Deletes all "Easing Slider 'Lite'" options that are no longer used
 	 *
 	 * @return void
@@ -268,6 +250,32 @@ class UpgradeTo220 extends Upgrade
 	}
 
 	/**
+	 * Upgrades the "Lite" slider
+	 * 
+	 * @return void
+	 */
+	public function upgradeSlider()
+	{
+		$liteSlider = $this->getLiteSlider();
+
+		if ($liteSlider) {
+
+			// Create the upgraded slider
+			$sliderId = $this->createUpgradedSlider($liteSlider);
+
+			// Set the reference ID so we can continue to use the `[easingsliderlite`] shortcode
+			$this->setReferenceId($sliderId);
+
+			// Mark the upgrade as complete so it doesn't occur again
+			$this->markAsUpgraded();
+
+			// Cleanup "Lite" plugin options as they are now redundant
+			// $this->cleanupOptions(); // Temporarily disabling this to allow users time to revert.
+
+		}
+	}
+
+	/**
 	 * Executes the upgrade
 	 *
 	 * @return void
@@ -275,7 +283,5 @@ class UpgradeTo220 extends Upgrade
 	public function upgrade()
 	{
 		$this->upgradeSlider();
-
-		// $this->cleanupOptions(); // Temporarily disabling this to allow users time to revert.
 	}
 }

@@ -50,13 +50,16 @@ class UpgradeTo305 extends Upgrade
 	 * We had some issues with our v3.0.4 upgrade process due to a bug.
 	 * Consequently we pulled the update and worked on a fix.
 	 *
-	 * Rerunning the upgrade from v3.0.0 (since improved) should fix issues for those users affected.
+	 * Unfortunately some users would still have a semi-broken plugin as a result.
+	 * Re-running the v3.0.0 upgrade should resolve the issue and regenerate any missing options.
+	 * We also have to re-transfer the capabilities as these were also affected by the bug.
 	 *
 	 * @return void
 	 */
-	protected function fix304Upgrade()
+	public function fixBrokenUpgrade()
 	{
 		$upgrade = $this->plugin->make('\EasingSlider\Plugin\Admin\Upgrades\UpgradeTo300');
+		$upgrade->transferCapabilities();
 		$upgrade->upgradeSliders();
 	}
 
@@ -67,6 +70,6 @@ class UpgradeTo305 extends Upgrade
 	 */
 	public function upgrade()
 	{
-		$this->fix304Upgrade();
+		$this->fixBrokenUpgrade();
 	}
 }
