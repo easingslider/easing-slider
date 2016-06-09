@@ -2,8 +2,7 @@
 
 namespace EasingSlider\Plugin\Admin\Upgrades;
 
-use EasingSlider\Foundation\Admin\Upgrades\Upgrade;
-use EasingSlider\Foundation\Contracts\Plugin;
+use EasingSlider\Plugin\Admin\Upgrades\UpgradeTo300;
 
 /**
  * Exit if accessed directly
@@ -12,38 +11,34 @@ if ( ! defined('ABSPATH')) {
 	exit;
 }
 
-class UpgradeTo305 extends Upgrade
+class UpgradeTo306 extends UpgradeTo300
 {
-	/**
-	 * Plugin
-	 *
-	 * @var \EasingSlider\Foundation\Contracts\Plugin
-	 */
-	protected $plugin;
-
 	/**
 	 * The version we're upgrading from (or greater)
 	 *
 	 * @var string
 	 */
-	protected $upgradeFrom = '3.0.4';
+	protected $upgradeFrom = '3.0.0';
 
 	/**
 	 * The version we're upgrading too
 	 *
 	 * @var string
 	 */
-	protected $upgradeTo = '3.0.5';
+	protected $upgradeTo = '3.0.6';
 
 	/**
-	 * Constructor
+	 * Checks if a slider is missing data
 	 *
-	 * @param  \EasingSlider\Foundation\Contracts\Plugin $plugin
-	 * @return void
+	 * @param  int $id
+	 * @return boolean
 	 */
-	public function __construct(Plugin $plugin)
+	protected function isMissingData($id)
 	{
-		$this->plugin = $plugin;
+		// Check for post meta
+		$metadata = get_post_meta($id, '_easingslider', true);
+
+		return ( ! $metadata) ? true : false;
 	}
 
 	/**
@@ -56,11 +51,15 @@ class UpgradeTo305 extends Upgrade
 	 *
 	 * @return void
 	 */
-	public function fixBrokenUpgrade()
+	public function fixBrokenSliders()
 	{
-		$upgrade = $this->plugin->make('\EasingSlider\Plugin\Admin\Upgrades\UpgradeTo300');
-		$upgrade->transferCapabilities();
-		$upgrade->upgradeSliders();
+		$sliders = $this->getSliders();
+
+		foreach ($sliders as $slider) {
+			if ($this->isMissingData($slider->ID)) {
+				$this->upgradeSlider($slider->ID);
+			}
+		}
 	}
 
 	/**
@@ -70,6 +69,6 @@ class UpgradeTo305 extends Upgrade
 	 */
 	public function upgrade()
 	{
-		$this->fixBrokenUpgrade();
+		$this->fixBrokenSliders();
 	}
 }

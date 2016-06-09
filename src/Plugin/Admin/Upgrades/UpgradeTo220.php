@@ -3,6 +3,7 @@
 namespace EasingSlider\Plugin\Admin\Upgrades;
 
 use EasingSlider\Foundation\Admin\Upgrades\Upgrade;
+use EasingSlider\Plugin\Admin\Upgrades\SliderTransformers\v210 as SliderTransformer;
 
 /**
  * Exit if accessed directly
@@ -28,13 +29,6 @@ class UpgradeTo220 extends Upgrade
 	protected $upgradeTo = '2.2';
 
 	/**
-	 * Possible option prefixes through v2.1.* Easing Slider "Lite" lifespan
-	 *
-	 * @var array
-	 */
-	protected $optionPrefixes = array('easingsliderlite', 'rivasliderlite');
-
-	/**
 	 * Upgrade Flag
 	 *
 	 * @var string
@@ -42,11 +36,11 @@ class UpgradeTo220 extends Upgrade
 	protected $upgradeFlag = 'easingslider_upgraded_from_lite';
 
 	/**
-	 * Reference ID
+	 * Lite Slider ID
 	 *
 	 * @var string
 	 */
-	protected $referenceId = 'easingslider_lite_slider_id';
+	protected $liteSliderId = 'easingslider_lite_slider_id';
 
 	/**
 	 * Checks if the provided version is eligible for an upgrade
@@ -63,7 +57,7 @@ class UpgradeTo220 extends Upgrade
 			return false;
 		}
 
-		if ($this->liteVersionIsEligible()) {
+		if ($this->versionIsEligible()) {
 			return true;
 		}
 
@@ -75,10 +69,10 @@ class UpgradeTo220 extends Upgrade
 	 *
 	 * @return boolean
 	 */
-	protected function liteVersionIsEligible()
+	protected function versionIsEligible()
 	{
 		// Hijack version with old version option
-		$version = $this->getLiteOption('version');
+		$version = get_option('easingsliderlite_version');
 
 		// Do the comparison and run the upgrade if version is eligible
 		if ($version) {
@@ -89,129 +83,41 @@ class UpgradeTo220 extends Upgrade
 	}
 
 	/**
-	 * Delets an Easing Slider "Lite" option
+	 * Creates the new upgraded "Lite" slider
 	 *
-	 * @param  string $name
-	 * @return void
-	 */
-	protected function deleteLiteOption($name)
-	{
-		foreach ($this->optionPrefixes as $prefix) {
-			delete_option("{$prefix}_{$name}");
-		}
-	}
-
-	/**
-	 * Gets an Easing Slider "Lite" option
-	 *
-	 * @param  string $name
-	 * @return mixed|false
-	 */
-	protected function getLiteOption($name)
-	{
-		foreach ($this->optionPrefixes as $prefix) {
-			$value = get_option("{$prefix}_{$name}", false);
-
-			if ($value) {
-				return $value;
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * Gets the "Easing Slider 'Lite'" slider
-	 * 
-	 * @return object|false
-	 */
-	protected function getLiteSlider()
-	{
-		return $this->getLiteOption('slideshow');
-	}
-
-	/**
-	 * Creates the upgraded "Lite" slider
-	 *
-	 * @param  object $liteSlider
 	 * @return int
 	 */
-	protected function createUpgradedSlider($liteSlider)
+	protected function createNewSlider()
 	{
-		// Create the post
+		$transformer = new SliderTransformer();
+
+		// Get the transformed data
+		$data = $transformer->transform();
+
+		// Create the post (aka. slider)
 		$postId = wp_insert_post(array(
 			'post_type'   => 'easingslider',
 			'post_title'  => __('Easing Slider "Lite"', 'easingslider'),
 			'post_status' => 'publish',
 		));
 
-		// Add post meta
-		add_post_meta($postId, '_easingslider_slides', $this->transformLiteSlides($liteSlider->slides));
-		add_post_meta($postId, '_easingslider_general', $liteSlider->general);
-		add_post_meta($postId, '_easingslider_dimensions', $liteSlider->dimensions);
-		add_post_meta($postId, '_easingslider_transitions', $liteSlider->transitions);
-		add_post_meta($postId, '_easingslider_navigation', $liteSlider->navigation);
-		add_post_meta($postId, '_easingslider_playback', $liteSlider->playback);
+		// Add post metadata
+		foreach ($data as $key => $value) {
+			add_post_meta($postId, "_easingslider_{$key}", $value);
+		}
 
 		return $postId;
 	}
 
 	/**
-	 * Transforms our "Lite" slides into our new slide data structure
+	 * Sets the Lite Slider ID (used to enable our old shortcode)
 	 *
-	 * @param  array $liteSlides
-	 * @return array
-	 */
-	protected function transformLiteSlides($liteSlides)
-	{
-		global $wpdb;
-
-		$slides = array();
-
-		// Transform each slide
-		foreach ($liteSlides as $liteSlide) {
-
-			// Query the guid
-			$attachmentQuery = $wpdb->prepare("SELECT ID FROM {$wpdb->posts} WHERE guid='%s'", $liteSlide->url);
-
-			// Attempt to get the attachment of this image
-			$attachmentId = $wpdb->get_var($attachmentQuery);
-
-			// Populate the slide
-			$slide = (object) array(
-				'type'            => 'image',
-				'id'              => absint($liteSlide->id),
-				'attachment_id'   => absint($attachmentId),
-				'alt'             => sanitize_text_field($liteSlide->alt),
-				'link'            => ($liteSlide->link) ? 'custom' : 'none',
-				'linkUrl'         => sanitize_text_field($liteSlide->link),
-				'linkTargetBlank' => ('_blank' == $liteSlide->linkTarget) ? true : false,
-				'title'           => sanitize_text_field($liteSlide->title),
-				'url'             => null
-			);
-
-			// Add an image URL if we aren't using an attachment
-			if ( ! $attachmentId) {
-				$slide->url = sanitize_text_field($liteSlide->url);
-			}
-
-			// Add the slide
-			$slides[] = $slide;
-
-		}
-
-		return $slides;
-	}
-
-	/**
-	 * Sets the reference ID
-	 *
-	 * @param int $id
+	 * @param  int $id
 	 * @return void
 	 */
-	protected function setReferenceId($id)
+	protected function setLiteSliderId($id)
 	{
-		update_option($this->referenceId, $id);
+		update_option($this->liteSliderId, $id);
 	}
 
 	/**
@@ -235,44 +141,20 @@ class UpgradeTo220 extends Upgrade
 	}
 
 	/**
-	 * Deletes all "Easing Slider 'Lite'" options that are no longer used
-	 *
-	 * @return void
-	 */
-	protected function cleanupOptions()
-	{
-		$this->deleteLiteOption('customizations');
-		$this->deleteLiteOption('disable_welcome_panel');
-		$this->deleteLiteOption('major_upgrade');
-		$this->deleteLiteOption('settings');
-		$this->deleteLiteOption('slideshow');
-		$this->deleteLiteOption('version');
-	}
-
-	/**
 	 * Upgrades the "Lite" slider
 	 * 
 	 * @return void
 	 */
 	public function upgradeSlider()
 	{
-		$liteSlider = $this->getLiteSlider();
+		// Create the new upgraded slider
+		$sliderId = $this->createNewSlider();
 
-		if ($liteSlider) {
+		// Set the reference ID so we can continue to use the `[easingsliderlite]` shortcode
+		$this->setLiteSliderId($sliderId);
 
-			// Create the upgraded slider
-			$sliderId = $this->createUpgradedSlider($liteSlider);
-
-			// Set the reference ID so we can continue to use the `[easingsliderlite`] shortcode
-			$this->setReferenceId($sliderId);
-
-			// Mark the upgrade as complete so it doesn't occur again
-			$this->markAsUpgraded();
-
-			// Cleanup "Lite" plugin options as they are now redundant
-			// $this->cleanupOptions(); // Temporarily disabling this to allow users time to revert.
-
-		}
+		// Mark the upgrade as complete so it doesn't occur again
+		$this->markAsUpgraded();
 	}
 
 	/**

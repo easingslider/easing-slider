@@ -22,6 +22,6 @@ class Upgrader extends BaseUpgrader
 	{
 		$this->upgrades[] = $this->plugin->make('\EasingSlider\Plugin\Admin\Upgrades\UpgradeTo220');
 		$this->upgrades[] = $this->plugin->make('\EasingSlider\Plugin\Admin\Upgrades\UpgradeTo300');
-		$this->upgrades[] = $this->plugin->make('\EasingSlider\Plugin\Admin\Upgrades\UpgradeTo305');
+		$this->upgrades[] = $this->plugin->make('\EasingSlider\Plugin\Admin\Upgrades\UpgradeTo306');
 	}
 }
