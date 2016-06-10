@@ -38,9 +38,9 @@ class UpgradeTo300 extends Upgrade
 	protected function getSliders()
 	{
 		return get_posts(array(
-			'post_type'     => 'easingslider',
-			'post_status'   => 'all',
-			'numberofposts' => -1
+			'post_type'      => 'easingslider',
+			'post_status'    => 'all',
+			'posts_per_page' => -1
 		));
 	}
 
