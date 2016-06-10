@@ -63,7 +63,9 @@ class Sliders extends ResourceActions
 	 */
 	protected function creationRedirect($id)
 	{
-		wp_safe_redirect("admin.php?page=easingslider&edit={$id}&easingslider_notice=publish_slider");
+		$redirectUrl = admin_url(sprintf('admin.php?page=easingslider&edit=%d&easingslider_notice=publish_slider', $id));
+
+		wp_safe_redirect($redirectUrl);
 		exit();
 	}
 

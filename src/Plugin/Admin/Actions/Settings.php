@@ -80,8 +80,11 @@ class Settings extends Actions
 		// Run an activation
 		$this->activator->activate();
 
+		// Get the redirect URL
+		$redirectUrl = admin_url('admin.php?page=easingslider-settings&easingslider_notice=reset_plugin');
+
 		// Redirect back to settings page to avoid resetting the plugin again if the user refreshes the page.
-		wp_safe_redirect( "admin.php?page=easingslider-settings&easingslider_notice=reset_plugin" );
+		wp_safe_redirect($redirectUrl);
 		exit();
 	}
 }
