@@ -4,7 +4,7 @@ Contributors: MatthewRuddy
 Tags: slider, wordpress slider, carousel, image slider, responsive slider, slide, slider, slideshow, wordpress slideshow, youtube slider, photo slider, banner rotator, best slider, content slider, fullwidth slider, gallery, hardware accelerate, mobile slider,post slider, swipe, touch slider, page slider, slider plugin, slider shortcode
 Requires at least: 4.5
 Tested up to: 4.6
-Stable tag: 3.0.5
+Stable tag: 3.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -89,8 +89,9 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 
 == Changelog ==
 
-= 3.0.6 - June 9th, 2016 =
+= 3.0.6 - June 11th, 2016 =
 * Refactored & improved initial v3.0.0 upgrade, fixing issues with upgrade process between v3.0.4 & v3.0.5.
+* Now using `admin_url` function to generate redirect URLs in admin.
 
 = 3.0.5 - June 8th, 2016 =
 * Improvements to upgrade process from versions 2.1 and 2.2. Process should now be much smoother.
