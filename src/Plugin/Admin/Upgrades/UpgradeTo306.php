@@ -25,7 +25,7 @@ class UpgradeTo306 extends UpgradeTo300
 	 *
 	 * @var string
 	 */
-	protected $upgradeTo = '3.0.6';
+	protected $upgradeTo = '3.0.7';
 
 	/**
 	 * Checks if a slider is missing data

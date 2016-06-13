@@ -3,7 +3,7 @@
  * Plugin Name: Easing Slider
  * Plugin URI: http://easingslider.com/
  * Description: A simple WordPress plugin for creating beautiful sliders.
- * Version: 3.0.6
+ * Version: 3.0.7
  * Author: Matthew Ruddy
  * Author URI: http://matthewruddy.com
  * License: GPL2
@@ -25,7 +25,7 @@ if ( ! defined('ABSPATH')) {
 /**
  * Define constants
  */
-define('EASINGSLIDER_VERSION', '3.0.6');
+define('EASINGSLIDER_VERSION', '3.0.7');
 define('EASINGSLIDER_NAME', 'Easing Slider');
 define('EASINGSLIDER_API_URL', 'http://easingslider.com/');
 define('EASINGSLIDER_PLUGIN_DIR', plugin_dir_path(__FILE__));
