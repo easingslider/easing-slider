@@ -268,7 +268,7 @@ if ( ! function_exists('easingslider_slide_classes')) {
 		);
 
 		// Run through a filter
-		$classes = apply_filters('easingslider_slide_classes', $classes, $slider);
+		$classes = apply_filters('easingslider_slide_classes', $classes, $slide, $slider);
 		
 		// Print classes if not empty
 		if ( ! empty($classes)) {
