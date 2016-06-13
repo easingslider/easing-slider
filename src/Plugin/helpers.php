@@ -252,6 +252,33 @@ if ( ! function_exists('easingslider_get_placeholder_pixel')) {
 	}
 }
 
+if ( ! function_exists('easingslider_slide_classes')) {
+	/**
+	 * Prints the slide classes
+	 *
+	 * @param  object                                          $slide
+	 * @param  \EasingSlider\Foundation\Contracts\Models\Model $slider
+	 * @return void
+	 */
+	function easingslider_slide_classes($slide, Model $slider)
+	{
+		// Base classes
+		$classes = array(
+			'easingslider-slide'
+		);
+
+		// Run through a filter
+		$classes = apply_filters('easingslider_slide_classes', $classes, $slider);
+		
+		// Print classes if not empty
+		if ( ! empty($classes)) {
+			echo 'class="';
+				echo esc_attr(implode(' ', $classes));
+			echo '"';
+		}
+	}
+}
+
 if ( ! function_exists('easingslider_display_slide')) {
 	/**
 	 * Runs the appropriate action based on the slide type.
