@@ -4,6 +4,19 @@
     width: 100%;
 }
 
+/* Items
+-------------------------------------------------------------- */
+.easingslider-item {
+    max-width: auto !important;
+}
+
+.easingslider-item.loading {
+    background-image: url(../images/loading.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #fff;
+}
+
 /* Slides
 -------------------------------------------------------------- */
 .easingslider-slide {
@@ -23,15 +36,6 @@
 -------------------------------------------------------------- */
 .easingslider-link {
     display: block;
-}
-
-/* Lazy Loading
--------------------------------------------------------------- */
-.easingslider-item.loading {
-    background-image: url(../images/loading.gif);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-color: #fff;
 }
 
 /* Arrows
