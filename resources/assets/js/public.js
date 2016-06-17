@@ -91,8 +91,8 @@
 
 				// Set heights
 				$el.css({ 'height': base.options.height +'px' });
+				$items.css({ 'height': base.options.height +'px' });
 				$wrapper.css({ 'height': base.options.height +'px' });
-				$item.css({ 'height': base.options.height +'px' });
 				$images.css({ 'max-height': base.options.height +'px' });
 
 			}
