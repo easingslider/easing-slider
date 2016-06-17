@@ -4,7 +4,7 @@ Contributors: MatthewRuddy
 Tags: slider, wordpress slider, carousel, image slider, responsive slider, slide, slider, slideshow, wordpress slideshow, youtube slider, photo slider, banner rotator, best slider, content slider, fullwidth slider, gallery, hardware accelerate, mobile slider,post slider, swipe, touch slider, page slider, slider plugin, slider shortcode
 Requires at least: 4.5
 Tested up to: 4.6
-Stable tag: 3.0.7
+Stable tag: 3.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
