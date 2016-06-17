@@ -1,3 +1,9 @@
+/* Main
+-------------------------------------------------------------- */
+.easingslider {
+    direction: ltr;
+}
+
 /* Slides
 -------------------------------------------------------------- */
 .easingslider-resizing-enabled .easingslider-image {

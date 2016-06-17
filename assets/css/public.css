@@ -233,6 +233,12 @@
 @keyframes scaleUpTo {
   to { opacity: 0; transform: scale(1.5); }
 }
+/* Main
+-------------------------------------------------------------- */
+.easingslider {
+    direction: ltr;
+}
+
 /* Slides
 -------------------------------------------------------------- */
 .easingslider-resizing-enabled .easingslider-image {
