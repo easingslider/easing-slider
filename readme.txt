@@ -93,6 +93,7 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 * Added CSS property to ensure slider item `max-width` is always `auto`.
 * Fixed issue in Javascript that would break initial slider height set under some circumstances.
 * Fixed slider on RTL sites.
+* Slide classes now printed using PHP function. Also filtered for additional customization.
 
 = 3.0.6 - June 11th, 2016 =
 * Refactored & improved initial v3.0.0 upgrade, fixing issues with upgrade process between v3.0.4 & v3.0.5.
