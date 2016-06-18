@@ -89,6 +89,9 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 
 == Changelog ==
 
+= 3.0.8 - June 24th, 2016 =
+* Fixed bug that would prevent slider(s) from obeying dimensions correctly when displaying multiple on a single page.
+
 = 3.0.7 - June 17th, 2016 =
 * Added CSS property to ensure slider item `max-width` is always `auto`.
 * Fixed issue in Javascript that would break initial slider height set under some circumstances.

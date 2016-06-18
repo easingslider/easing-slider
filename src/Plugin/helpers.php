@@ -86,6 +86,7 @@ if ( ! function_exists('easingslider_container_classes')) {
 		// Base classes
 		$classes = array(
 			'easingslider',
+			'easingslider-'. absint($slider->ID),
 			'easingslider-container'
 		);
 
@@ -203,7 +204,7 @@ if ( ! function_exists('easingslider_inline_styles')) {
 		$styles = '';
 
 		// Styling for "width" and "height"
-		$styles .= '.easingslider { ';
+		$styles .= '.easingslider-'. absint($slider->ID) .' { ';
 			if (true == $slider->full_width) {
 				$styles .= 'width: 100%; ';
 			} else {
@@ -213,7 +214,7 @@ if ( ! function_exists('easingslider_inline_styles')) {
 		
 		// Styling for slide dimensions
 		if (false == $slider->auto_height) {
-			$styles .= '.easingslider-image { ';
+			$styles .= '.easingslider-'. absint($slider->ID) .' .easingslider-image { ';
 				$styles .= 'max-height: '. absint($slider->height) .'px; ';
 				$styles .= 'max-width: '. absint($slider->width) .'px; ';
 			$styles .= "}\n";
@@ -221,7 +222,7 @@ if ( ! function_exists('easingslider_inline_styles')) {
 
 		// Styling for "fade" transition speed
 		if ($slider->transition_effect) {
-			$styles .= '.easingslider-fade-in, .easingslider-fade-out { ';
+			$styles .= '.easingslider-'. absint($slider->ID) .' .easingslider-fade-in, .easingslider-fade-out { ';
 				$styles .= '-webkit-animation-duration: '. absint($slider->transition_duration) .'ms; ';
 				$styles .= '-moz-animation-duration: '. absint($slider->transition_duration) .'ms; ';
 				$styles .= 'animation-duration: '. absint($slider->transition_duration) .'ms; ';
