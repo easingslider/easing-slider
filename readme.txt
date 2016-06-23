@@ -91,6 +91,7 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 
 = 3.0.8 - June 24th, 2016 =
 * Fixed bug that would prevent slider(s) from obeying dimensions correctly when displaying multiple on a single page.
+* Fixed bug that would prevent uninstallation on PHP versions less than 5.3.
 
 = 3.0.7 - June 17th, 2016 =
 * Added CSS property to ensure slider item `max-width` is always `auto`.
@@ -126,7 +127,7 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 
 = 3.0.1 - June 3rd, 2016 =
 * Fixed bug that prevented lazy loading icon from showing when loading is in progress.
-* Minimum requirement checks now occur before any PHP v5.3 namespaced code gets loaded, thus preventing fatal errors.
+* Minimum requirement checks now occur before any PHP 5.3 namespaced code gets loaded, thus preventing fatal errors.
 
 = 3.0.0 - June 3rd, 2016 =
 * A complete internal rebuild, now fully compatible with current versions of WordPress and those coming in the future. Marks the start of a new product direction for Easing Slider, and a renewed committment to continued development!

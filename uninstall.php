@@ -5,17 +5,22 @@ if ( ! defined('WP_UNINSTALL_PLUGIN')) {
 	exit;
 }
 
-// Load Easing Slider file
-include_once('easing-slider.php');
+// Don't run installation on PHP version less than v5.3. Will cause errors.
+if (version_compare(PHP_VERSION, '5.3.0', '>=')) {
 
-// Get plugin instance
-$plugin = Easing_Slider();
+	// Load Easing Slider file
+	include_once('easing-slider.php');
 
-// Get settings
-$settings = $plugin->settings();
+	// Get plugin instance
+	$plugin = Easing_Slider();
 
-// Run removal, if enabled by the user.
-if (true === $settings['remove_data']) {
-	$uninstaller = $plugin->uninstaller();
-	$uninstaller->uninstall();
+	// Get settings
+	$settings = $plugin->settings();
+
+	// Run removal, if enabled by the user.
+	if (true === $settings['remove_data']) {
+		$uninstaller = $plugin->uninstaller();
+		$uninstaller->uninstall();
+	}
+
 }
