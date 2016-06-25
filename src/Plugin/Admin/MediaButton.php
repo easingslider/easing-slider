@@ -56,9 +56,10 @@ class MediaButton
 	/**
 	 * Displays the media button
 	 *
+	 * @param  string $editorId
 	 * @return void
 	 */
-	public function displayButton()
+	public function displayButton($editorId)
 	{
 		// Print the button's HTML and CSS
 		?>
@@ -75,7 +76,7 @@ class MediaButton
 				}
 			</style>
 			
-			<a href="#TB_inline?width=480&amp;inlineId=select-slider" class="button thickbox insert-slider" data-editor="<?php echo esc_attr($editor_id); ?>" title="<?php _e('Add a Slider', 'easingslider'); ?>">
+			<a href="#TB_inline?width=480&amp;inlineId=select-slider" class="button thickbox insert-slider" data-editor="<?php echo esc_attr($editorId); ?>" title="<?php _e('Add a Slider', 'easingslider'); ?>">
 				<span class="wp-media-buttons-icon dashicons dashicons-format-image"></span><?php _e(' Add Slider', 'easingslider'); ?>
 			</a>
 		<?php

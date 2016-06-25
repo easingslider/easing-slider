@@ -89,6 +89,9 @@ This is easy. When editing a slider in the "All Sliders" admin area, simply clic
 
 == Changelog ==
 
+= 3.0.9 - July 1st, 2016 =
+* Fixed `$editor_id` undefined bug on post editor page "Add Slider" button.
+
 = 3.0.8 - June 24th, 2016 =
 * Fixed bug that would prevent slider(s) from obeying dimensions correctly when displaying multiple on a single page.
 
